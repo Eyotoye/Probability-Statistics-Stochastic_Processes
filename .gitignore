@@ -1,0 +1,5 @@
+*.pdf
+*.run.xml
+*.log
+*.aux
+*.synctex.gz
