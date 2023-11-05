@@ -2,26 +2,26 @@
 \begin{document}
 
 \begin{definition}\label{def:2.4.1}
-对随机变量 $X$，若存在 $f:\mathbb{R}\rightarrow[0,+\infty)$，使得 $\forall$ 可测集 $I\subset\mathbb{R}$，都有 $P(X\in I)=\int_If(x)\mathrm{d}x$，则称 $X$ 为 \emph{连续型随机变量}，$f$ 称为其\emph{概率密度函数}（Probability Density Function, PDF）。
+    对随机变量 $X$，若存在 $f:\mathbb{R}\rightarrow[0,+\infty)$，使得 $\forall$ 可测集 $I\subset\mathbb{R}$，都有 $P(X\in I)=\int_If(x)\mathrm{d}x$，则称 $X$ 为 \emph{连续型随机变量}，$f$ 称为其\emph{概率密度函数}（Probability Density Function, PDF）。
 \end{definition}
 
 \begin{proposition}
-连续随机变量 $X$ 的 PDF 具有如下性质：
-\begin{enumerate}
-    \item $\int_{-\infty}^{+\infty}f(x)\mathrm{d}x\equiv 1$
-    \item $P(a<X\leq b)=\int_a^bf(x)\mathrm{d}x=P(a\leq X\leq b)=P(a\leq X<b)=P(a<X<b)$
-    \item $P(X=a)\equiv0,\forall a\in\mathbb{R}$
-    \item 若 $f$ 在 $x_0$ 处连续，则 $P(x_0-\delta<X<x_0+\delta)=\int_{x_0-\delta}^{x_0+\delta}f(t)\mathrm{d}t\approx f(x_0)\cdot2\delta$
-    \item $F(x)=\int_{-\infty}^xf(t)\mathrm{d}t$ 连续，且若 $f$ 在 $x$ 处连续，有 $F^\prime(x)=f(x)$
-    \item PDF 若存在，则不唯一（可以修改其在任意零测集上的值，得到不同的 PDF）
-\end{enumerate}
+    连续随机变量 $X$ 的 PDF 具有如下性质：
+    \begin{enumerate}
+        \item $\int_{-\infty}^{+\infty}f(x)\mathrm{d}x\equiv 1$
+        \item $P(a<X\leq b)=\int_a^bf(x)\mathrm{d}x=P(a\leq X\leq b)=P(a\leq X<b)=P(a<X<b)$
+        \item $P(X=a)\equiv0,\forall a\in\mathbb{R}$
+        \item 若 $f$ 在 $x_0$ 处连续，则 $P(x_0-\delta<X<x_0+\delta)=\int_{x_0-\delta}^{x_0+\delta}f(t)\mathrm{d}t\approx f(x_0)\cdot2\delta$
+        \item $F(x)=\int_{-\infty}^xf(t)\mathrm{d}t$ 连续，且若 $f$ 在 $x$ 处连续，有 $F^\prime(x)=f(x)$
+        \item PDF 若存在，则不唯一（可以修改其在任意零测集上的值，得到不同的 PDF）
+    \end{enumerate}
 \end{proposition}
 
 \begin{definition}\label{def:2.4.2}
-连续随机变量 $X$ 的\emph{期望}定义为 $\mathrm{E}(X)=\int_{-\infty}^{+\infty}xf(x)\mathrm{d}x$。\\
-我们称 $X$ 的期望存在，当且仅当 $\int_{-\infty}^{+\infty}|x|f(x)\mathrm{d}x<+\infty$。\\
-当期望存在时，其\emph{方差}定义为 $\mathrm{Var}(X)=\int_{-\infty}^{+\infty}(x-\mathrm{E}(x))^2f(x)\mathrm{d}x=\mathrm{E}((X-\mathrm{E}(X))^2)=\mathrm{E}(X^2)-\mathrm{E}^2(X)$。\\
-当方差有限时，称其算术平方根为 $X$ 的\emph{标准差}，记作 $\mathrm{SD}(X)$。
+    连续随机变量 $X$ 的\emph{期望}定义为 $\mathrm{E}(X)=\int_{-\infty}^{+\infty}xf(x)\mathrm{d}x$。\\
+    我们称 $X$ 的期望存在，当且仅当 $\int_{-\infty}^{+\infty}|x|f(x)\mathrm{d}x<+\infty$。\\
+    当期望存在时，其\emph{方差}定义为 $\mathrm{Var}(X)=\int_{-\infty}^{+\infty}(x-\mathrm{E}(x))^2f(x)\mathrm{d}x=\mathrm{E}((X-\mathrm{E}(X))^2)=\mathrm{E}(X^2)-\mathrm{E}^2(X)$。\\
+    当方差有限时，称其算术平方根为 $X$ 的\emph{标准差}，记作 $\mathrm{SD}(X)$。
 \end{definition}
 
 对于可测函数 $g$，$g(X)$ 也是随机变量，其期望 $\mathrm{E}(g(X))=\int_{-\infty}^{+\infty}g(x)f(x)\mathrm{d}x$。

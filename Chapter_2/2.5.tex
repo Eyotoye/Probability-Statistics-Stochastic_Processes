@@ -2,7 +2,7 @@
 \begin{document}
 
 \begin{definition}\label{def:2.5.1}
-称一个连续型随机变量 $X$ 服从\emph{均匀分布}，若其 PDF 为 $f(x)=\frac{1}{b-a}(x\in(a,b))$，$f$ 在其余各处取 $0$。记作 $X\sim U(a,b)$。
+    称一个连续型随机变量 $X$ 服从\emph{均匀分布}，若其 PDF 为 $f(x)=\frac{1}{b-a}(x\in(a,b))$，$f$ 在其余各处取 $0$。记作 $X\sim U(a,b)$。
 \end{definition}
 
 我们常将 $X\sim U(0,1)$ 称为随机数。
@@ -10,7 +10,7 @@
 计算可得，若 $X\sim U(a,b)$，则 $\mathrm{E}(X)=\frac{a+b}{2},\mathrm{Var}(X)=\frac{(b-a)^2}{12}$。
 
 \begin{definition}\label{def:2.5.2}
-称一个连续型随机变量 $X$ 服从\emph{正态分布}，若其 PDF 为 $f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}(\sigma>0)$。记作 $X\sim N(\mu,\sigma^2)$。
+    称一个连续型随机变量 $X$ 服从\emph{正态分布}，若其 PDF 为 $f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}(\sigma>0)$。记作 $X\sim N(\mu,\sigma^2)$。
 \end{definition}
 
 计算可得，若 $X\sim N(\mu,\sigma^2)$，则 $\mathrm{E}(X)=\mu,\mathrm{Var}(X)=\sigma^2$。
@@ -27,7 +27,7 @@
 $X\sim N(\mu,\sigma^2)$ 的充要条件是 $Y=\frac{X-\mu}{\sigma}\sim N(0,1)$。我们将 $N(0,1)$ 称为\emph{标准正态分布}。
 
 \begin{definition}\label{def:2.5.3}
-称一个连续型随机变量 $X$ 服从\emph{指数分布}，若其 PDF 为 $f(x)=\lambda e^{-\lambda x}(\lambda>0,x>0)$，$f$ 在其余各处取 $0$。记作 $X\sim Exp(\lambda)$。
+    称一个连续型随机变量 $X$ 服从\emph{指数分布}，若其 PDF 为 $f(x)=\lambda e^{-\lambda x}(\lambda>0,x>0)$，$f$ 在其余各处取 $0$。记作 $X\sim Exp(\lambda)$。
 \end{definition}
 
 指数分布常用于刻画等待时间、寿命等。
@@ -39,8 +39,8 @@ $X\sim N(\mu,\sigma^2)$ 的充要条件是 $Y=\frac{X-\mu}{\sigma}\sim N(0,1)$�
 指数分布的 CDF 为 $F(x)=1-e^{-\lambda x}(x>0)$，所谓的“尾概率”为 $P(X>x)=1-F(x)=e^{-\lambda x}(x>0)$。
 
 \begin{example}
-设某医院平均每天出生婴儿数为 $\lambda$，现在观察到一名婴儿出生，则接下来 $t$ 天内有婴儿出生的概率为 $P(X\leq t)$，其中 $X$ 表示到下一个婴儿出生所需等待的时间。\\
-记 $N(t)$ 为 $t$ 天内出生婴儿数，我们已经知道 $N(t)\sim P(t\lambda)$，则 $P(X>t)=P(N(t)=0)=e^{-\lambda t}$，故 $P(X\leq t)=1-e^{-\lambda t}$。我们发现 $X$ 服从参数为 $\lambda$ 的指数分布。
+    设某医院平均每天出生婴儿数为 $\lambda$，现在观察到一名婴儿出生，则接下来 $t$ 天内有婴儿出生的概率为 $P(X\leq t)$，其中 $X$ 表示到下一个婴儿出生所需等待的时间。\\
+    记 $N(t)$ 为 $t$ 天内出生婴儿数，我们已经知道 $N(t)\sim P(t\lambda)$，则 $P(X>t)=P(N(t)=0)=e^{-\lambda t}$，故 $P(X\leq t)=1-e^{-\lambda t}$。我们发现 $X$ 服从参数为 $\lambda$ 的指数分布。
 \end{example}
 
 我们从另一个角度理解指数分布。
