@@ -3,3 +3,4 @@ preface.pdf
 *.log
 *.aux
 *.synctex.gz
+*.bcf

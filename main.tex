@@ -1,35 +1,19 @@
 \documentclass[zihao=-4,linespread=1.5,a4paper,heading=true,oneside]{ctexbook}
 %\usepackage[utf8]{inputenc}
 \pagestyle{empty}
-% packages for page layout
-\usepackage{geometry}
-\geometry{
-a4paper,
-%total={171.8mm,246.2mm},
-%left=19.1mm,
-%top=25.4mm,
-}
 \setlength{\headheight}{14.5pt}
-% package for colors
 \usepackage{xcolor}
-
-% packages for fonts and symbols
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage{calrsfs}
 \usepackage{stmaryrd}
-
-
-% packages for graphics
 \usepackage{graphicx}
 \graphicspath{ {./images/}{./images/} }
 \usepackage{wrapfig}
 \usepackage{subcaption}
 \usepackage{capt-of}
 \usepackage{cutwin}
-
-% packages for page layout
 \usepackage{geometry}
 \geometry{
 a4paper,
@@ -45,28 +29,21 @@ top=25.4mm,
 \fancyfoot{}
 \fancyfoot[C]{\thepage}
 % \fancyfoot[LE,RO]{\thepage}
-% \fancyfoot[LO,RE]{更新至\today}
+% \fancyfoot[LO,RE]{更新至 \today}
 
-% package for quotes
 \usepackage{csquotes}
-
 \usepackage{array}
-
-% redefine itemize
-\usepackage{enumitem} % http://ctan.org/pkg/enumitem
+\usepackage{enumitem}
 \setlist{nosep}
 
-% package for hyperlinks
 \usepackage{hyperref}
 \hypersetup{colorlinks=true}
 
-% packages for footnotes
 % \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 % \usepackage{perpage}
 % \MakePerPage{footnote} 
 \usepackage[perpage,symbol*]{footmisc}
 
-% packages for bibliography
 \usepackage[
 backend=biber,
 style=gb7714-2015,
@@ -75,10 +52,8 @@ sorting=none
 ]{biblatex}
 \addbibresource{./ref/ref.bib}
 
-% packages for definitions, theorems, proofs.
 \usepackage{amsthm}
 
-% set styles for definitions, lemmata, theorems, proofs, examples
 \theoremstyle{definition}
 \newtheorem{definition}{定义}
 \newtheorem*{definition*}{定义}
@@ -93,7 +68,6 @@ sorting=none
 % \theoremstyle{plain}
 \newtheorem{example}{例}
 
-% counter controlling
 \usepackage{chngcntr}
 \counterwithin{figure}{chapter}
 \counterwithin{equation}{chapter}
@@ -105,14 +79,12 @@ sorting=none
 %\counterwithin{chapter}{part}
 \setcounter{tocdepth}{2}
 
-% package for subfiles
 \usepackage{subfiles}
 
 \usepackage{datetime2}
 \title{概率论与数理统计}
 \author{授课教师：唐宏岩}
 \date{}
-%=================================
 
 \begin{document}
 \maketitle
