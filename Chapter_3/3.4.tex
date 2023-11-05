@@ -8,7 +8,7 @@
 若 $n=3$，随机向量 $(X,Y,Z)$ 有 CDF $F(x,y,z)$，则 $X$ 的边际分布为 $F_X(x)=\lim\limits_{y,z\rightarrow+\infty}F(x,y,z)$，$(X,Y)$ 的边际分布为 $F_{X,Y}(x,y)=P(X\leq x,Y\leq y)=P(X\leq x,Y\leq y,-\infty<Z<+\infty)=\lim\limits_{z\rightarrow+\infty}F(x,y,z)$。
 
 \begin{example}
-设二维随机向量 $(X,Y)$ 的 CDF 为 $F(x,y)$，则 $\forall a,b\in\mathbb R,P(X>a,Y>b)=1-F_X(a)-F_Y(b)+F(a,b)$。
+    设二维随机向量 $(X,Y)$ 的 CDF 为 $F(x,y)$，则 $\forall a,b\in\mathbb R,P(X>a,Y>b)=1-F_X(a)-F_Y(b)+F(a,b)$。
 \end{example}
 
 对于离散型随机向量，以 $n=2$ 为例，定义\emph{边际 PMF} 为 $P(X=x)=\sum\limits_y{P(X=x,Y=y)}$。
@@ -16,7 +16,7 @@
 对于连续型随机向量，以 $n=2$ 为例，设联合 PDF 为 $f(x,y)$，则 $F_X(x)=P(X\leq x,Y\in\mathbb R)=\int_{-\infty}^x\int_{-\infty}^{+\infty}f(t,s)\mathrm ds\mathrm dt$，则 $X$ 的\emph{边际 PDF} 为 $f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\mathrm dy$。
 
 \begin{example}
-$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\mathrm dy=\frac1{\sqrt{2\pi}\sigma_1}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}$，即 $X\sim N(\mu_1,\sigma_1^2)$。同理 $Y\sim N(\mu_2,\sigma_2^2)$。
+    $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\mathrm dy=\frac1{\sqrt{2\pi}\sigma_1}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}$，即 $X\sim N(\mu_1,\sigma_1^2)$。同理 $Y\sim N(\mu_2,\sigma_2^2)$。
 \end{example}
 
 \end{document}

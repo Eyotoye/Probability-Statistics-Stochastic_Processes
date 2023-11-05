@@ -2,45 +2,45 @@
 \begin{document}
 
 我们定义\emph{条件期望} $\mathrm E(Y|X\in A)=\left\{
-\begin{aligned}
-\sum_iy_iP(Y=y_i|X\in A)\\
-\int_{-\infty}^{+\infty}yf_{Y|X}(y|X\in A)\mathrm dy
-\end{aligned}$，两种定义分别针对 $Y$ 为离散型和连续型随机变量。
+    \begin{aligned}
+        \sum_iy_iP(Y=y_i|X\in A) \\
+        \int_{-\infty}^{+\infty}yf_{Y|X}(y|X\in A)\mathrm dy
+    \end{aligned}\right.$，两种定义分别针对 $Y$ 为离散型和连续型随机变量。
 
 进而，我们定义 $\mathrm E(Y|x)=\mathrm E(Y|X=x)=\left\{
-\begin{aligned}
-\sum_iy_iP(Y=y_i|X=x)\\
-\int_{-\infty}^{+\infty}yf_{Y|X}(y|x)\mathrm dy
-\end{aligned}
-$，注意到这是一个 $x$ 的函数，记作 $h(x)$。将其作用在 $X$ 上，得到 $h(X)=\mathrm E(Y|X)$，这是一个 $X$ 的函数（称为 $Y$ 对 $X$ 的回归函数），因此是一个新的随机变量。
+    \begin{aligned}
+        \sum_iy_iP(Y=y_i|X=x) \\
+        \int_{-\infty}^{+\infty}yf_{Y|X}(y|x)\mathrm dy
+    \end{aligned}\right.$
+，注意到这是一个 $x$ 的函数，记作 $h(x)$。将其作用在 $X$ 上，得到 $h(X)=\mathrm E(Y|X)$，这是一个 $X$ 的函数（称为 $Y$ 对 $X$ 的回归函数），因此是一个新的随机变量。
 
 \begin{example}
-$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $\mathrm E(Y|x)=\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1)$。
+    $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $\mathrm E(Y|x)=\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1)$。
 \end{example}
 
 \begin{example}
-甲、乙两种同类产品，平均使用寿命分别为 $10$ 年和 $15$ 年，市场占有率分别为 $60\%$ 和 $40\%$，随机买一个，则期望寿命是 $10\times 60\%+15\times 40\%=12$ 年，我们发现这个计算过程可以表示为 $\mathrm E(Y)=\mathrm E(Y|X=1)P(X=1)+\mathrm E(Y|X=2)P(X=2)=h(1)P(X=1)+h(2)P(X=2)=\mathrm E(h(X))=\mathrm E(\mathrm E(Y|X))$，其中 $X=1$ 表示抽到甲产品，$X=0$ 表示抽到乙产品，$Y$ 表示抽到的产品的寿命。
+    甲、乙两种同类产品，平均使用寿命分别为 $10$ 年和 $15$ 年，市场占有率分别为 $60\%$ 和 $40\%$，随机买一个，则期望寿命是 $10\times 60\%+15\times 40\%=12$ 年，我们发现这个计算过程可以表示为 $\mathrm E(Y)=\mathrm E(Y|X=1)P(X=1)+\mathrm E(Y|X=2)P(X=2)=h(1)P(X=1)+h(2)P(X=2)=\mathrm E(h(X))=\mathrm E(\mathrm E(Y|X))$，其中 $X=1$ 表示抽到甲产品，$X=0$ 表示抽到乙产品，$Y$ 表示抽到的产品的寿命。
 \end{example}
 
 一般地，我们有以下定理：
 
 \begin{theorem}\label{thm:4.7.1}
-（全期望公式）\\
-对于随机向量 $(X,Y)$，有 $\mathrm E(Y)=\mathrm E(\mathrm E(Y|X))$。
+    （全期望公式）\\
+    对于随机向量 $(X,Y)$，有 $\mathrm E(Y)=\mathrm E(\mathrm E(Y|X))$。
 \end{theorem}
 
 \begin{proof}
-以连续型为例。设 $(X,Y)$ 的联合 PDF 为 $f(x,y)$，有 $\mathrm E(Y|x)=\int_{-\infty}^{+\infty}yf_{Y|X}(y|x)\mathrm dy=\int_{-\infty}^{+\infty}y\frac{f(x,y)}{f_X(x)}\mathrm dy$，故 $\mathrm E(Y)=\int_{-\infty}^{+\infty}yf_Y(y)\mathrm dy=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}yf(x,y)\mathrm dx\mathrm dy=\int_{-\infty}^{+\infty}\mathrm E(Y|x)f_X(x)\mathrm dx=\mathrm E(\mathrm E(Y|X))$。
+    以连续型为例。设 $(X,Y)$ 的联合 PDF 为 $f(x,y)$，有 $\mathrm E(Y|x)=\int_{-\infty}^{+\infty}yf_{Y|X}(y|x)\mathrm dy=\int_{-\infty}^{+\infty}y\frac{f(x,y)}{f_X(x)}\mathrm dy$，故 $\mathrm E(Y)=\int_{-\infty}^{+\infty}yf_Y(y)\mathrm dy=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}yf(x,y)\mathrm dx\mathrm dy=\int_{-\infty}^{+\infty}\mathrm E(Y|x)f_X(x)\mathrm dx=\mathrm E(\mathrm E(Y|X))$。
 \end{proof}
 
 一般地，对于可测函数 $g$，我们有 $\mathrm E(g(X,Y))=\mathrm E(\mathrm E(g(X,Y)|X))$。
 
 \begin{theorem}\label{thm:4.7.2}
-对于随机向量 $(X,Y)$ 和任意可测函数 $g:\mathbb R\rightarrow\mathbb R$，都有 $\mathrm E((Y-g(X))^2)\geq \mathrm E((Y-\mathrm E(Y|X))^2)$，即条件期望是均方误差意义下的最优预测。
+    对于随机向量 $(X,Y)$ 和任意可测函数 $g:\mathbb R\rightarrow\mathbb R$，都有 $\mathrm E((Y-g(X))^2)\geq \mathrm E((Y-\mathrm E(Y|X))^2)$，即条件期望是均方误差意义下的最优预测。
 \end{theorem}
 
 \begin{proof}
-类比期望的性质 $\mathrm E((Y-c)^2)\geq\mathrm E((Y-\mathrm E(Y))^2),\forall c\in\mathbb R$，我们有 $\mathrm E((Y-g(X))^2|X)\geq\mathrm E((Y-\mathrm E(Y|X))^2|X),\forall g:\mathbb R\rightarrow\mathbb R$ 可测，两边对 $X$ 求期望即得。
+    类比期望的性质 $\mathrm E((Y-c)^2)\geq\mathrm E((Y-\mathrm E(Y))^2),\forall c\in\mathbb R$，我们有 $\mathrm E((Y-g(X))^2|X)\geq\mathrm E((Y-\mathrm E(Y|X))^2|X),\forall g:\mathbb R\rightarrow\mathbb R$ 可测，两边对 $X$ 求期望即得。
 \end{proof}
 
 我们经常用到最优线性预测，即 $\min\limits_{a,b}\mathrm E((Y-(aX+b))^2)$，这种“均方意义上的最优”称之为\emph{最小二乘}（least square）。

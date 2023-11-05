@@ -2,87 +2,87 @@
 \begin{document}
 
 \begin{definition}\label{def:4.6.1}
-记 $M_X(t)=\mathrm E(e^{tX})$，若 $M_X(t)$ 在 $t=0$ 的某邻域内存在，则称其为 $X$ 的\emph{矩母函数}（Moment Generating Function, MGF），否则称 $X$ 的矩母函数不存在。
+    记 $M_X(t)=\mathrm E(e^{tX})$，若 $M_X(t)$ 在 $t=0$ 的某邻域内存在，则称其为 $X$ 的\emph{矩母函数}（Moment Generating Function, MGF），否则称 $X$ 的矩母函数不存在。
 \end{definition}
 
 \begin{example}
-若 $X\sim Exp(\lambda)$，则 $M_X(t)=\mathrm E(e^{tX})=\int_0^{+\infty}e^{tx}\lambda e^{-\lambda x}\mathrm dx=\frac\lambda{\lambda-t},t<\lambda$。
+    若 $X\sim Exp(\lambda)$，则 $M_X(t)=\mathrm E(e^{tX})=\int_0^{+\infty}e^{tx}\lambda e^{-\lambda x}\mathrm dx=\frac\lambda{\lambda-t},t<\lambda$。
 \end{example}
 
 \begin{example}
-若 $X\sim N(0,1)$，则 $M_X(t)=\mathrm E(e^{tX})=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}e^{tx}e^{-\frac{x^2}2}\mathrm dx=e^{\frac{t^2}2},t\in\mathbb R$。
+    若 $X\sim N(0,1)$，则 $M_X(t)=\mathrm E(e^{tX})=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}e^{tx}e^{-\frac{x^2}2}\mathrm dx=e^{\frac{t^2}2},t\in\mathbb R$。
 \end{example}
 
 \begin{proposition}
-矩母函数有如下性质：
-\begin{enumerate}
-    \item $M_X(0)\equiv1$
-    \item $Y=aX+b$，则 $M_Y(t)=\mathrm E(e^{tY})=\mathrm E(e^{t(aX+b)})=e^{tb}M_X(at)$
-\end{enumerate}
+    矩母函数有如下性质：
+    \begin{enumerate}
+        \item $M_X(0)\equiv1$
+        \item $Y=aX+b$，则 $M_Y(t)=\mathrm E(e^{tY})=\mathrm E(e^{t(aX+b)})=e^{tb}M_X(at)$
+    \end{enumerate}
 \end{proposition}
 
 \begin{example}
-若 $Y\sim N(\mu,\sigma^2)$，令 $Y=\sigma X+\mu$，则 $X\sim N(0,1)$，故 $M_Y(t)=e^{\mu t}M_X(\sigma t)=e^{\mu t}e^{\frac{(\sigma t)^2}2}=e^{\frac{\sigma^2t^2}2+\mu t},t\in\mathbb R$。
+    若 $Y\sim N(\mu,\sigma^2)$，令 $Y=\sigma X+\mu$，则 $X\sim N(0,1)$，故 $M_Y(t)=e^{\mu t}M_X(\sigma t)=e^{\mu t}e^{\frac{(\sigma t)^2}2}=e^{\frac{\sigma^2t^2}2+\mu t},t\in\mathbb R$。
 \end{example}
 
 矩母函数可以用于确定矩。
 
 \begin{theorem}\label{thm:4.6.1}
-随机变量 $X$ 的 $n$ 阶（原点）矩与其矩母函数有如下关系：$\mathrm E(X^n)=M_X^{(n)}(0)$。
+    随机变量 $X$ 的 $n$ 阶（原点）矩与其矩母函数有如下关系：$\mathrm E(X^n)=M_X^{(n)}(0)$。
 \end{theorem}
 
 \begin{proof}
-由 Taylor 展开有 $M_X(t)=\sum_{n=0}^{+\infty}M_X^{(n)}(0)\frac{t^n}{n!}$，又 $M_X(t)=\mathrm E(e^{tX})=\mathrm E(\sum_{n=0}^{+\infty}X^n\frac{t^n}{n!})=\sum_{n=0}^{+\infty}\mathrm E(X^n)\frac{t^n}{n!}$，得到结论。
+    由 Taylor 展开有 $M_X(t)=\sum_{n=0}^{+\infty}M_X^{(n)}(0)\frac{t^n}{n!}$，又 $M_X(t)=\mathrm E(e^{tX})=\mathrm E(\sum_{n=0}^{+\infty}X^n\frac{t^n}{n!})=\sum_{n=0}^{+\infty}\mathrm E(X^n)\frac{t^n}{n!}$，得到结论。
 \end{proof}
 
 \begin{example}
-若 $X\sim N(0,1)$，则 $M_X(t)=e^{\frac{t^2}2}=\sum_{n=0}^{+\infty}\frac{(\frac{t^2}2)^n}{n!}=\sum_{n=0}^{+\infty}\frac{(2n)!}{2^nn!}\frac{t^{2n}}{(2n)!}$，因此我们得出 $\mathrm E(X^{2n})=\frac{(2n)!}{2^nn!},\mathrm E(X^{2n+1})\equiv0\ (n=0,1,\cdots)$。\\
-由此可以计算 $\mathrm{Var}(X)=\mathrm E(X^2)=1,\mathrm{Kurt}(X)=\mathrm E(X^4)=\frac{4!}{2^2\cdot2!}=3$。
+    若 $X\sim N(0,1)$，则 $M_X(t)=e^{\frac{t^2}2}=\sum_{n=0}^{+\infty}\frac{(\frac{t^2}2)^n}{n!}=\sum_{n=0}^{+\infty}\frac{(2n)!}{2^nn!}\frac{t^{2n}}{(2n)!}$，因此我们得出 $\mathrm E(X^{2n})=\frac{(2n)!}{2^nn!},\mathrm E(X^{2n+1})\equiv0\ (n=0,1,\cdots)$。\\
+    由此可以计算 $\mathrm{Var}(X)=\mathrm E(X^2)=1,\mathrm{Kurt}(X)=\mathrm E(X^4)=\frac{4!}{2^2\cdot2!}=3$。
 \end{example}
 
 矩母函数还可以用于确定分布。
 
 \begin{theorem}\label{thm:4.6.2}
-若存在 $a>0$，使得 $M_X(t)=M_Y(t),\forall t\in(-a,a)$，则 $X,Y$ 同分布。
+    若存在 $a>0$，使得 $M_X(t)=M_Y(t),\forall t\in(-a,a)$，则 $X,Y$ 同分布。
 \end{theorem}
 
 \begin{example}
-若随机变量 $X$ 的矩母函数 $M_X(t)=\frac12e^{-t}+\frac14+\frac18e^{4t}+\frac18e^{5t}$，则 $X$ 为离散型随机变量，分布表为
+    若随机变量 $X$ 的矩母函数 $M_X(t)=\frac12e^{-t}+\frac14+\frac18e^{4t}+\frac18e^{5t}$，则 $X$ 为离散型随机变量，分布表为
 
-\bigskip
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-$X$ & -1 & 0 & 4 & 5\\
-\hline
-$P$ & 1/2 & 1/4 & 1/8 & 1/8\\
-\hline
-\end{tabular}
-\bigskip
+    \bigskip
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $X$ & -1  & 0   & 4   & 5   \\
+        \hline
+        $P$ & 1/2 & 1/4 & 1/8 & 1/8 \\
+        \hline
+    \end{tabular}
+    \bigskip
 
-一般地，若离散型随机变量 $X$ 有 PMF $P(X=k)=p_k\ (\sum_k p_k\equiv1)$，则其 MGF 为 $M_X(t)=\mathrm E(e^{tX})=\sum_ke^{tk}p_k$。
+    一般地，若离散型随机变量 $X$ 有 PMF $P(X=k)=p_k\ (\sum_k p_k\equiv1)$，则其 MGF 为 $M_X(t)=\mathrm E(e^{tX})=\sum_ke^{tk}p_k$。
 \end{example}
 
 注意，各阶矩均相同的随机变量未必同分布。
 
 \begin{example}
-设连续型随机变量 $X_1$ 和 $X_2$ 的 PDF 分别为 $f_1(x)=\frac{1}{\sqrt{2\pi}x}e^{-\frac{(\log x)^2}{2}},x>0$ 和 $f_2(x)=f_1(x)(1+\sin(2\pi\log x)),x>0$（$X_1$ 服从对数正态分布），则 $\mathrm E(X_2^n)=\mathrm E(X_1^n)+\int_0^{+\infty}x^nf_1(x)\sin(2\pi\log x)\mathrm dx$，其中后一项通过换元 $y=\log x-n$ 可以证明为 $0$，即 $X_1$ 和 $X_2$ 同矩但不同分布。
+    设连续型随机变量 $X_1$ 和 $X_2$ 的 PDF 分别为 $f_1(x)=\frac{1}{\sqrt{2\pi}x}e^{-\frac{(\log x)^2}{2}},x>0$ 和 $f_2(x)=f_1(x)(1+\sin(2\pi\log x)),x>0$（$X_1$ 服从对数正态分布），则 $\mathrm E(X_2^n)=\mathrm E(X_1^n)+\int_0^{+\infty}x^nf_1(x)\sin(2\pi\log x)\mathrm dx$，其中后一项通过换元 $y=\log x-n$ 可以证明为 $0$，即 $X_1$ 和 $X_2$ 同矩但不同分布。
 \end{example}
 
 下面我们运用矩母函数，研究独立随机变量和的分布。
 
 \begin{theorem}\label{thm:4.6.3}
-若随机变量 $X,Y$ 独立，$Z=X+Y$，则 $M_Z(t)=M_X(t)M_Y(t)$。
+    若随机变量 $X,Y$ 独立，$Z=X+Y$，则 $M_Z(t)=M_X(t)M_Y(t)$。
 \end{theorem}
 
 \begin{proof}
-$M_Z(t)=\mathrm E(e^{tZ})=\mathrm E(e^{t(X+Y)})=\mathrm E(e^{tX}e^{tY})=M_X(t)M_Y(t)$，其中最后一个等号利用了独立性。
+    $M_Z(t)=\mathrm E(e^{tZ})=\mathrm E(e^{t(X+Y)})=\mathrm E(e^{tX}e^{tY})=M_X(t)M_Y(t)$，其中最后一个等号利用了独立性。
 \end{proof}
 
 推而广之，若 $\{X_i\}_{i=1}^n$ 相互独立，$Z=X_1+\cdots+X_n$，则 $M_Z(t)=\prod_{i=1}^nM_{X_i}(t)$。
 
 \begin{example}
-若 $\{X_i\}_{i=1}^n$ 相互独立且服从正态分布，则 $X_1+\cdots+X_n$ 也服从正态分布。\\
-以 $n=2$ 为例说明。设 $X_i\sim N(\mu_i,\sigma_i^2)\ (i=1,2)$，则 $M_{X_1+X_2}(t)=M_{X_1}(t)M_{X_2}(t)=e^{\frac{\sigma_1^2t^2}2+\mu_1t}e^{\frac{\sigma_2^2t^2}2+\mu_2t}=e^{\frac12(\sigma_1^2+\sigma_2^2)+(\mu_1+\mu_2)t}$，对应 $N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$ 的 MGF，再由 MGF 确定分布可得结论。
+    若 $\{X_i\}_{i=1}^n$ 相互独立且服从正态分布，则 $X_1+\cdots+X_n$ 也服从正态分布。\\
+    以 $n=2$ 为例说明。设 $X_i\sim N(\mu_i,\sigma_i^2)\ (i=1,2)$，则 $M_{X_1+X_2}(t)=M_{X_1}(t)M_{X_2}(t)=e^{\frac{\sigma_1^2t^2}2+\mu_1t}e^{\frac{\sigma_2^2t^2}2+\mu_2t}=e^{\frac12(\sigma_1^2+\sigma_2^2)+(\mu_1+\mu_2)t}$，对应 $N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$ 的 MGF，再由 MGF 确定分布可得结论。
 \end{example}
 
 定义随机向量 $(X_1,\cdots,X_n)$ 的 MGF 为 $M_{X_1,\cdots,X_n}(t_1,\cdots,t_n)=\mathrm E(e^{t_1X_1+\cdots+t_nX_n})$。

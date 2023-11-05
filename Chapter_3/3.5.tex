@@ -8,7 +8,7 @@
 对于连续型随机向量，设联合 PDF 为 $f(x,y)$，首先考虑条件概率 $P(X\leq x|y\leq Y\leq y+\mathrm dy)=\frac{P(X\leq x,y\leq Y\leq y+\mathrm dy)}{P(y\leq Y\leq y+\mathrm dy)}=\frac{\int_{-\infty}^x\int_y^{y+\mathrm dy}f(t,s)\mathrm ds\mathrm dt}{\int_y^{y+\mathrm dy}f_Y(s)\mathrm ds}$，对 $x$ 求导得 $X$ 在 $y\leq Y\leq y+\mathrm dy$ 条件下的条件 PDF 为 $\frac{\int_y^{y+\mathrm dy}f(x,s)\mathrm ds}{\int_y^{y+\mathrm dy}f_Y(s)\mathrm ds}\rightarrow\frac{f(x,y)}{f_Y(y)}(\mathrm dy\rightarrow 0)$。
 
 \begin{definition}\label{def:3.5.1}
-对于连续型随机向量 $(X,Y)$，设联合 PDF 为 $f(x,y)$，若 $f_Y(y)>0$，则称 $X$ 在 $Y=y$ 条件下的\emph{条件 PDF} 为 $f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}$。
+    对于连续型随机向量 $(X,Y)$，设联合 PDF 为 $f(x,y)$，若 $f_Y(y)>0$，则称 $X$ 在 $Y=y$ 条件下的\emph{条件 PDF} 为 $f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}$。
 \end{definition}
 
 可以验证 $f_{X|Y}(x|y)$ 满足 PDF 的各性质。
@@ -23,7 +23,7 @@
 \end{enumerate}
 
 \begin{example}
-$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{1}{\sqrt{2\pi}\sigma_2}\frac{1}{\sqrt{1-\rho^2}}e^{-\frac{(y-(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1)))^2}{2(1-\rho^2)\sigma_2^2}}$，即 $Y|X=x\sim N(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1),(1-\rho^2)\sigma_2^2)$。
+    $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{1}{\sqrt{2\pi}\sigma_2}\frac{1}{\sqrt{1-\rho^2}}e^{-\frac{(y-(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1)))^2}{2(1-\rho^2)\sigma_2^2}}$，即 $Y|X=x\sim N(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1),(1-\rho^2)\sigma_2^2)$。
 \end{example}
 
 \end{document}

@@ -2,48 +2,48 @@
 \begin{document}
 
 \begin{definition}\label{def:3.3.1}
-对 $n$ 维随机向量 $(X_1,\cdots,X_n)$，若存在 $f:\mathbb R^n\rightarrow [0,+\infty)$，使得 $\forall$ 可测集 $Q\subset\mathbb R^n$，都有 $P((X_1,\cdots,X_n)\in Q)=\int_Qf(x_1,\cdots,x_n)\mathrm dx_1\cdots\mathrm dx_n$，则称 $(X_1,\cdots,X_n)$ 为\emph{连续型随机向量}，$f$ 称为其\emph{（联合）概率密度函数}（PDF）。
+    对 $n$ 维随机向量 $(X_1,\cdots,X_n)$，若存在 $f:\mathbb R^n\rightarrow [0,+\infty)$，使得 $\forall$ 可测集 $Q\subset\mathbb R^n$，都有 $P((X_1,\cdots,X_n)\in Q)=\int_Qf(x_1,\cdots,x_n)\mathrm dx_1\cdots\mathrm dx_n$，则称 $(X_1,\cdots,X_n)$ 为\emph{连续型随机向量}，$f$ 称为其\emph{（联合）概率密度函数}（PDF）。
 \end{definition}
 
 \begin{proposition}
-连续随机向量 $(X_1,\cdots,X_n)$ 的 PDF 具有如下性质：
-\begin{enumerate}
-    \item $\int_{\mathbb R^n}f(x_1,\cdots,x_n)\mathrm dx_1\cdots\mathrm dx_n\equiv 1$
-    \item 以 $n=2$ 为例，$F(x,y)=\int_{-\infty}^x\int_{-\infty}^yf(t,s)\mathrm ds\mathrm dt,f(a,b)=\frac{\partial^2F}{\partial x\partial y}(a,b),\mathrm{a.e.}$
-\end{enumerate}
+    连续随机向量 $(X_1,\cdots,X_n)$ 的 PDF 具有如下性质：
+    \begin{enumerate}
+        \item $\int_{\mathbb R^n}f(x_1,\cdots,x_n)\mathrm dx_1\cdots\mathrm dx_n\equiv 1$
+        \item 以 $n=2$ 为例，$F(x,y)=\int_{-\infty}^x\int_{-\infty}^yf(t,s)\mathrm ds\mathrm dt,f(a,b)=\frac{\partial^2F}{\partial x\partial y}(a,b),\mathrm{a.e.}$
+    \end{enumerate}
 \end{proposition}
 
 其中 a.e. 表示“almost everywhere”。
 
 \begin{example}
-矩形域上的均匀分布的 PDF：
-$f(x,y)=\left\{
-\begin{aligned}
-\frac{1}{(b-a)(d-c)} & , & (x,y)\in(a,b)\times(c,d),\\
-0 & , & \text{其他}.
-\end{aligned}
-\right.$
+    矩形域上的均匀分布的 PDF：
+    $f(x,y)=\left\{
+        \begin{aligned}
+            \frac{1}{(b-a)(d-c)} & , & (x,y)\in(a,b)\times(c,d), \\
+            0                    & , & \text{其他}.
+        \end{aligned}
+        \right.$
 \end{example}
 
 \begin{example}\label{BVN}
-二元正态分布 $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$ 的 PDF：\\
-$f(x,y)=\frac{1}{2\pi\sigma_1\sigma_2}\frac{1}{\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2+(\frac{y-\mu_2}{\sigma_2})^2-2\rho\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2})},\forall (x,y)\in\mathbb R^2,\sigma_1,\sigma_2>0,|\rho|<1$。\\
-令 $\boldsymbol{x}=\left[\begin{matrix}
-\frac{x-\mu_1}{\sigma_1}\\
-\frac{y-\mu_2}{\sigma_2}
-\end{matrix}\right],W=\frac1{1-\rho^2}\left[\begin{matrix}
-1 & -\rho\\
--\rho & 1
-\end{matrix}\right]$，$W=A^\mathrm TA$ 为正定矩阵 $W$ 的 Cholesky 分解，则 $-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2+(\frac{y-\mu_2}{\sigma_2})^2-2\rho\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2})=-\frac12\boldsymbol{x}^\mathrm TW\boldsymbol{x}=-\frac12\boldsymbol{x}^\mathrm TA^\mathrm TA\boldsymbol{x}=-\frac12 (A\boldsymbol x)^\mathrm T(A\boldsymbol x)$。\\
-上述 Cholesky 分解的结果为 $A=\frac{1}{\sqrt{1-\rho^2}}\left[\begin{matrix}
-1 & -\rho\\
-0 & \pm \sqrt{1-\rho^2}
-\end{matrix}\right]
-$ 或 $A=\frac{1}{\sqrt{1-\rho^2}}\left[\begin{matrix}
--1 & \rho\\
-0 & \pm \sqrt{1-\rho^2}
-\end{matrix}\right]
-$。
+    二元正态分布 $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$ 的 PDF：\\
+    $f(x,y)=\frac{1}{2\pi\sigma_1\sigma_2}\frac{1}{\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2+(\frac{y-\mu_2}{\sigma_2})^2-2\rho\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2})},\forall (x,y)\in\mathbb R^2,\sigma_1,\sigma_2>0,|\rho|<1$。\\
+    令 $\boldsymbol{x}=\left[\begin{matrix}
+                \frac{x-\mu_1}{\sigma_1} \\
+                \frac{y-\mu_2}{\sigma_2}
+            \end{matrix}\right],W=\frac1{1-\rho^2}\left[\begin{matrix}
+                1     & -\rho \\
+                -\rho & 1
+            \end{matrix}\right]$，$W=A^\mathrm TA$ 为正定矩阵 $W$ 的 Cholesky 分解，则 $-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2+(\frac{y-\mu_2}{\sigma_2})^2-2\rho\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2})=-\frac12\boldsymbol{x}^\mathrm TW\boldsymbol{x}=-\frac12\boldsymbol{x}^\mathrm TA^\mathrm TA\boldsymbol{x}=-\frac12 (A\boldsymbol x)^\mathrm T(A\boldsymbol x)$。\\
+    上述 Cholesky 分解的结果为 $A=\frac{1}{\sqrt{1-\rho^2}}\left[\begin{matrix}
+                1 & -\rho               \\
+                0 & \pm \sqrt{1-\rho^2}
+            \end{matrix}\right]
+    $ 或 $A=\frac{1}{\sqrt{1-\rho^2}}\left[\begin{matrix}
+                -1 & \rho                \\
+                0  & \pm \sqrt{1-\rho^2}
+            \end{matrix}\right]
+    $。
 \end{example}
 
 \end{document}

@@ -2,32 +2,32 @@
 \begin{document}
 
 \begin{definition}\label{def:1.7.1}
-若 $P(AB)=P(A)P(B)$，则称事件 $A,B$ 相互\emph{独立}。
+    若 $P(AB)=P(A)P(B)$，则称事件 $A,B$ 相互\emph{独立}。
 \end{definition}
 
 如果 $P(B)>0$，我们注意到 $A,B$ 独立等价于 $P(A|B)=P(A)$。
 
 \begin{proposition}
-若 $A,B$ 独立，则 $A^c,B$ 独立。
+    若 $A,B$ 独立，则 $A^c,B$ 独立。
 \end{proposition}
 
 \begin{definition}\label{def:1.7.2}
-若 $P(ABC)=P(A)P(B)P(C)$，且 $A,B,C$ 两两独立，则称事件 $A,B,C$ \emph{独立}。
+    若 $P(ABC)=P(A)P(B)P(C)$，且 $A,B,C$ 两两独立，则称事件 $A,B,C$ \emph{独立}。
 \end{definition}
 
 注意，仅有 $A,B,C$ 两两独立，不能推出三者独立。
 
 \begin{definition}\label{def:1.7.3}
-若对于事件列 $\{A_i\}_{i=1}^\infty$，任意取有限个事件 $A_{i_1},A_{i_2},\cdots,A_{i_r}$，都有 $P(A_{i_1}A_{i_2}\cdots A_{i_r})=P(A_{i_1})P(A_{i_2})\cdots P(A_{i_r})$，则称 $\{A_i\}_{i=1}^\infty$ 相互\emph{独立}。
+    若对于事件列 $\{A_i\}_{i=1}^\infty$，任意取有限个事件 $A_{i_1},A_{i_2},\cdots,A_{i_r}$，都有 $P(A_{i_1}A_{i_2}\cdots A_{i_r})=P(A_{i_1})P(A_{i_2})\cdots P(A_{i_r})$，则称 $\{A_i\}_{i=1}^\infty$ 相互\emph{独立}。
 \end{definition}
 
 \begin{example}
-每周开奖的彩票，各次中奖率均为 $10^{-5}$ 且独立，问连续十年（520 周）不中奖的概率？\\
-令事件 $A_i$ 为第 $i$ 周不中奖，则 $P(A_i)=1-10^{-5}$，故 $P(A_1\cdots A_{520})=(1-10^{-5})^{520}\approx 0.9948$。
+    每周开奖的彩票，各次中奖率均为 $10^{-5}$ 且独立，问连续十年（520 周）不中奖的概率？\\
+    令事件 $A_i$ 为第 $i$ 周不中奖，则 $P(A_i)=1-10^{-5}$，故 $P(A_1\cdots A_{520})=(1-10^{-5})^{520}\approx 0.9948$。
 \end{example}
 
 \begin{definition}\label{def:1.7.4}
-若事件 $A,B,E$ 满足 $P(AB|E)=P(A|E)P(B|E)$，则我们称 $A,B$ 关于 $E$ \emph{条件独立}。
+    若事件 $A,B,E$ 满足 $P(AB|E)=P(A|E)P(B|E)$，则我们称 $A,B$ 关于 $E$ \emph{条件独立}。
 \end{definition}
 
 注意，条件独立性和独立性之间没有蕴含关系。
