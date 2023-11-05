@@ -1,0 +1,25 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{definition}\label{def:3.2.1}
+称 $n$ 维随机向量 $(X_1,\cdots,X_n)$ 是\emph{离散}的，当且仅当 $\{X_i\}_{i=1}^n$ 均为离散随机变量。\\
+离散随机向量 $(X_1,\cdots,X_n)$ 的\emph{（联合）概率质量函数}（PMF）定义为 $f(x_1,\cdots,x_n)=P(X_1=x_1,\cdots,X_n=x_n),\forall(x_1,\cdots,x_n)\in \mathbb R^n$。
+\end{definition}
+
+\begin{proposition}
+离散随机向量 $(X_1,\cdots,X_n)$ 的 PMF 具有如下性质：
+\begin{enumerate}
+    \item $f(x_1,\cdots,x_n)\geq0,\forall(x_1,\cdots,x_n)\in \mathbb R^n$
+    \item $\sum_{x_i\in\{X_i(\omega)|\omega\in\Omega\},\forall i\in\{1,\cdots,n\}}f(x_1,\cdots,x_n)\equiv1$
+\end{enumerate}
+\end{proposition}
+
+注意第 2 条性质中求和的项数为至多可数，原因是有限个至多可数集的笛卡尔积仍是至多可数集。
+
+\begin{example}
+设 $\{B_i\}_{i=1}^n$ 为 $\Omega$ 的一个分割（分割的定义见~\ref{sec:1.8} 节），$P(B_i)=p_i\geq0,\forall i\in\{1,\cdots,n\}$，$\sum_{i=1}^n p_i=1$。\\
+进行 $N$ 次独立试验，设 $\forall i\in\{1,\cdots,n\}$，有 $X_i$ 个试验结果落在 $B_i$ 中，则若 $k_1+\cdots+k_n=N$，其中 $k_i$ 均为非负整数，我们有 $P(X_1=k_1,\cdots,X_n=k_n)=\tbinom{N}{k_1,\cdots,k_n}p_1^{k_1}\cdots p_n^{k_n}$。其中 $\tbinom{N}{k_1,\cdots,k_n}=\frac{N!}{k_1!\cdots k_n!}$ 为多项式 $(a_1+\cdots+a_n)^N$ 中 $a_1^{k_1}\cdots a_n^{k_n}$ 项的系数。\\
+我们称 $(X_1,\cdots,X_n)$ 服从\emph{多项分布}。
+\end{example}
+
+\end{document}

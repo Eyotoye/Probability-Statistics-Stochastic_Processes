@@ -1,0 +1,32 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{definition}\label{def:2.2.1}
+离散随机变量 $X$ 的\emph{概率质量函数}（Probability Mass Function, PMF）$f$ 是指该随机变量取各个可能值的概率，即 $f(x)=P(X=x),\forall x\in\mathbb{R}$。可以用\emph{分布表}的形式展示各个可能取值与概率的对应关系。
+\end{definition}
+
+\begin{proposition}
+如果离散随机变量 $X$ 的所有可能取值为 $\{x_i\}$，则 $X$ 的 PMF 具有如下性质：
+\begin{enumerate}
+    \item $f(x_i)=p_i\geq 0,\forall i$
+    \item $\sum_i p_i=1$
+    \item $F(x)=\sum_{x_i\leq x}f(x_i)$
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}\label{def:2.2.2}
+离散随机变量 $X$ 的\emph{期望}定义为 $\mathrm{E}(X)=\sum_ix_ip_i$。\\
+我们称 $X$ 的期望\emph{存在}，当且仅当 $\sum_i|x_i|p_i<+\infty$。\\
+当期望存在时，其\emph{方差}定义为 $\mathrm{Var}(X)=\sum_i(x_i-\mathrm{E}(X))^2p_i=\mathrm{E}((X-\mathrm{E}(X))^2)=\mathrm{E}(X^2)-\mathrm{E}^2(X)$。\\
+当方差有限时，称其算术平方根为 $X$ 的\emph{标准差}，记作 $\mathrm{SD}(X)$。
+\end{definition}
+
+注意，通常我们所说的一个随机变量的\emph{均值}指的就是期望。
+
+\emph{标准化}指的是对 $X$ 作线性变换 $\frac{X-\mu}{\sigma}$，其中 $\mu$ 和 $\sigma$ 分别为 $X$ 的期望和标准差，得到均值为 $0$，标准差为 $1$ 的随机变量。
+
+对于可测函数 $g$，$g(X)$ 也是随机变量，其期望 $\mathrm{E}(g(X))=\sum_ig(x_i)p_i$。
+
+期望反映了随机变量的集中趋势，而方差反映了其分散程度。
+
+\end{document}

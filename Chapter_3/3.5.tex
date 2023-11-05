@@ -1,0 +1,29 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+以 $n=2$ 为例说明条件分布的概念，考虑随机向量 $(X,Y)$。
+
+对于离散型随机向量，设联合 PMF 为 $P(X=a_i,Y=b_j)=p_{ij}\geq0,\sum_{i,j}p_{ij}\equiv1$，则在 $Y=b_j$ 条件下的 $X$ 的\emph{条件 PMF} 为 $P(X=a_i|Y=b_j)=\frac{P(X=a_i,Y=b_j)}{P(Y=b_j)}=\frac{p_{ij}}{\sum_kp_{kj}}$。条件 PMF 满足 $\sum_iP(X=a_i|Y=b_j)\equiv1,\forall j$。
+
+对于连续型随机向量，设联合 PDF 为 $f(x,y)$，首先考虑条件概率 $P(X\leq x|y\leq Y\leq y+\mathrm dy)=\frac{P(X\leq x,y\leq Y\leq y+\mathrm dy)}{P(y\leq Y\leq y+\mathrm dy)}=\frac{\int_{-\infty}^x\int_y^{y+\mathrm dy}f(t,s)\mathrm ds\mathrm dt}{\int_y^{y+\mathrm dy}f_Y(s)\mathrm ds}$，对 $x$ 求导得 $X$ 在 $y\leq Y\leq y+\mathrm dy$ 条件下的条件 PDF 为 $\frac{\int_y^{y+\mathrm dy}f(x,s)\mathrm ds}{\int_y^{y+\mathrm dy}f_Y(s)\mathrm ds}\rightarrow\frac{f(x,y)}{f_Y(y)}(\mathrm dy\rightarrow 0)$。
+
+\begin{definition}\label{def:3.5.1}
+对于连续型随机向量 $(X,Y)$，设联合 PDF 为 $f(x,y)$，若 $f_Y(y)>0$，则称 $X$ 在 $Y=y$ 条件下的\emph{条件 PDF} 为 $f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}$。
+\end{definition}
+
+可以验证 $f_{X|Y}(x|y)$ 满足 PDF 的各性质。
+
+相应的\emph{条件 CDF} 为 $F_{X|Y}(a|y)=P(X\leq a|Y=y)=\int_{-\infty}^af_{X|Y}(x|y)\mathrm dx$。
+
+我们熟知的各个定理均有适用于连续型随机向量的版本：
+\begin{enumerate}
+    \item $f(x,y)=f_{X|Y}(x|y)f_Y(y)=f_{Y|X}(y|x)f_X(x)$（乘法法则）
+    \item $f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\mathrm dy=\int_{-\infty}^{+\infty}f_{X|Y}(x|y)f_Y(y)\mathrm dy$（全概率公式）
+    \item $f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{f_{X|Y}(x|y)f_Y(y)}{\int_{-\infty}^{+\infty}f_{X|Y}(x|y)f_Y(y)\mathrm dy}$（Bayes 公式）
+\end{enumerate}
+
+\begin{example}
+$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{1}{\sqrt{2\pi}\sigma_2}\frac{1}{\sqrt{1-\rho^2}}e^{-\frac{(y-(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1)))^2}{2(1-\rho^2)\sigma_2^2}}$，即 $Y|X=x\sim N(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1),(1-\rho^2)\sigma_2^2)$。
+\end{example}
+
+\end{document}

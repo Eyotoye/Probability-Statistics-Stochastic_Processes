@@ -1,0 +1,41 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{definition}\label{def:1.6.1}
+若 $P(B)>0$，定义\emph{条件概率} $P(A|B)=\frac{P(AB)}{P(B)}$。
+\end{definition}
+
+通常，我们计算条件概率的方法有两种：
+\begin{enumerate}
+    \item 在缩小（受限）的样本空间（要求事件 $B$ 发生）上，考虑事件 $A$ 发生的概率
+    \item 根据定义计算
+\end{enumerate}
+
+一种常用的形式是 $P(AB)=P(A|B)P(B)=P(B|A)P(A)$，这可以视作是求解两个事件的积的概率的方法（乘法法则）。
+
+\begin{example}
+掷一个均匀六面骰，$\Omega=\{1,2,3,4,5,6\},A=\{2,3,4,5\},B=\{1,3,5\}$，则 $P(A)=4/6,P(B)=3/6,P(AB)=2/6,P(A|B)=\frac{P(AB)}{P(B)}=2/3$。
+\end{example}
+
+\begin{example}
+袋子中有 8 个红球和 4 个白球，无放回地取出两个球，利用组合数可知，两个都是红球的概率为 $\frac{\tbinom{8}{2}}{\tbinom{12}{2}}$。\\
+用条件概率可以简化计算：$P(R_1R_2)=P(R_1)P(R_2|R_1)=\frac{8}{12}\times\frac{7}{11}$。
+\end{example}
+
+更一般地，我们有 $P(A_1A_2\cdots A_n)=P(A_1)P(A_2|A_1)P(A_3|A_1A_2)\cdots P(A_n|A_1A_2\cdots A_{n-1})$，常用于序贯发生的一系列事件的积的概率求解。
+
+\begin{example}
+回忆上一节的“配对问题”。我们有 $P(A_{i_1}A_{i_2}\cdots A_{i_r})=P(A_{i_1})P(A_{i_2}|A_{i_1})\cdots P(A_{i_r}|A_{i_1}\cdots A_{i_{r-1}})=\frac{1}{n}\times\frac{1}{n-1}\times\cdots\times\frac{1}{n-(r-1)}=\frac{(n-r)!}{n!}$。
+\end{example}
+
+\begin{proposition}
+对于给定的事件 $B$，$P(\cdot|B):\mathcal{F}\rightarrow\mathbb{R}$ 是概率函数，即 $(\Omega,\mathcal{F},P(\cdot|B))$ 仍是概率空间。
+\end{proposition}
+
+对于上述命题的证明，只需验证 $P(\cdot|B)$ 满足概率的三条公理即可。
+
+这提示我们，条件概率也是一种概率，如果我们将 $P(A)$ 称为观察到事件 $B$ 之前 $A$ 的“先验概率”，则 $P(A|B)$ 就是相应的“后验概率”。
+
+一个常见的迷思是：观测到事件 $A$ 已经发生后，是否可以说事件 $A$ 发生的概率 $P(A)=1$？学过条件概率之后，我们知道答案是否定的，实际上是后验概率 $P(A|A)=1$。
+
+\end{document}

@@ -1,0 +1,58 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+对随机变量 $X,Y$，设 $\mathrm E(X)=\mu_1,\mathrm E(Y)=\mu_2,\mathrm{Var}(X)=\sigma_1^2,\mathrm{Var}(Y)=\sigma_2^2$。
+
+\begin{definition}\label{def:4.4.1}
+称 $X$ 与 $Y$ 的\emph{协方差} $\mathrm{Cov}(X,Y)=\mathrm E((X-\mu_1)(Y-\mu_2))$。
+\end{definition}
+
+\begin{proposition}
+协方差有如下性质：
+\begin{enumerate}
+    \item $\mathrm{Cov}(X,X)=\mathrm{Var}(X)$
+    \item $\mathrm{Cov}(X,Y)=\mathrm{Cov}(Y,X)$
+    \item $\mathrm{Cov}(X,Y)=\mathrm E(XY)-\mathrm E(X)\mathrm E(Y)$
+    \item $\mathrm{Cov}(aX_1+bX_2+c,Y)=a\mathrm{Cov}(X_1,Y)+b\mathrm{Cov}(X_2,Y),\forall\text{ 常数}\ a,b,c\in\mathbb R$
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}\label{def:4.4.2}
+称 $X$ 与 $Y$ 的\emph{（线性）相关系数} $\mathrm{Corr}(X,Y)=\frac{\mathrm{Cov}(X,Y)}{\sigma_1\sigma_2}=\mathrm E(\frac{X-\mu_1}{\sigma_1}\frac{Y-\mu_2}{\sigma_2})$。
+\end{definition}
+
+若 $\mathrm{Corr}(X,Y)=0$，称 $X,Y$ 不相关。
+
+\begin{theorem}\label{thm:4.4.1}
+相关系数有如下性质：
+\begin{enumerate}
+    \item 若 $X,Y$ 相互独立，则 $X,Y$ 不相关（反之未必成立）
+    \item $|\mathrm{Corr}(X,Y)|\leq1$，且等号成立当且仅当 $\exists a,b,P(Y=aX+b)=1$，即 $Y=aX+b,\mathrm{a.s.}$
+\end{enumerate}
+\end{theorem}
+
+其中 a.s. 表示“almost surely”。
+
+为证明上述定理的 (2)，首先我们利用 Cauchy-Schwartz 不等式证明引理：对随机变量 $U,V$，有 $\mathrm{E}^2(UV)\leq \mathrm{E}(U^2)\mathrm{E}(V^2)$，且等号成立当且仅当 $\exists t_0\in\mathbb R,P(V=t_0U)=1$。接下来令 $U=\frac{X-\mu_1}{\sigma_1},V=\frac{Y-\mu_2}{\sigma_2}$，即得。
+
+当 $\mathrm{Corr}(X,Y)=\pm1$，可以证明 $a=\pm\sigma_2/\sigma_1$。
+
+\begin{example}
+$X\sim N(0,1),Y=X^2$，则 $X$ 与 $Y$ 不相关，但不独立。
+\end{example}
+
+
+
+\begin{example}
+$(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则
+    \begin{equation}
+    \begin{aligned}
+    &\mathrm{Corr}(X,Y)\nonumber\\
+    &=\mathrm E(\frac{X-\mu_1}{\sigma_1}\frac{Y-\mu_2}{\sigma_2})\nonumber\\
+    &=\int_{\mathbb R^2}\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2}\frac{1}{2\pi\sigma_1\sigma_2}\frac{1}{\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2+(\frac{y-\mu_2}{\sigma_2})^2-2\rho\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2})}\mathrm dx\mathrm dy\nonumber
+    \end{aligned}
+    \end{equation}
+进行换元 $(u,v)^\mathrm T=A(\frac{x-\mu_1}{\sigma_1},\frac{y-\mu_2}{\sigma_2})^\mathrm T$，其中 $A$ 的定义参见例~\ref{BVN}，则指数上的项化为 $-\frac12(u^2+v^2)$，这一步实质上是进行了二次型的标准化。后续过程留作习题，最终计算结果为 $\mathrm{Corr}(X,Y)=\rho$。
+\end{example}
+
+\end{document}

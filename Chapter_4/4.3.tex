@@ -1,0 +1,17 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+离散型和连续型随机变量的方差分别参见定义~\ref{def:2.2.2} 和定义~\ref{def:2.4.2}。
+
+方差的意义：若 $X$ 为收益率，则 $\mathrm{SD}(X)$ 称为\emph{波动率}，刻画了风险的大小。我们定义\emph{变异系数} $\mathrm{CV}=\frac{\mathrm{SD}(X)}{\mu}$，其中 $\mu=\mathrm E(X)\neq0$。
+
+\begin{proposition}
+方差有如下性质：
+\begin{enumerate}
+    \item $\mathrm{Var}(C)\equiv 0,C\text{ 为常数}$
+    \item $\mathrm{Var}(CX)=C^2\mathrm{Var}(X)$
+    \item $\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y)+2\mathrm{E}((X-\mathrm{E}(X))(Y-\mathrm{E}(Y)))$，且若 $X,Y$ 独立，则 $\mathrm{E}((X-\mathrm{E}(X))(Y-\mathrm{E}(Y)))=0$
+\end{enumerate}
+\end{proposition}
+
+\end{document}
