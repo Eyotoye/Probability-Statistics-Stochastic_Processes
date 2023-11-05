@@ -4,6 +4,8 @@ preface.pdf
 *.aux
 *.synctex.gz
 *.bcf
+*.out
+*.toc
 Chapter*/*.aux
 Chapter*/*.bcf
 Chapter*/*.log
