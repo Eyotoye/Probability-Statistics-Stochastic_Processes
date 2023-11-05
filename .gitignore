@@ -4,3 +4,9 @@ preface.pdf
 *.aux
 *.synctex.gz
 *.bcf
+Chapter*/*.aux
+Chapter*/*.bcf
+Chapter*/*.log
+Chapter*/*.synctex.gz
+Chapter*/*.run.xml
+Chapter*/*.pdf
