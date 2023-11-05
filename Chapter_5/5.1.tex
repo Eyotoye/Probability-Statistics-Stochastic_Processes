@@ -27,6 +27,29 @@
     若随机变量 $Y$ 的方差 $\mathrm{Var}(Y)$ 存在，则 $\forall a>0$ 有 $P(|Y-\mathrm E(Y)|\geq a)\leq \frac{\mathrm{Var}(Y)}{a^2}$。
 \end{theorem}
 
+\begin{proof}
+    $P(|Y-\mathrm E(Y)|\geq a)=P((Y-\mathrm E(Y))^2\geq a^2)\leq \frac{\mathrm E((Y-\mathrm E(Y))^2)}{a^2}=\frac{\mathrm{Var}(Y)}{a^2}$.
+\end{proof}
 
+这告诉我们，如果 $\mathrm{Var}(Y)=0$，则 $P(Y=\mathrm E(Y))=1$。
+
+\begin{theorem}\label{thm:5.1.3}
+    （Chernoff 不等式）\\
+    对于任意随机变量 $Y$，$\forall a>0,t>0$，有 $P(Y\geq a)\leq\frac{\mathrm E(e^{tY})}{e^{ta}}$。
+\end{theorem}
+
+\begin{proof}
+    $\forall t>0,P(Y\geq a)=P(e^{tY}\geq e^{ta})\leq\frac{\mathrm E(e^{tY})}{e^{ta}}.$
+\end{proof}
+
+\begin{example}
+    若 $X\sim N(0,1)$，则
+    \begin{enumerate}
+        \item 根据 Markov 不等式，$P(|X|\geq3)\leq\frac{\mathrm E(|X|)}3=\frac13\sqrt{\frac2\pi}\approx 0.27$；
+        \item 根据 Chebyshev 不等式，$P(|X|\geq3)\leq\frac{\mathrm{Var}(X)}{3^2}=\frac19\approx 0.11$；
+        \item 根据 Chernoff 不等式，$\forall t>0,P(|X|\geq3)=2P(X\geq3)\leq2\frac{\mathrm E(e^{tX})}{e^{3t}}=2e^{\frac{t^2}2-3t}$，取最小值点 $t=3$，得 $P(|X|\geq3)\leq 2e^{-\frac92}\approx 0.022$；
+        \item 根据经验法则，$P(|X|\geq3)\approx 0.003$。
+    \end{enumerate}
+\end{example}
 
 \end{document}
