@@ -12,7 +12,7 @@
 若 $X_1,\cdots,X_n$ 独立同分布，来自总体 $f_1(x;\theta)$（PMF 或 PDF），则 $L(\theta)=\prod_{i=1}^nf_1(x_i;\theta)$。
 
 \begin{example}
-    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，$\mu$ 和 $\sigma^2$ 未知，则似然函数 $L(\mu,\sigma^2)=\prod_{i=1}^n\frac1{\sqrt{2\pi}\sigma}\e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}$。
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，$\mu$ 和 $\sigma^2$ 未知，则似然函数 $L(\mu,\sigma^2)=\prod_{i=1}^n\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}$。
 \end{example}
 
 \begin{definition}\label{def:6.2.1}
