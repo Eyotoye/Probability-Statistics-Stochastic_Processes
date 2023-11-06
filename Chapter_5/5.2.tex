@@ -3,7 +3,7 @@
 
 设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，方差 $\mathrm{Var}(X_i)=\sigma^2>0$，则样本均值 $\overline X=\frac1n\sum_{i=1}^nX_i$，其均值 $\mathrm E(\overline X)=\mu$，方差 $\mathrm{Var}(\overline X)=\frac{\sigma^2}n\rightarrow0(n\rightarrow+\infty)$。
 
-这告诉我们，当样本量足够大时，样本均值 $\overline X$ 的分布会趋近于总体均值 $\mu$。
+% 这告诉我们，当样本量足够大时，样本均值 $\overline X$ 的分布会趋近于总体均值 $\mu$。
 
 \begin{theorem}\label{thm:5.2.1}
     （Khinchin 弱大数定律）\\
@@ -15,18 +15,18 @@
     由 Chebyshev 不等式，$P(|\overline X-\mu|\geq\epsilon)\leq\frac{\mathrm{Var}(\overline X)}{\epsilon^2}=\frac{\sigma^2}n\frac1{\epsilon^2}\rightarrow0(n\rightarrow+\infty)$。
 \end{proof}
 
-$\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $\alpha$ 分别称为\emph{精度}和\emph{置信度}，则根据 Khinchin 弱大数定律，存在 $N\in\mathbb N^+$，当 $n>N$ 时，$P(|\overline X-\mu|<\epsilon)\geq1-\alpha$，即 $\overline X$ 至少以概率 $1-\alpha$ 落在区间 $(\mu-\epsilon,\mu+\epsilon)$ 内。
+$\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $1-\alpha$ 分别称为\emph{精度}和\emph{置信度}，则根据 Khinchin 弱大数定律，$\exists N\in\mathbb N^+$，当 $n\geq N$ 时，$P(|\overline X-\mu|<\epsilon)\geq1-\alpha$，即 $\overline X$ 至少以概率 $1-\alpha$ 落在区间 $(\mu-\epsilon,\mu+\epsilon)$ 内。
 
-换句话说，当样本量足够大时，在很大概率意义下有 $\overline X\approx\mu$，其中 $\mu$ 为未知的总体均值。
+换句话说，当样本量足够大时，有很大的概率 $\overline X\approx\mu$，其中 $\mu$ 为未知的总体均值。
 
 我们将 $X_i\sim B(p)$ 这一特例称之为 \emph{Bernoulli 大数定律}。
 
-通过更进一步的讨论可以证明，上述定理中关于方差的条件可以去掉。
+通过更进一步的讨论可以证明，上述定理中关于方差的条件可以去掉，结论仍正确。
 
 此外，我们还有对 Khinchin 弱大数定律的若干推广，如
 \begin{enumerate}
     \item 要求 $X_i$ 两两不相关，$\mathrm{Var}(X_i)$ 一致有界，我们就得到了 Chebyshev 大数定律；
-    \item 要求 $\mathrm{Var}(\overline X)\rightarrow0$，我们就得到了 Markov 大数定律。
+    \item 要求 $\mathrm{Var}(\overline X)\rightarrow0(n\rightarrow+\infty)$，我们就得到了 Markov 大数定律。
 \end{enumerate}
 
 \begin{definition}\label{def:5.2.1}
@@ -37,31 +37,31 @@ $\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $\alpha$ �
 
 \begin{theorem}\label{thm:5.2.2}
     （Kolmogorov 强大数定律）\\
-    设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，则 $P(\lim_{n\rightarrow+\infty}\overline X=\mu)=1$，或等价地，$\forall \epsilon>0$，有 $P(\lim_{n\rightarrow+\infty}|\overline X-\mu|<\epsilon)=1$。
+    设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，则 $P(\lim_{n\rightarrow+\infty}\overline X=\mu)=1$。
 \end{theorem}
 
-考虑 $X_i\sim B(p)$ 的特殊情形，则 $\overline X$ 称之为频率，Kolmogorov 强大数定律表明概率的频率解释是合理的。
+考虑 $X_i\sim B(p)$ 的特殊情形，则 $\overline X$ 称之为频率，根据 Kolmogorov 强大数定律，$P(\lim_{n\rightarrow+\infty}\overline X=p)=1$，这说明概率的频率解释是合理的。
 
 \begin{definition}\label{def:5.2.2}
-    我们称 $Y_n$ \emph{以概率 $1$ 收敛}于 $Y$，又称\emph{几乎必然收敛}于 $Y$，记作 $Y_n\overset{\mathrm{a.s.}}{\rightarrow}Y$，如果 $P(\lim_{n\rightarrow+\infty}Y_n=Y)=1$，或等价地，$\forall \epsilon>0$，有 $P(\lim_{n\rightarrow+\infty}|Y_n-Y|<\epsilon)=1$。
+    我们称 $Y_n$ \emph{以概率 $1$ 收敛}于 $Y$，又称\emph{几乎必然收敛}于 $Y$，记作 $Y_n\overset{\mathrm{a.s.}}{\rightarrow}Y$，如果 $P(\lim_{n\rightarrow+\infty}Y_n=Y)=1$。
 \end{definition}
 
 用上述定义，强大数定律可以表述为 $\overline X\overset{\mathrm{a.s.}}{\rightarrow}\mu$。
 
 \begin{example}
     （Monte Carlo 积分）\\
-    设我们要计算 $f(x)>0$ 在区间 $[a,b]$ 上的定积分，首先取一个足够大的 $c>0$，设 $(X_i,Y_i)$ 独立且服从区域 $[a,b]\times[0,c]$ 上的均匀分布，记 $I_i=\left\{
+    设我们要计算 $g(x)>0$ 在区间 $[a,b]$ 上的定积分，首先取一个适当的 $c>\sup\{g(x)|x\in[a,b]\}$，设 $(X_i,Y_i)$ 独立且服从区域 $[a,b]\times[0,c]$ 上的均匀分布，记 $I_i=\left\{
         \begin{aligned}
-            1 & , & Y_i\leq f(X_i), \\
-            0 & , & Y_i>f(X_i),
+            1 & , & Y_i\leq g(X_i), \\
+            0 & , & Y_i>g(X_i),
         \end{aligned}
-        \right.$，则 $I_i\sim B(p)$，其中 $p=\frac{\int_a^b f(x)\mathrm{d}x}{c(b-a)}$，于是 $\overline I=\frac1n\sum_{i=1}^nI_i\approx p$，从而 $\int_a^b f(x)\mathrm{d}x\approx c(b-a)\overline I$。
+        \right.$，则 $I_i\sim B(p)$，其中 $p=\frac{\int_a^b g(x)\mathrm{d}x}{c(b-a)}$，于是 $\overline I=\frac1n\sum_{i=1}^nI_i\approx p$，从而 $\int_a^b g(x)\mathrm{d}x\approx c(b-a)\overline I$。
 \end{example}
 
 \begin{example}
     我们通过一个例子来考察一下上面介绍的两种收敛性的区别。\\
-    设概率空间 $(\Omega,\mathcal F,P)$，其中 $\Omega=[0,1]$，$\omega$ 在 $\Omega$ 上均匀分布。定义随机变量序列 $\forall s\in\Omega,Y_1(s)=s+I_{[0,1]}(s),Y_2(s)=s+I_{[0,1/2]}(s),Y_3(s)=s+I_{[1/2,1]}(s),Y_4(s)=s+I_{[0,1/3]}(s),Y_5(s)=s+I_{[1/3,2/3]}(s),Y_6(s)=s+I_{[2/3,1]}(s),\cdots$，则 $Y_n(s)$ 依概率收敛于 $Y(s)=s$，但不以概率 $1$ 收敛于 $Y(s)$。\\
-    另外，如果考察随机变量序列 $Z_n(s)=s^n$，则 $Z_n(s)$ 以概率 $1$ 收敛于 $Z(s)=0$。
+    设概率空间 $(\Omega,\mathcal F,P)$，其中 $\Omega=[0,1]$，$\omega$ 在 $\Omega$ 上均匀分布。定义随机变量序列 $\forall\omega\in\Omega,Y_1(\omega)=\omega+I_{[0,1]}(\omega),Y_2(\omega)=\omega+I_{[0,1/2]}(\omega),Y_3(\omega)=\omega+I_{[1/2,1]}(\omega),Y_4(\omega)=\omega+I_{[0,1/3]}(\omega),Y_5(\omega)=\omega+I_{[1/3,2/3]}(\omega),Y_6(\omega)=\omega+I_{[2/3,1]}(\omega),\cdots$，则 $Y_n(\omega)$ 依概率收敛于 $Y(\omega)=\omega$，但不以概率 $1$ 收敛于 $Y(\omega)$，因为 $\forall \omega_0\in\Omega$，$Y_n(\omega_0)$ 无极限。
+    % 另外，如果考察随机变量序列 $Z_n(\omega)=\omega^n$，则 $Z_n(\omega)$ 以概率 $1$ 收敛于 $Z(\omega)=0$。
 \end{example}
 
 \end{document}
