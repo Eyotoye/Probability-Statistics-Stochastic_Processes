@@ -7,7 +7,7 @@
 \end{theorem}
 
 \begin{proof}
-    令 $I=\left\{
+    取示性变量 $I=\left\{
         \begin{aligned}
             1 & , & Y\geq a, \\
             0 & , & Y<a,
@@ -15,12 +15,12 @@
     则 $I\leq Y/a$，故 $P(Y\geq a)=\mathrm E(I)\leq \mathrm E(Y/a)=\mathrm E(Y)/a$。
 \end{proof}
 
-一般地，对于任意随机变量 $X$，则 $\forall a>0$，有 $P(|X|\geq a)\leq\frac{\mathrm E(|X|)}a$。
+% 一般地，对于任意随机变量 $X$，则 $\forall a>0$，有 $P(|X|\geq a)\leq\frac{\mathrm E(|X|)}a$。
 
-\begin{example}
-    令 $X$ 表示从人群中随机抽的一个人的年收入，$X\geq 0$，则 $P(X\geq k\mathrm E(X))\leq 1/k$。\\
-    直观理解是，人群中随机抽到一个其年收入是人均收入 $k$ 倍及以上的人的概率不超过 $1/k$。
-\end{example}
+% \begin{example}
+%     令 $X$ 表示从人群中随机抽的一个人的年收入，$X\geq 0$，则 $P(X\geq k\mathrm E(X))\leq 1/k$。\\
+%     直观理解是，人群中随机抽到一个其年收入是人均收入 $k$ 倍及以上的人的概率不超过 $1/k$。
+% \end{example}
 
 \begin{theorem}\label{thm:5.1.2}
     （Chebyshev 不等式）\\
@@ -31,7 +31,7 @@
     $P(|Y-\mathrm E(Y)|\geq a)=P((Y-\mathrm E(Y))^2\geq a^2)\leq \frac{\mathrm E((Y-\mathrm E(Y))^2)}{a^2}=\frac{\mathrm{Var}(Y)}{a^2}$.
 \end{proof}
 
-这告诉我们，如果 $\mathrm{Var}(Y)=0$，则 $P(Y=\mathrm E(Y))=1$。
+这告诉我们，如果 $\mathrm{Var}(Y)=0$，则 $P(Y=\mathrm E(Y))=1$（即 a.s.）。
 
 \begin{theorem}\label{thm:5.1.3}
     （Chernoff 不等式）\\

@@ -2,36 +2,35 @@
 \begin{document}
 
 \begin{theorem}\label{thm:5.3.1}
-    （中心极限定理，CLT）\\
-    设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，方差 $\mathrm{Var}(X_i)=\sigma^2>0$，则 $\forall x\in\mathbb R,\lim_{n\rightarrow+\infty}P\left(\frac{\overline X-\mu}{\sigma/\sqrt n}\leq x\right)=\Phi(x)$，其中 $\Phi(x)$ 为标准正态分布的 CDF。
+    设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，方差 $\mathrm{Var}(X_i)=\sigma^2>0$，则 $\forall x\in\mathbb R,\lim_{n\rightarrow+\infty}P\left(\frac{\overline X-\mu}{\sigma/\sqrt n}\leq x\right)=\Phi(x)$，其中 $\Phi(x)$ 为标准正态分布的 CDF。或等价地，$\lim_{n\rightarrow+\infty}P\left(\frac{X_1+\cdots+X_n-n\mu}{\sigma\sqrt n}\leq x\right)=\Phi(x)$。
 \end{theorem}
 
 \begin{proof}
     只对 $X_i$ 的 MGF 存在的情形给出证明。\\
-    令 $M(t)=\mathrm E(e^{tX_i})$，不失一般性，假设 $\mu=0,\sigma^2=1$，则 $M(0)=1,M'(0)=0,M''(0)=1$，于是 $\mathrm E(e^{t\frac{X_1+\cdots+X_n}{\sqrt n}})=\left(M\left(\frac t{\sqrt n}\right)\right)^n$，而 $\lim_{n\rightarrow +\infty}n\ln M(\frac t{\sqrt n})=\lim_{y\rightarrow 0^+}\frac{\ln M(yt)}{y^2}(y=\frac1{\sqrt{n}})=\frac{t^2}2$，即 $\frac{X+\cdots+X_n}{\sqrt n}$ 的 MGF 的极限为 $e^{\frac{t^2}2}$，这说明 $\frac{X+\cdots+X_n}{\sqrt n}$ 的极限分布为标准正态分布。
+    不失一般性，假设 $\mu=0,\sigma^2=1$，令 $M(t)=\mathrm E(e^{tX_i})$，则 $M(0)=1,M'(0)=0,M''(0)=1$，于是 $\mathrm E(e^{t\frac{X_1+\cdots+X_n}{\sqrt n}})=M^n\left(\frac t{\sqrt n}\right)$，而根据 Taylor 展开，$M\left(\frac t{\sqrt n}\right)=1+0+\frac12\left(\frac t{\sqrt n}\right)^2+o\left(\frac{t^2}n\right)$，故 $\mathrm E(e^{t\frac{X_1+\cdots+X_n}{\sqrt n}})=(1+\frac{t^2}{2n}+o(\frac{t^2} n))^n\rightarrow e^{t^2/2}(n\rightarrow+\infty)$，此为 $N(0,1)$ 的 MGF，这说明 $\frac{X_1+\cdots+X_n}{\sqrt n}$ 的分布趋近于 $N(0,1)$。
 \end{proof}
 
-上述定理通常称为 Lindeberg CLT，可推广至不同分布的情形。
+上述定理通常称为 Lindeberg-Lévy CLT，可推广至不同分布的情形。
 
-\begin{definition}\label{def:5.3.1}
-    （依分布收敛）\\
-    我们称 $Y_n$ \emph{依分布收敛}于 $Y$，记作 $Y_n\overset{d}{\rightarrow}Y$，如果 $\lim_{n\rightarrow+\infty}F_n(y)=F(y),\forall y\text{ 为 $F$ 的连续点}$，其中 $F_n(y)$ 和 $F(y)$ 分别为 $Y_n$ 和 $Y$ 的 CDF。
-\end{definition}
-
-用上述定义，CLT 可以表述为 $\frac{\overline X-\mu}{\sigma/\sqrt n}\overset{d}{\rightarrow}N(0,1)$。
-
-如果将上式中的 $\frac{\overline X-\mu}{\sigma/\sqrt n}$ 理解为标准化的过程，则不难得出 $\overline X$ 近似服从 $N(\mu,\frac{\sigma^2}n)$，$X_1+\cdots+X_n$ 近似服从 $N(n\mu,n\sigma^2)$。
+如果将定理中的 $\frac{\overline X-\mu}{\sigma/\sqrt n}$ 理解为标准化的过程，则不难得出 $\overline X$ 近似服从 $N(\mu,\frac{\sigma^2}n)$，$X_1+\cdots+X_n$ 近似服从 $N(n\mu,n\sigma^2)$。
 
 \begin{example}
     （De Moivre-Laplace CLT）\\
-    设 $X_i\sim B(p)$，则 $\sum_{i=1}^nX_i\sim B(n,p)$，当 $n$ 充分大时，可以近似地认为 $\sum_{i=1}^nX_i\sim N(np,np(1-p))$，于是我们可近似计算 $P(t_1\leq \sum_{i=1}^nX_i\leq t_2)\approx \Phi(y_2)-\Phi(y_1)$，其中 $y_1=\frac{t_1-np-\frac12}{\sqrt{np(1-p)}},y_2=\frac{t_2-np+\frac12}{\sqrt{np(1-p)}}$，其中 $\frac12$ 是连续性修正项。
+    设 $X_i\sim B(p)$，则 $\sum_{i=1}^nX_i\sim B(n,p)$，当 $n$ 充分大时，可以近似地认为 $\sum_{i=1}^nX_i\sim N(np,np(1-p))$，于是我们可近似计算 $P(t_1\leq \sum_{i=1}^nX_i\leq t_2)=P\left(\frac{t_1-np}{\sqrt{np(1-p)}}\leq\frac{\sum_{i=1}^nX_i-np}{\sqrt{np(1-p)}}\leq\frac{t_2-np}{\sqrt{np(1-p)}}\right)\approx \Phi(y_2)-\Phi(y_1)$，其中 $y_1=\frac{t_1-np-\frac12}{\sqrt{np(1-p)}},y_2=\frac{t_2-np+\frac12}{\sqrt{np(1-p)}}$，其中 $\frac12$ 是连续性修正项。
 \end{example}
+
+\begin{definition}\label{def:5.3.1}
+    （依分布收敛）\\
+    我们称 $Y_n$ \emph{依分布收敛}于 $Y$，记作 $Y_n\overset{d}{\rightarrow}Y$，如果 $\lim_{n\rightarrow+\infty}F_{Y_n}(x)=F_Y(x),\forall x\in\mathbb R$。
+\end{definition}
+
+用上述定义，CLT 可以表述为 $\frac{\overline X-\mu}{\sigma/\sqrt n}\overset{d}{\rightarrow}Z$，其中$Z\sim N(0,1)$，或简记为 $\frac{\overline X-\mu}{\sigma/\sqrt n}\rightarrow N(0,1)$。
 
 \begin{example}
     （选举问题）\\
-    设 $p$ 为选民支持度（未知），随机抽样调查 $n$ 人，其中支持比例 $P_n=\frac1n\sum_{i=1}^nX_i$，其中 $X_i\sim B(p)$ 且独立。\\
+    设 $p$ 为选民真实支持度（未知），随机抽样调查 $n$ 人（假设 $n$ 远远小于总人数 $N$，可以近似有放回抽样），样本支持比例 $P_n=\frac1n\sum_{i=1}^nX_i=\overline X$，其中 $X_i\sim B(p)$ 且独立，表示第 $i$ 个人是否支持。\\
     设置精度 $\epsilon=0.03$，置信度 $1-\alpha=95\%$，则至少需要 $n$ 为多少，才能保证 $P(|P_n-p|<\epsilon)\geq1-\alpha$？\\
-    根据 CLT，我们有 $P(P_n-p\geq\epsilon)\approx2\left(1-\Phi(\frac\epsilon{\sqrt{p(1-p)/n}})\right)\leq\alpha$，于是 $n\geq\frac{z_{1-\alpha/2}^2p(1-p)}{\epsilon^2}$，其中 $z_{1-\alpha/2}$ 为标准正态分布的上 $1-\alpha/2$ 分位数，代入最大值点 $p=\frac12$，我们得到 $n\geq\frac{z_{1-\alpha/2}^2}4\epsilon^2$，代入 $\epsilon=0.03,\alpha=0.05$，我们得到 $n\geq1068$。
+    根据 CLT，我们有 $P(|P_n-p|\geq\epsilon)\approx2\left(1-\Phi(\frac\epsilon{\sqrt{p(1-p)/n}})\right)\leq\alpha$，于是 $n\geq\frac{z_{1-\alpha/2}^2p(1-p)}{\epsilon^2}$，其中 $z_{1-\alpha/2}$ 为标准正态分布的上 $1-\alpha/2$ 分位数，代入最大值点 $p=\frac12$，我们得到 $n\geq\frac{z_{1-\alpha/2}^2}4\epsilon^2$，代入 $\epsilon=0.03,\alpha=0.05$，得到 $n\geq1068$。这一结果与 $N$ 无关！
 \end{example}
 
 \end{document}
