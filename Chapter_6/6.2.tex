@@ -1,0 +1,34 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+设 $(X_1,\cdots,X_n)$ 的联合分布（PMF 或 PDF）为 $f(x_1,\cdots,x_n;\theta)$，其中 $\theta$ 为未知参数（标量或向量）。
+
+对于观测 $X_1,\cdots,X_n$，我们定义\emph{似然函数}为 $L(\theta)=f(X_1,\cdots,X_n;\theta)$。
+
+对于离散情形，$L(\theta)$ 就是出现观测 $(X_1,\cdots,X_n)$ 的概率。
+
+随机变量 $X_1,\cdots,X_n$ 的一个实现通常称为\emph{观测值}，记为 $x_1,\cdots,x_n$。
+
+若 $X_1,\cdots,X_n$ 独立同分布，来自总体 $f_1(x;\theta)$（PMF 或 PDF），则 $L(\theta)=\prod_{i=1}^nf_1(x_i;\theta)$。
+
+\begin{example}
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，$\mu$ 和 $\sigma^2$ 未知，则似然函数 $L(\mu,\sigma^2)=\prod_{i=1}^n\frac1{\sqrt{2\pi}\sigma}\e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}$。
+\end{example}
+
+\begin{definition}\label{def:6.2.1}
+    $\theta^*=\underset{\theta}{\operatorname{argmax}} L(\theta)$ 称为 $\theta$ 的\emph{极大似然估计}（MLE）。
+\end{definition}
+
+注意 $\theta^*=\theta^*(X_1,\cdots,X_n)$ 是一个随机变量，因为它是 $X_1,\cdots,X_n$ 的函数。
+
+\begin{example}
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim U(0,\theta),\theta>0$ 未知，$L(\theta)=\left\{
+        \begin{aligned}
+            \frac1{\theta^n} & , & X_i\in (0,\theta),\forall i, \\
+            0                & , & \text{其他},
+        \end{aligned}\right.$，则 $\theta^*=\max\{X_1,\cdots,X_n\}$。
+\end{example}
+
+
+
+\end{document}

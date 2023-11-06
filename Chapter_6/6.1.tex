@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+设 $X_1,\cdots,X_n$ 为独立同分布的样本，我们定义\emph{样本矩}如下：
+\begin{enumerate}
+    \item $k$ 阶原点矩 $a_k=\frac1n\sum_{i=1}^nX_i^k$
+    \item $k$ 阶中心矩 $m_k=\frac1n\sum_{i=1}^n(X_i-\overline X)^k$
+\end{enumerate}
+
+根据大数定律，$a_k\rightarrow\mathrm E(X^k)$，$m_k\rightarrow\mathrm E(X-\mathrm E(X))^k$。
+
+\begin{example}
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，则 $\mu=\mathrm E(X)\approx a_1=\overline X$，$\sigma^2=\mathrm{Var}(X)\approx m_2=\frac1n\sum_{i=1}^n(X_i-\overline X)^2$。
+\end{example}
+
+\begin{example}
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim Exp(\lambda)$，则 $\lambda=\mathrm E(X)^{-1}\approx a_1^{-1}=\frac1{\overline X}$，或 $\lambda=\mathrm{Var}(X)^{-1/2}=m_2^{-1/2}$。
+\end{example}
+
+我们发现上例中 $\lambda$ 可以有两种不同的矩估计，通常尽量用低阶矩。
+
+\begin{example}
+    设 $X_1,\cdots,X_n$ 独立同分布，定义\emph{经验分布函数}为 $F_n(x)=\frac1n\sum_{i=1}^nI_{\{X_i\leq x\}}$，则 $I_{\{X_i\leq x\}}\sim B(p)$，其中 $p=F(x)$，从而 $F_n(x)\overset{\mathrm{a.s.}}{\rightarrow}F(x)$。
+\end{example}
+
+注意到，$F_n(x)$ 的矩就是 $(X_1,\cdots,X_n)$ 的样本矩。
+
+\end{document}
