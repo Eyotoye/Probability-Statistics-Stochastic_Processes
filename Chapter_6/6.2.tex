@@ -1,34 +1,61 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-设 $(X_1,\cdots,X_n)$ 的联合分布（PMF 或 PDF）为 $f(x_1,\cdots,x_n;\theta)$，其中 $\theta$ 为未知参数（标量或向量）。
+设 $(X_1,\cdots,X_n)$ 的联合分布（PMF 或 PDF）为 $f(x_1,\cdots,x_n;\theta)$，其中 $\theta$ 为未知参数。
 
-对于观测 $X_1,\cdots,X_n$，我们定义\emph{似然函数}为 $L(\theta)=f(X_1,\cdots,X_n;\theta)$。
+对于观测 $(X_1,\cdots,X_n)$，我们定义\emph{似然函数}（likelihood function）为 $L(\theta)=f(X_1,\cdots,X_n;\theta)$。
 
-对于离散情形，$L(\theta)$ 就是出现观测 $(X_1,\cdots,X_n)$ 的概率。
+对于离散情形，$L(\theta)$ 就是当参数为 $\theta$ 时出现观测 $(X_1,\cdots,X_n)$ 的概率。
 
-随机变量 $X_1,\cdots,X_n$ 的一个实现通常称为\emph{观测值}，记为 $x_1,\cdots,x_n$。
+随机变量 $X_1,\cdots,X_n$ 的一个\emph{实现}是指一次观测到的具体数据，记为 $x_1,\cdots,x_n$。
 
-若 $X_1,\cdots,X_n$ 独立同分布，来自总体 $f_1(x;\theta)$（PMF 或 PDF），则 $L(\theta)=\prod_{i=1}^nf_1(x_i;\theta)$。
+若 $X_1,\cdots,X_n$ 独立同分布，来自总体 $f_1(x;\theta)$（PMF 或 PDF），则 $f(x_1,\cdots,x_n;\theta)=\prod_{i=1}^nf_1(x_i;\theta)$，似然函数 $L(\theta)=\prod_{i=1}^nf_1(X_i;\theta)$。
 
 \begin{example}
-    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，$\mu$ 和 $\sigma^2$ 未知，则似然函数 $L(\mu,\sigma^2)=\prod_{i=1}^n\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}$。
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，$\mu$ 和 $\sigma^2$ 未知，则 $f_1(x;\mu,\sigma^2)=\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$，似然函数 $L(\theta)=L(\mu,\sigma^2)=\prod_{i=1}^n\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(X_i-\mu)^2}{2\sigma^2}}$。
 \end{example}
 
+% 写到这了！
+
 \begin{definition}\label{def:6.2.1}
-    $\theta^*=\underset{\theta}{\operatorname{argmax}} L(\theta)$ 称为 $\theta$ 的\emph{极大似然估计}（MLE）。
+    $\theta^*=\underset{\theta}{\operatorname{argmax}}L(\theta)$ 称为 $\theta$ 的\emph{极大似然估计}（MLE）。
 \end{definition}
 
 注意 $\theta^*=\theta^*(X_1,\cdots,X_n)$ 是一个随机变量，因为它是 $X_1,\cdots,X_n$ 的函数。
+
+\begin{example}
+    上例中，解方程 $\frac{\partial\log L}{\partial\mu}=0$ 和 $\frac{\partial\log L}{\partial(\sigma^2)}=0$（称它们为\emph{似然方程}），得 $\mu^*=\bar X$ 和 $(\sigma^2)^*=\frac1n\sum_{i=1}^n(X_i-\bar X)^2$。
+\end{example}
+
+此处 MLE 的结果与矩估计一致，这是偶然现象，对于一般分布不总成立。
+
+\begin{proposition}
+    MLE 有重要的所谓不变性：设 $\theta^*$ 是 $\theta$ 的 MLE，$g(\theta)$ 是 $\theta$ 的可测函数，则 $g(\theta^*)$ 是 $g(\theta)$ 的 MLE。例如，如果上例中选择 $\theta=(\mu,\sigma)$，则 $\sigma^*=\sqrt{(\sigma^2)^*}$ 是 $\sigma$ 的 MLE。
+\end{proposition}
 
 \begin{example}
     设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim U(0,\theta),\theta>0$ 未知，$L(\theta)=\left\{
         \begin{aligned}
             \frac1{\theta^n} & , & X_i\in (0,\theta),\forall i, \\
             0                & , & \text{其他},
-        \end{aligned}\right.$，则 $\theta^*=\max\{X_1,\cdots,X_n\}$。
+        \end{aligned}\right.$ 则 $\theta^*=\max\{X_1,\cdots,X_n\}$。
 \end{example}
 
+\begin{example}
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i$ 的 PDF 为 $f_1(x;\theta)=\frac1{\pi(1+(x-\theta)^2)}(x\in\mathbb R)$，$\theta$ 未知，即 $X_1,\cdots,X_n$ 服从 Cauchy 分布。
+    \begin{itemize}
+        \item 由于 Cauchy 分布的任意阶矩都不存在，故不能用矩估计。
+        \item 若采用 MLE 方法，似然方程为 $\sum_{i=1}^{n}\frac{X_i-\theta}{1+(X_i-\theta)^2}=0$，当 $n$ 较大时，此方程有很多的根且无显式解，故 MLE 方法也不理想。
+        \item 一种可能的对 $\theta$ 的估计：由于 $\theta$ 为中位数，因此用样本中位数作为 $\theta$ 的估计。
+    \end{itemize}
+\end{example}
 
+这个例子告诉我们，统计方法不是唯一的，也没有绝对的优劣。
+
+一般地，MLE 不一定是唯一的。
+
+MLE 的另一局限性是它需要分布的具体函数形式，而矩估计不需要。
+
+此外，如果似然函数在最大值点附近变化过于平缓，则可能不利于通过迭代等方法有效计算。
 
 \end{document}
