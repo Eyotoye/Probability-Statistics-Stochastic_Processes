@@ -1,23 +1,23 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，方差 $\mathrm{Var}(X_i)=\sigma^2>0$，则样本均值 $\overline X=\frac1n\sum_{i=1}^nX_i$，其均值 $\mathrm E(\overline X)=\mu$，方差 $\mathrm{Var}(\overline X)=\frac{\sigma^2}n\rightarrow0(n\rightarrow+\infty)$。
+设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，方差 $\mathrm{Var}(X_i)=\sigma^2>0$，则样本均值 $\bar X=\frac1n\sum_{i=1}^nX_i$，其均值 $\mathrm E(\bar X)=\mu$，方差 $\mathrm{Var}(\bar X)=\frac{\sigma^2}n\rightarrow0(n\rightarrow+\infty)$。
 
-% 这告诉我们，当样本量足够大时，样本均值 $\overline X$ 的分布会趋近于总体均值 $\mu$。
+% 这告诉我们，当样本量足够大时，样本均值 $\bar X$ 的分布会趋近于总体均值 $\mu$。
 
 \begin{theorem}\label{thm:5.2.1}
     （Khinchin 弱大数定律）\\
     设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，方差 $\mathrm{Var}(X_i)=\sigma^2>0$，则 $\forall\epsilon>0$，有\\
-    $\lim_{n\rightarrow+\infty}P(|\overline X-\mu|\geq\epsilon)=0$，或等价地，$\lim_{n\rightarrow+\infty}P(|\overline X-\mu|<\epsilon)=1$。
+    $\lim_{n\rightarrow+\infty}P(|\bar X-\mu|\geq\epsilon)=0$，或等价地，$\lim_{n\rightarrow+\infty}P(|\bar X-\mu|<\epsilon)=1$。
 \end{theorem}
 
 \begin{proof}
-    由 Chebyshev 不等式，$P(|\overline X-\mu|\geq\epsilon)\leq\frac{\mathrm{Var}(\overline X)}{\epsilon^2}=\frac{\sigma^2}n\frac1{\epsilon^2}\rightarrow0(n\rightarrow+\infty)$。
+    由 Chebyshev 不等式，$P(|\bar X-\mu|\geq\epsilon)\leq\frac{\mathrm{Var}(\bar X)}{\epsilon^2}=\frac{\sigma^2}n\frac1{\epsilon^2}\rightarrow0(n\rightarrow+\infty)$。
 \end{proof}
 
-$\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $1-\alpha$ 分别称为\emph{精度}和\emph{置信度}，则根据 Khinchin 弱大数定律，$\exists N\in\mathbb N^+$，当 $n\geq N$ 时，$P(|\overline X-\mu|<\epsilon)\geq1-\alpha$，即 $\overline X$ 至少以概率 $1-\alpha$ 落在区间 $(\mu-\epsilon,\mu+\epsilon)$ 内。
+$\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $1-\alpha$ 分别称为\emph{精度}和\emph{置信度}，则根据 Khinchin 弱大数定律，$\exists N\in\mathbb N^+$，当 $n\geq N$ 时，$P(|\bar X-\mu|<\epsilon)\geq1-\alpha$，即 $\bar X$ 至少以概率 $1-\alpha$ 落在区间 $(\mu-\epsilon,\mu+\epsilon)$ 内。
 
-换句话说，当样本量足够大时，有很大的概率 $\overline X\approx\mu$，其中 $\mu$ 为未知的总体均值。
+换句话说，当样本量足够大时，有很大的概率 $\bar X\approx\mu$，其中 $\mu$ 为未知的总体均值。
 
 我们将 $X_i\sim B(p)$ 这一特例称之为 \emph{Bernoulli 大数定律}。
 
@@ -26,27 +26,27 @@ $\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $1-\alpha$ 
 此外，我们还有对 Khinchin 弱大数定律的若干推广，如
 \begin{enumerate}
     \item 要求 $X_i$ 两两不相关，$\mathrm{Var}(X_i)$ 一致有界，我们就得到了 Chebyshev 大数定律；
-    \item 要求 $\mathrm{Var}(\overline X)\rightarrow0(n\rightarrow+\infty)$，我们就得到了 Markov 大数定律。
+    \item 要求 $\mathrm{Var}(\bar X)\rightarrow0(n\rightarrow+\infty)$，我们就得到了 Markov 大数定律。
 \end{enumerate}
 
 \begin{definition}\label{def:5.2.1}
     我们称 $Y_n$ \emph{依概率收敛}于 $Y$，记作 $Y_n\overset{P}{\rightarrow}Y$，如果 $\forall\epsilon>0$，有 $\lim_{n\rightarrow+\infty}P(|Y_n-Y|\geq\epsilon)=0$。
 \end{definition}
 
-用上述定义，弱大数定律可以表述为 $\overline X\overset{P}{\rightarrow}\mu$。
+用上述定义，弱大数定律可以表述为 $\bar X\overset{P}{\rightarrow}\mu$。
 
 \begin{theorem}\label{thm:5.2.2}
     （Kolmogorov 强大数定律）\\
-    设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，则 $P(\lim_{n\rightarrow+\infty}\overline X=\mu)=1$。
+    设随机变量 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，则 $P(\lim_{n\rightarrow+\infty}\bar X=\mu)=1$。
 \end{theorem}
 
-考虑 $X_i\sim B(p)$ 的特殊情形，则 $\overline X$ 称之为频率，根据 Kolmogorov 强大数定律，$P(\lim_{n\rightarrow+\infty}\overline X=p)=1$，这说明概率的频率解释是合理的。
+考虑 $X_i\sim B(p)$ 的特殊情形，则 $\bar X$ 称之为频率，根据 Kolmogorov 强大数定律，$P(\lim_{n\rightarrow+\infty}\bar X=p)=1$，这说明概率的频率解释是合理的。
 
 \begin{definition}\label{def:5.2.2}
     我们称 $Y_n$ \emph{以概率 $1$ 收敛}于 $Y$，又称\emph{几乎必然收敛}于 $Y$，记作 $Y_n\overset{\mathrm{a.s.}}{\rightarrow}Y$，如果 $P(\lim_{n\rightarrow+\infty}Y_n=Y)=1$。
 \end{definition}
 
-用上述定义，强大数定律可以表述为 $\overline X\overset{\mathrm{a.s.}}{\rightarrow}\mu$。
+用上述定义，强大数定律可以表述为 $\bar X\overset{\mathrm{a.s.}}{\rightarrow}\mu$。
 
 \begin{example}
     （Monte Carlo 积分）\\
@@ -55,7 +55,7 @@ $\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $1-\alpha$ 
             1 & , & Y_i\leq g(X_i), \\
             0 & , & Y_i>g(X_i),
         \end{aligned}
-        \right.$，则 $I_i\sim B(p)$，其中 $p=\frac{\int_a^b g(x)\mathrm{d}x}{c(b-a)}$，于是 $\overline I=\frac1n\sum_{i=1}^nI_i\approx p$，从而 $\int_a^b g(x)\mathrm{d}x\approx c(b-a)\overline I$。
+        \right.$，则 $I_i\sim B(p)$，其中 $p=\frac{\int_a^b g(x)\mathrm{d}x}{c(b-a)}$，于是 $\bar I=\frac1n\sum_{i=1}^nI_i\approx p$，从而 $\int_a^b g(x)\mathrm{d}x\approx c(b-a)\bar I$。
 \end{example}
 
 \begin{example}
