@@ -12,3 +12,4 @@ Chapter*/*.log
 Chapter*/*.synctex.gz
 Chapter*/*.run.xml
 Chapter*/*.pdf
+main.synctex(busy)

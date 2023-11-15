@@ -7,9 +7,9 @@
 
 % 其中数据分析这一步要依附统计模型，而统计推断这一步涉及从样本推断总体的问题。
 
-\begin{example}
+\begin{example*}
     检测某厂的一大批电子元件产品的寿命，我们关注的问题是“判断产品是否合格”。这个问题的“总体”就是所需检测的这批元件的寿命，更具体地说，是元件寿命这一随机变量 $X$ 的分布。
-\end{example}
+\end{example*}
 
 统计学上所谓\emph{总体}，就是指一个概率分布。而统计分析问题就是研究对象全体所服从的分布的某个数字特征，来了解总体变量 $X$ 的分布。
 
@@ -19,9 +19,9 @@
 
 我们将一族概率分布称为一个\emph{统计模型}。
 
-\begin{example}
+\begin{example*}
     正态分布族 $\{N(\mu,\sigma^2):\mu\in\mathbb R,\sigma^2>0\}$ 就是一个统计模型。
-\end{example}
+\end{example*}
 
 模型可以分为参数模型和非参数模型，正态分布族就是一个参数模型。非参数模型是指不能用少数几个参数决定的模型，例如对某总体 $X$，我们限定 $X$ 连续，$\mathrm E(X)$ 存在或属于某个取值范围等条件，但不用具体的若干参数去精确描述 $X$ 的分布，这就是一个非参数模型。
 
@@ -37,35 +37,35 @@
 
 抽样方式的选择有很多需要注意的地方，否则可能属于不当抽样。
 
-\begin{definition}\label{def:6.0.1}
+\begin{definition*}\label{def:6.0.1}
     \emph{统计量}定义为样本的函数，即 $T(X_1,\cdots,X_n)$。
-\end{definition}
+\end{definition*}
 
 统计量是完全由样本决定的量，因此也是随机变量。统计量可以看作一种对数据进行简化的方式。
 
-\begin{example}
+\begin{example*}
     设 $X_1,\cdots,X_n$ 独立同分布，均值 $\mathrm E(X_i)=\mu$，则以下是一些常用的统计量：
     \begin{enumerate}
         \item 样本均值 $\bar X=\frac1n\sum_{i=1}^nX_i$；
         \item 样本方差 $S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2$；
         \item 当 $\mu$ 已知时，$\bar X-\mu$ 是统计量；当 $\mu$ 未知时，$\bar X-\mu$ 不是统计量。
     \end{enumerate}
-\end{example}
+\end{example*}
 
 总体决定样本，故我们可以通过样本来推断总体的性质，这就是\emph{统计推断}。统计推断又可以分为经典方法（频率学派的）以及 Bayes 方法。
 
-\begin{example}
+\begin{example*}
     设总体满足 $Y=aX+\epsilon$，其中 $X$ 为自变量，$Y$ 为因变量，$\epsilon$ 为误差。这是一个参数模型。\\
     假设我们抽取的样本为 $(X_1,Y_1),\cdots,(X_n,Y_n)$，则:
     \begin{itemize}
         \item 若 $a$ 未知，可通过观测各 $(X_i,Y_i)$ 来估计 $a$，这属于模型推断、参数估计的范畴；
         \item 若 $a$ 已知，可通过观测 $Y_i$ 来估计 $X_i$，这属于变量推断、模型应用的范畴。
     \end{itemize}
-\end{example}
+\end{example*}
 
-\begin{example}
+\begin{example*}
     假设元件寿命 $X\sim Exp(\lambda)$，如何通过样本估计 $\lambda$ 的值？这是一个参数估计问题。\\
     假设元件的合格标准是 $\mathrm E(X)\geq L$，但 $\mathrm E(X)$ 未知。考虑制定一种可操作的检验标准，当 $\bar X\geq l$ 时，我们就认为元件合格。这种标准如何制定？这是一个假设检验问题。
-\end{example}
+\end{example*}
 
 \end{document}
