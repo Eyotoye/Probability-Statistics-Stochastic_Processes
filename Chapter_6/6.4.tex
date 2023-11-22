@@ -1,0 +1,31 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{definition}\label{def:6.4.1}
+    $\forall\alpha\in(0,1)$，$\hat\theta_i=\hat\theta_i(X_1,\cdots,X_n)(i=1,2)$ 为统计量，若 $P(\hat\theta_1<\theta<\hat\theta_2)\geq1-\alpha$，则称 $(\hat\theta_1,\hat\theta_2)$ 为 $\theta$ 的一个 $(1-\alpha)$-置信的\emph{（双侧）区间估计}。
+\end{definition}
+
+$(1-\alpha)$ 称为\emph{置信水平}，又称\emph{置信系数}、\emph{置信度}，是针对方法而言的，而不是针对某个具体区间而言的。$\alpha$ 通常取 $0.05,0.01,0.1$ 等。
+
+通常用 $\mathrm E(\hat\theta_2-\hat\theta_1)$ 来刻画区间估计的精度。我们遵循可靠度优先原则，即先保证置信水平，然后再提升精度。
+
+\begin{example}
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，$\mu$ 未知，$\sigma^2$ 已知，则由 $\bar X\sim N(\mu,\frac{\sigma^2}n)$，有 $\bar X-\mu\sim N(0,\frac{\sigma^2}n)$。为给出 $\mu$ 的区间估计，我们的目标是寻找 $c_1,c_2$ 使得 $P(\bar X-c_1<\mu<\bar X+c_2)\geq1-\alpha$，这等价于 $P(-c_2<\bar X-\mu<c_1)\geq1-\alpha$。设 $\alpha_1=P(\bar X-\mu\leq-c_2),\alpha_2=P(\bar X-\mu\geq c_1)$，一个自然的选择是令 $\alpha_1=\alpha_2=\alpha/2$（事实上这也是能够使精度最高的选择）。记 $z_{\frac\alpha2}$ 为 $N(0,1)$ 的上 $\frac\alpha2$-分位数，即 $\Phi(z_{\frac\alpha2})=1-\frac\alpha2$，则 $P(\left|\frac{\bar X-\mu}{\sigma/\sqrt n}\right|\leq z_{\frac\alpha2})=1-\alpha$，从而 $P(\bar X-z_{\frac\alpha2}\frac\sigma{\sqrt n}<\mu<\bar X+z_{\frac\alpha2}\frac\sigma{\sqrt n})=1-\alpha$，故 $(\bar X-z_{\frac\alpha2}\frac\sigma{\sqrt n},\bar X+z_{\frac\alpha2}\frac\sigma{\sqrt n})$ 是 $\mu$ 的一个 $(1-\alpha)$-置信的区间估计。
+\end{example}
+
+若 $\alpha=0.05$，则 $z_{\frac\alpha2}\approx1.96\approx2$。
+
+上述区间估计的一种理解是：若用 $\bar X$ 来估计 $\mu$，则绝对误差 $|\bar X-\mu|$ 在 $(1-\alpha)$-置信下不超过 $z_{\frac\alpha2}\frac\sigma{\sqrt n}$。
+
+区间的半长度为 $z_{\frac\alpha2}\frac\sigma{\sqrt n}$，如果给定精度，例如取 $\epsilon>0$，要求 $z_{\frac\alpha2}\frac\sigma{\sqrt n}\leq\epsilon$，则 $n\geq(\frac{z_{\frac\alpha2}\sigma}\epsilon)^2$，即样本容量至少为 $(\frac{z_{\frac\alpha2}\sigma}\epsilon)^2$ 时有 $(1-\alpha)-$置信使绝对误差不超过 $\epsilon$。这一推理可以理解为 $(\alpha,\epsilon,n)$ 三个变量之间存在的关系。
+
+\begin{example}
+    设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，$\sigma^2$ 未知，首先估计 $\sigma^2$。注意到，$\frac{(n-1)S^2}{\sigma^2}=\sum_{i=1}^n\left(\frac{X_i-\bar X}{\sigma}\right)^2=\sum_{i=1}^n\left(\frac{X_i-\mu}{\sigma}\right)^2-\left(\frac{\bar X-\mu}{\frac\sigma{\sqrt{n}}}\right)^2\sim\chi^2(n-1)$，同样令 $\alpha_1=\alpha_2=\alpha/2$，有 $(\frac{(n-1)S^2}{\chi^2_{\frac\alpha2}(n-1)},\frac{(n-1)S^2}{\chi^2_{1-\frac\alpha2}(n-1)})$ 是 $\sigma^2$ 的一个 $(1-\alpha)$-置信的区间估计，其中 $\chi^2_{\frac\alpha2}(n-1)$ 和 $\chi^2_{1-\frac\alpha2}(n-1)$ 分别为 $\chi^2(n-1)$ 的上 $\frac\alpha2$-分位数和下 $\frac\alpha2$-分位数。\\
+    接下来估计未知参数 $\mu$，可以证明，$\frac{\bar X-\mu}{\frac\sigma{\sqrt{n}}}\sim N(0,1)$ 且与 $\frac{(n-1)S^2}{\sigma^2}$ 独立，从而 $\frac{\frac{\bar X-\mu}{\frac\sigma{\sqrt{n}}}}{\sqrt{\frac{\frac{(n-1)S^2}{\sigma^2}}{n-1}}}=\frac{\bar X-\mu}{\frac S{\sqrt{n}}}\sim t(n-1)$，故 $(\bar X-t_{\frac\alpha2}(n-1)\frac S{\sqrt{n}},\bar X+t_{\frac\alpha2}(n-1)\frac S{\sqrt{n}})$ 是 $\mu$ 的一个 $(1-\alpha)$-置信的区间估计，其中 $t_{\frac\alpha2}(n-1)$ 为 $t(n-1)$ 的上 $\frac\alpha2$-分位数。
+\end{example}
+
+\begin{example}
+    若 $X\sim N(\mu_1,\sigma^2),Y\sim N(\mu_2,\sigma^2)$，且 $X,Y$ 独立，下面估计均值差 $\mu_1-\mu_2$。设随机样本为 $X_1,\cdots,X_n$ 和 $Y_1,\cdots,Y_m$，则 $\bar X-\bar Y\sim N(\mu_1-\mu_2,\frac{\sigma^2}n+\frac{\sigma^2}m)$，有 $\frac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{\sigma\sqrt{\frac1n+\frac1m}}\sim N(0,1)$。同时，由 $\frac{\sum_{i=1}^n(X_i-\bar X)^2}{\sigma^2}=\frac{(n-1)S_1^2}{\sigma^2}\sim\chi^2(n-1)$ 和 $\frac{\sum_{i=1}^m(Y_i-\bar Y)^2}{\sigma^2}= \frac{(m-1)S_2^2}{\sigma^2}\sim\chi^2(m-1)$，且 $\frac{(n-1)S_1^2}{\sigma^2}$ 与 $\frac{(m-1)S_2^2}{\sigma^2}$ 独立，有 $\frac{(n-1)S_1^2}{\sigma^2}+\frac{(m-1)S_2^2}{\sigma^2}\sim\chi^2(n+m-2)$，故 $\frac{\frac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{\sigma\sqrt{\frac1n+\frac1m}}}{\sqrt{\frac{\frac{(n-1)S_1^2}{\sigma^2}+\frac{(m-1)S_2^2}{\sigma^2}}{n+m-2}}}=\frac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{S\sqrt{\frac1n+\frac1m}}\sim t(n+m-2)$，其中 $S^2=\frac{(n-1)S_1^2+(m-1)S_2^2}{n-m+2}$，于是 $(\bar X-\bar Y-t_{\frac\alpha2}(n+m-2)S\sqrt{\frac1n+\frac1m},\bar X-\bar Y+t_{\frac\alpha2}(n+m-2)S\sqrt{\frac1n+\frac1m})$ 是 $\mu_1-\mu_2$ 的一个 $(1-\alpha)$-置信的区间估计。
+\end{example}
+
+\end{document}

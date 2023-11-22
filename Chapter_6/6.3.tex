@@ -1,0 +1,76 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+无论是矩估计还是极大似然估计，都是用样本的函数来估计总体的参数，对每个参数给出一个估计值，这样的估计称为\emph{点估计}。
+
+用于估计参数的函数 $\hat\theta=\hat\theta(X_1,\cdots,X_n)$ 称为\emph{估计量}，其分布（依赖于 $\theta$）称为\emph{抽样分布}，其标准差 $\sqrt{\mathrm{Var}(\hat\theta)}$ 称为\emph{标准误（差）}（Standard error），记为 $\mathrm{Se}=\mathrm{Se}(\hat\theta)$。
+
+在选择估计量时，有若干准则。首先介绍所谓\emph{无偏性}。
+
+我们称 $\mathrm E(\hat\theta-\theta)=\mathrm E(\hat\theta)-\theta$ 为 $\hat\theta$ 的\emph{偏差}（bias）。
+
+\begin{definition}\label{def:6.3.1}
+    设 $\hat\theta$ 是 $\theta$ 的估计量，若 $\forall\theta,\mathrm E(\hat\theta-\theta)=0$，则称 $\hat\theta$ 为 $\theta$ 的一个\emph{无偏估计（量）}。
+\end{definition}
+
+由上述定义可知，无偏性指的是无系统偏差。
+
+一般地，若 $\hat g(X_1,\cdots,X_n)$ 是对 $\theta$ 的函数 $g(\theta)$ 的估计，且满足 $\forall\theta,\mathrm E(\hat g(X_1,\cdots,X_n))=g(\theta)$，则称 $\hat g(X_1,\cdots,X_n)$ 是 $g(\theta)$ 的一个无偏估计。
+
+对于无偏估计 $\hat g(X_1,\cdots,X_n)$，若进行 $N$ 组抽样，第 $m$ 组样本记作 $X_1^{(m)},\cdots,X_n^{(m)}$，则由大数定律，$\frac1N\sum_{m=1}^N\hat g(X_1^{(m)},\cdots,X_n^{(m)})$ 会收敛到 $\mathrm E(\hat g(\theta))=g(\theta)$。
+
+在实际应用中，无偏的重要性视情况而定。
+
+\begin{example}
+    若随机变量 $X$ 的均值 $\mu$ 和方差 $\sigma^2$ 均未知，则由 $\mathrm E(\bar X)=\mu$ 知 $\bar X$ 是 $\mu$ 的无偏估计。\\
+    而二阶矩 $m_2= \frac1n\sum_{i=1}^n(X_i-\bar X)^2=\frac1n\sum_{i=1}^n(X_i-\mu)^2-(\bar X-\mu)^2$，有 $\mathrm E(m_2)=\frac{n-1}n\sigma^2\neq\sigma^2$，故 $m_2$ 不是 $\sigma^2$ 的无偏估计（系统偏小）。\\
+    样本方差 $S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2$ 中的 $(n-1)$ 是所谓的无偏修正，满足 $\mathrm E(S^2)=\sigma^2$，故 $S^2$ 是 $\sigma^2$ 的无偏估计。
+\end{example}
+
+\begin{example}
+    若随机变量 $X\sim U(0,\theta)$，则矩估计 $\hat\theta=2\bar X$ 为 $\theta$ 的无偏估计，而 MLE $\theta^*=\max\{X_1,\cdots,X_n\}$，有 $\mathrm E(\theta^*)=\frac n{n+1}\theta$，故 $\theta^*$ 不是 $\theta$ 的无偏估计。
+\end{example}
+
+这个例子说明，MLE 不一定是无偏的。
+
+下面介绍\emph{均方误差}准则。
+
+我们定义均方误差（MSE）为 $\mathrm E((\hat\theta-\theta)^2)=\mathrm{Var}(\hat\theta)+\mathrm E^2(\hat\theta-\theta)$，其中等号右边的两项分别反映了\emph{精确度}（precision）和\emph{准确度}（accuracy）。
+
+\begin{definition}\label{def:6.3.2}
+    若 $\hat\theta_1,\hat\theta_2$ 为 $\theta$ 的无偏估计，且 $\forall\theta,\mathrm{Var}(\hat\theta_1)\leq\mathrm{Var}(\hat\theta_2)$，且存在一个 $\theta$ 的值使得不等号严格成立，则称 $\hat\theta_1$ 在均方误差意义下优于 $\hat\theta_2$。
+\end{definition}
+
+\begin{example}
+    若随机变量 $X$ 的均值 $\mu$ 未知，方差为 $\sigma^2$，则 $\bar X,\frac12(X_1+X_2),X_1$ 都是 $\mu$ 的无偏估计，它们各自的方差为 $\frac{\sigma^2}n,\frac{\sigma^2}2,\sigma^2$，故若 $n>2$，则 $\bar X$ 在均方误差意义下优于 $\frac12(X_1+X_2)$，而 $\frac12(X_1+X_2)$ 在均方误差意义下优于 $X_1$。
+\end{example}
+
+\begin{definition}\label{def:6.3.3}
+    若 $\hat\theta_0$ 是 $\theta$ 的无偏估计，且 $\forall\hat\theta$ 为 $\theta$ 的无偏估计，都有 $\forall\theta,\mathrm{Var}(\hat\theta_0)\leq\mathrm{Var}(\hat\theta)$，则称 $\hat\theta_0$ 是 $\theta$ 的\emph{最小方差无偏估计}（MVUE）。
+\end{definition}
+
+\begin{example}
+    若 $X\sim N(\mu,\sigma^2)$，则 $\mathrm E(m_2)=\frac{n-1}n\sigma^2,\mathrm E(S^2)=\sigma^2$，但 $\mathrm E((m_2-\sigma^2)^2)<\mathrm E((S^2-\sigma^2)^2)$，故 $m_2$ 在均方误差意义下优于 $S^2$。尽管 $m_2$ 是有偏的，但它有更小的方差，总的来说其 MSE 更小。
+\end{example}
+
+接下来介绍一些大样本性质。所谓大样本性质，是指样本容量 $n$ 趋于无穷时 $\hat\theta$ 的性质。
+
+首先是\emph{渐进无偏性}。若 $\lim_{n\rightarrow\infty}\mathrm E(\hat\theta-\theta)=0$，则称 $\hat\theta$ 具有渐进无偏性。
+
+然后是\emph{相合性}。若 $\forall\epsilon>0,\lim_{n\rightarrow\infty}P(|\hat\theta-\theta|\geq\epsilon)=0$，则称 $\hat\theta$ 是 $\theta$ 的\emph{相合估计}。
+
+$\hat\theta$ 是 $\theta$ 的相合估计，当且仅当 $\hat\theta\overset{P}{\rightarrow}\theta$。例如，根据弱大数定律，$\bar X$ 是 $\mu$ 的相合估计。
+
+相合性是良好点估计的自然要求。
+
+\begin{example}
+    若随机变量 $X$ 的均值为 $\mu$，方差为 $\sigma^2$，考虑 $m_2=\frac1n\sum_{i=1}^n(X_i-\bar X)^2=\frac1n\sum_{i=1}^n(X_i-\mu)^2-(\bar X-\mu)^2$，由大数定律，$\frac1n\sum_{i=1}^n(X_i-\mu)^2\overset{P}{\rightarrow}\mathrm E((X_i-\mu)^2)=\sigma^2$，而 $(\bar X-\mu)^2\overset{P}{\rightarrow}0$，故 $m_2\overset{P}{\rightarrow}\sigma^2$，即 $m_2$ 是 $\sigma^2$ 的相合估计。同时，$S^2=\frac n{n-1}m_2\overset{P}{\rightarrow}\sigma^2$，故 $S^2$ 也是 $\sigma^2$ 的相合估计。
+\end{example}
+
+最后是\emph{渐进正态性}。若 $\frac{\hat\theta-\theta}{\mathrm{Se}(\hat\theta)}\overset{d}{\rightarrow}Z\sim N(0,1)$，则称 $\hat\theta$ 是 $\theta$ 的\emph{渐进正态估计}。
+
+例如，根据 CLT，$\bar X$ 是 $\mu$ 的渐进正态估计，且 $\mathrm{Se}(\bar X)=\frac{\sigma}{\sqrt n}$。
+
+若 $\hat\theta$ 是 $\theta$ 的渐进正态估计，则当 $n$ 充分大时，近似有 $\hat\theta\sim N(\theta,\mathrm{Se}^2(\hat\theta))$。
+
+\end{document}
