@@ -6,10 +6,11 @@ preface.pdf
 *.bcf
 *.out
 *.toc
+*.synctex(busy)
+*.synctex.gz(busy)
 Chapter*/*.aux
 Chapter*/*.bcf
 Chapter*/*.log
 Chapter*/*.synctex.gz
 Chapter*/*.run.xml
 Chapter*/*.pdf
-main.synctex(busy)

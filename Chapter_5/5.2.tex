@@ -15,7 +15,7 @@
     由 Chebyshev 不等式，$P(|\bar X-\mu|\geq\epsilon)\leq\frac{\mathrm{Var}(\bar X)}{\epsilon^2}=\frac{\sigma^2}n\frac1{\epsilon^2}\rightarrow0(n\rightarrow+\infty)$。
 \end{proof}
 
-$\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $1-\alpha$ 分别称为\emph{精度}和\emph{置信度}，则根据 Khinchin 弱大数定律，$\exists N\in\mathbb N^+$，当 $n\geq N$ 时，$P(|\bar X-\mu|<\epsilon)\geq1-\alpha$，即 $\bar X$ 至少以概率 $1-\alpha$ 落在区间 $(\mu-\epsilon,\mu+\epsilon)$ 内。
+$\forall\epsilon>0,\forall\alpha>0$，如果我们将 $\epsilon$ 和 $(1-\alpha)$ 分别称为\emph{精度}和\emph{置信度}，则根据 Khinchin 弱大数定律，$\exists N\in\mathbb N^+$，当 $n\geq N$ 时，$P(|\bar X-\mu|<\epsilon)\geq1-\alpha$，即 $\bar X$ 至少以概率 $(1-\alpha)$ 落在区间 $(\mu-\epsilon,\mu+\epsilon)$ 内。
 
 换句话说，当样本量足够大时，有很大的概率 $\bar X\approx\mu$，其中 $\mu$ 为未知的总体均值。
 
