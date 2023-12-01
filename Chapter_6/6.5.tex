@@ -30,12 +30,12 @@ Bayes 学派看待世界的视角与频率学派不同。简单来说，在 Baye
 
 Bayes 方法根据后验分布给出区间估计，称之为 \emph{可信区间}。具体来说，就是要找到 $a,b\in\mathbb R$，使 $P(a<\Theta<b|X=x)\geq1-\alpha$。具体的选取方式如：
 \begin{enumerate}
-    \item 最大后验区间（通常用于单峰情形），可以直观理解为用一条平行于横轴的线自上而下扫描，直到截取后验 PDF 的面积为 $1-\alpha$
+    \item 最大后验区间（通常用于单峰情形），可以直观理解为用一条平行于横轴的线自上而下扫描，直到截取后验 PDF 的面积为 $(1-\alpha)$
     \item 等尾区间，即令 $P(\Theta<a|X=x)=P(\Theta>b|X=x)=\frac\alpha2$
 \end{enumerate}
 
 \begin{example}
-    设总体分布为 $X\sim N(\mu,\sigma^2)$，其中 $\sigma^2$ 已知，有随机样本 $X_1,\cdots,X_n$，取 $\mu$ 的先验分布 $f(\mu)\propto 1$（无信息先验，这不是一个合理的分布，是一种广义 PDF），则样本分布为 $f(x_1,\cdots,x_n|\mu)\propto\prod_{i=1}^ne^{-\frac{(x_i-\mu)^2}{2\sigma^2}}$，后验分布为 $f(\mu|x_1,\cdots,x_n)\propto f(x_1,\cdots,x_n|\mu)f(\mu)\propto\prod_{i=1}^ne^{-\frac{(x_i-\mu)^2}{2\sigma^2}}\propto e^{-\frac{n\mu^2-2\mu\sum_{i=1}^nx_i}{2\sigma^2}}\propto e^{-\frac{n(\mu-\bar x)^2}{2\sigma^2}}$，即 $\mu$ 的后验分布为 $N(\bar x,\frac{\sigma^2}{n})$。
+    设总体分布为 $X\sim N(\mu,\sigma^2)$，其中 $\sigma^2$ 已知，有随机样本 $X_1,\cdots,X_n$，取 $\mu$ 的先验分布 $f(\mu)\propto 1$（无信息先验，这不是一个合理的分布，理解为一种广义 PDF），则样本分布为 $f(x_1,\cdots,x_n|\mu)\propto\prod_{i=1}^ne^{-\frac{(x_i-\mu)^2}{2\sigma^2}}$，后验分布为 $f(\mu|x_1,\cdots,x_n)\propto f(x_1,\cdots,x_n|\mu)f(\mu)\propto\prod_{i=1}^ne^{-\frac{(x_i-\mu)^2}{2\sigma^2}}\propto e^{-\frac{n\mu^2-2\mu\sum_{i=1}^nx_i}{2\sigma^2}}\propto e^{-\frac{n(\mu-\bar x)^2}{2\sigma^2}}$，即 $\mu$ 的后验分布为 $N(\bar x,\frac{\sigma^2}{n})$。
 \end{example}
 
 \end{document}

@@ -35,9 +35,9 @@ $(1-\alpha)$ 称为\emph{置信水平}，\emph{置信系数}或\emph{置信度}�
     设 $p$ 为未知的真实支持率，样本容量 $n=1200$，其中有 $684$ 人支持，即观测比例为 $\frac{684}{1200}\approx0.57$，下面给出 $p$ 的一个 $1-\alpha=95\%$ 置信的区间估计。\\
     记 $X_i$ 为第 $i$ 个人的态度，$1$ 表示支持，$0$ 表示不支持，$X_i\sim B(p)(i=1,2,\cdots,n)$ 且独立，记观测比例 $p_n=p_n(X_1,\cdots,X_n)=\frac1n\sum_{i=1}^nX_i=\bar X$，有 $\mathrm E(p_n)=p,\mathrm{Var}(p_n)=\frac{p(1-p)}n$，由 CLT，近似有 $\frac{p_n-p}{\sqrt{\frac{p(1-p)}n}}\sim N(0,1)$。但是，由于 $p$ 未知，则分母上的标准误未知，故我们无法直接利用这一分布给出置信区间。记 $\sigma^2=p(1-p)$，下面采用几种不同方法给出其估计 $\hat\sigma^2$。
     \begin{enumerate}
-        \item 用 $S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2$ 估计 $\sigma^2$，于是近似有 $\frac{p_n-p}{\sqrt{\frac{S^2}n}}\sim N(0,1)$，对应的置信区间为 $(p_n-z_{\frac\alpha2}\sqrt{\frac{S^2}n},p_n+z_{\frac\alpha2}\sqrt{\frac{S^2}n})=(0.542,0.598)$。
-        \item 用 $m_2=\frac1n\sum_{i=1}^n(X_i-\bar X)^2=p_n(1-p_n)$ 估计 $\sigma^2$，于是近似有 $\frac{p_n-p}{\sqrt{\frac{p_n(1-p_n)}n}}\sim N(0,1)$，对应的置信区间为 $(p_n-z_{\frac\alpha2}\sqrt{\frac{p_n(1-p_n)}n},p_n+z_{\frac\alpha2}\sqrt{\frac{p_n(1-p_n)}n})=(0.542,0.598)$。
-        \item 用 $p(1-p)$ 的最大值 $\frac14$ 来估计 $\sigma^2$，于是近似有 $\frac{p_n-p}{\frac12\sqrt{\frac1n}}\sim N(0,1)$，对应的置信区间为 $(p_n-z_{\frac\alpha2}\frac1{2\sqrt{n}},p_n+z_{\frac\alpha2}\frac1{2\sqrt{n}})=(0.542,0.598)$。
+        \item 用 $S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2$ 估计 $\sigma^2$，于是近似有 $\frac{p_n-p}{\sqrt{\frac{S^2}n}}\sim N(0,1)$，对应的置信区间为 $(p_n-z_{\frac\alpha2}\sqrt{\frac{S^2}n},p_n+z_{\frac\alpha2}\sqrt{\frac{S^2}n})\approx(0.542,0.598)$。
+        \item 用 $m_2=\frac1n\sum_{i=1}^n(X_i-\bar X)^2=p_n(1-p_n)$ 估计 $\sigma^2$，于是近似有 $\frac{p_n-p}{\sqrt{\frac{p_n(1-p_n)}n}}\sim N(0,1)$，对应的置信区间为 $(p_n-z_{\frac\alpha2}\sqrt{\frac{p_n(1-p_n)}n},p_n+z_{\frac\alpha2}\sqrt{\frac{p_n(1-p_n)}n})\approx(0.542,0.598)$。
+        \item 用 $p(1-p)$ 的最大值 $\frac14$ 来估计 $\sigma^2$，于是近似有 $\frac{p_n-p}{\frac12\sqrt{\frac1n}}\sim N(0,1)$，对应的置信区间为 $(p_n-z_{\frac\alpha2}\frac1{2\sqrt{n}},p_n+z_{\frac\alpha2}\frac1{2\sqrt{n}})\approx(0.542,0.598)$。
     \end{enumerate}
 \end{example}
 
@@ -45,7 +45,7 @@ $(1-\alpha)$ 称为\emph{置信水平}，\emph{置信系数}或\emph{置信度}�
 
 下面介绍利用 MLE 构建置信区间的方法。
 
-设总体分布的 PDF 为 $f(x;\theta)$，有随机样本 $X_1,\cdots,X_n$，则似然函数 $L(\theta)=\prod_{i=1}^nf(X_i;\theta)$，对数似然函数 $\ell(\theta)=\log L(\theta)=\sum_{i=1}^n\log f(X_i;\theta)$。
+设总体分布的 PDF 或 PMF 为 $f(x;\theta)$，有随机样本 $X_1,\cdots,X_n$，则似然函数 $L(\theta)=\prod_{i=1}^nf(X_i;\theta)$，对数似然函数 $\ell(\theta)=\log L(\theta)=\sum_{i=1}^n\log f(X_i;\theta)$。
 
 \begin{theorem}\label{thm:6.4.1}
     若 $f$ 满足一定的光滑性条件，$\theta^*$ 为 $\theta$ 的 MLE，则存在 $\sigma_n>0$，使得 $\frac{\theta^*-\theta}{\sigma_n}\rightarrow N(0,1)$。
