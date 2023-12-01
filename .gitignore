@@ -6,6 +6,8 @@ preface.pdf
 *.bcf
 *.out
 *.toc
+*.synctex(busy)
+*.synctex.gz(busy)
 Chapter*/*.aux
 Chapter*/*.bcf
 Chapter*/*.log
