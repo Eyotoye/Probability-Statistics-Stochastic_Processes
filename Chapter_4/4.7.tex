@@ -45,8 +45,8 @@
 
 我们经常用到最优线性预测，即 $\min\limits_{a,b}\mathrm E((Y-(aX+b))^2)$，这种“均方意义上的最优”称之为\emph{最小二乘}（least square）。
 
-% \begin{proposition}
-% 记 $\hat Y=\mathrm E(Y|X)$ 为已知 $X$ 的条件下对 $Y$ 的最优估计，记估计误差 $\hat Y-Y$ 为 $\tilde Y$，则 $\mathrm E(\tilde Y)=0,\mathrm E(\tilde Y\hat Y)=0$，进而有 $\mathrm{Cov}(\hat Y,\tilde Y)=0,\mathrm{Var}(Y)=\mathrm{Var}(\hat Y)+\mathrm{Var}(\tilde Y)$。
-% \end{proposition}
+\begin{proposition}
+    记 $\hat Y=\mathrm E(Y|X)$ 为已知 $X$ 的条件下对 $Y$ 的最优估计，$\tilde Y$ 为估计误差 $\hat Y-Y$，则 $\mathrm E(\tilde Y)=0,\mathrm E(\tilde Y\hat Y)=0$，进而有 $\mathrm{Cov}(\hat Y,\tilde Y)=0,\mathrm{Var}(Y)=\mathrm{Var}(\hat Y)+\mathrm{Var}(\tilde Y)$。
+\end{proposition}
 
 \end{document}
