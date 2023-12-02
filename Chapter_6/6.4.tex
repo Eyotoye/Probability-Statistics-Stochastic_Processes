@@ -32,7 +32,7 @@ $(1-\alpha)$ 称为\emph{置信水平}，\emph{置信系数}或\emph{置信度}�
 
 \begin{example}
     （选举问题）\\
-    设 $p$ 为未知的真实支持率，样本容量 $n=1200$，其中有 $684$ 人支持，即观测比例为 $\frac{684}{1200}\approx0.57$，下面给出 $p$ 的一个 $1-\alpha=95\%$ 置信的区间估计。\\
+    设 $p$ 为未知的真实支持率，样本容量 $n=1200$，其中有 $684$ 人支持，即观测比例为 $\frac{684}{1200}=0.57$，下面给出 $p$ 的一个 $1-\alpha=95\%$ 置信的区间估计。\\
     记 $X_i$ 为第 $i$ 个人的态度，$1$ 表示支持，$0$ 表示不支持，$X_i\sim B(p)(i=1,2,\cdots,n)$ 且独立，记观测比例 $P_n=P_n(X_1,\cdots,X_n)=\frac1n\sum_{i=1}^nX_i=\bar X$，有 $\mathrm E(P_n)=p,\mathrm{Var}(P_n)=\frac{p(1-p)}n$，由 CLT，近似有 $\frac{P_n-p}{\sqrt{\frac{p(1-p)}n}}\sim N(0,1)$。但是，由于 $p$ 未知，则分母上的标准误未知，故我们无法直接利用这一分布给出置信区间。记 $\sigma^2=p(1-p)$，下面采用几种不同方法给出其估计 $\hat\sigma^2$。
     \begin{enumerate}
         \item 用 $S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2$ 估计 $\sigma^2$，于是近似有 $\frac{P_n-p}{\sqrt{\frac{S^2}n}}\sim N(0,1)$，对应的置信区间为 $(P_n-z_{\frac\alpha2}\sqrt{\frac{S^2}n},P_n+z_{\frac\alpha2}\sqrt{\frac{S^2}n})\approx(0.542,0.598)$。
