@@ -5,7 +5,7 @@
 
 例如，若 $n=2$，随机向量 $(X,Y)$ 有 CDF $F(x,y)$，则 $X$ 的边际分布为 $F_X(x)=P(X\leq x)=P(X\leq x,Y\in\mathbb R)=\lim\limits_{y\rightarrow+\infty}P(X\leq x,-\infty<Y\leq y)=\lim\limits_{y\rightarrow+\infty}F(x,y)$。
 
-若 $n=3$，随机向量 $(X,Y,Z)$ 有 CDF $F(x,y,z)$，则 $X$ 的边际分布为 $F_X(x)=\lim\limits_{y,z\rightarrow+\infty}F(x,y,z)$，$(X,Y)$ 的边际分布为 $F_{X,Y}(x,y)=P(X\leq x,Y\leq y)=P(X\leq x,Y\leq y,-\infty<Z<+\infty)=\lim\limits_{z\rightarrow+\infty}F(x,y,z)$。
+若 $n=3$，随机向量 $(X,Y,Z)$ 有 CDF $F(x,y,z)$，则 $F_X(x)=\lim\limits_{y,z\rightarrow+\infty}F(x,y,z)$，而 $(X,Y)$ 的边际分布为 $F_{X,Y}(x,y)=P(X\leq x,Y\leq y)=P(X\leq x,Y\leq y,-\infty<Z<+\infty)=\lim\limits_{z\rightarrow+\infty}F(x,y,z)$。
 
 \begin{example}
     设二维随机向量 $(X,Y)$ 的 CDF 为 $F(x,y)$，则 $\forall a,b\in\mathbb R,P(X>a,Y>b)=1-F_X(a)-F_Y(b)+F(a,b)$。
