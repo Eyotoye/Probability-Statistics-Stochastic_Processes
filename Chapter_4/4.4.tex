@@ -41,17 +41,15 @@
     $X\sim N(0,1),Y=X^2$，则 $X$ 与 $Y$ 不相关，但不独立。
 \end{example}
 
-
-
 \begin{example}
     $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则
-    \begin{equation}
+    \begin{equation*}
         \begin{aligned}
-             & \mathrm{Corr}(X,Y)\nonumber                                                                                                                                                                                                                                                                        \\
-             & =\mathrm E(\frac{X-\mu_1}{\sigma_1}\frac{Y-\mu_2}{\sigma_2})\nonumber                                                                                                                                                                                                                              \\
-             & =\int_{\mathbb R^2}\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2}\frac{1}{2\pi\sigma_1\sigma_2}\frac{1}{\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2+(\frac{y-\mu_2}{\sigma_2})^2-2\rho\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2})}\mathrm dx\mathrm dy\nonumber
+              & \mathrm{Corr}(X,Y)                                                                                                                                                                                                                                                                       \\
+            = & \mathrm E(\frac{X-\mu_1}{\sigma_1}\frac{Y-\mu_2}{\sigma_2})                                                                                                                                                                                                                              \\
+            = & \int_{\mathbb R^2}\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2}\frac{1}{2\pi\sigma_1\sigma_2}\frac{1}{\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2+(\frac{y-\mu_2}{\sigma_2})^2-2\rho\frac{x-\mu_1}{\sigma_1}\frac{y-\mu_2}{\sigma_2})}\mathrm dx\mathrm dy
         \end{aligned}
-    \end{equation}
+    \end{equation*}
     进行换元 $(u,v)^\mathrm T=A(\frac{x-\mu_1}{\sigma_1},\frac{y-\mu_2}{\sigma_2})^\mathrm T$，其中 $A$ 的定义参见例~\ref{BVN}，则指数上的项化为 $-\frac12(u^2+v^2)$，这一步实质上是进行了二次型的标准化。后续过程留作习题，最终计算结果为 $\mathrm{Corr}(X,Y)=\rho$。
 \end{example}
 

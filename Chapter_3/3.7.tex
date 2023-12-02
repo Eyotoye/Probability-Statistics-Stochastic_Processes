@@ -7,17 +7,17 @@
 
 \begin{example}
     $X_i\sim B(n_i,p)(i=1,2)$ 独立，$Y=X_1+X_2$，则 $\forall k\in\{0,1,\cdots,n_1+n_2\}$，
-    \begin{equation}
+    \begin{equation*}
         \begin{aligned}
-             & P(Y=k)\nonumber                                                                                                \\
-             & =P(X_1+X_2=k)\nonumber                                                                                         \\
-             & =\sum_{k_1=0}^kP(X_1=k_1,X_2=k-k_1)\nonumber                                                                   \\
-             & =\sum_{k_1=0}^kP(X_1=k_1)P(X_2=k-k_1)\nonumber                                                                 \\
-             & =\sum_{k_1=0}^k\tbinom{n_1}{k_1}p^{k_1}(1-p)^{n_1-k_1}\tbinom{n_2}{k-k_1}p^{k-k_1}(1-p)^{n_2-(k-k_1)}\nonumber \\
-             & =\left(\sum_{k_1=0}^k\tbinom{n_1}{k_1}\tbinom{n_2}{k-k_1}\right)p^k(1-p)^{n_1+n_2-k}\nonumber                  \\
-             & =\tbinom{n_1+n_2}{k}p^k(1-p)^{n_1+n_2-k}
+              & P(Y=k)                                                                                               \\
+            = & P(X_1+X_2=k)                                                                                         \\
+            = & \sum_{k_1=0}^kP(X_1=k_1,X_2=k-k_1)                                                                   \\
+            = & \sum_{k_1=0}^kP(X_1=k_1)P(X_2=k-k_1)                                                                 \\
+            = & \sum_{k_1=0}^k\tbinom{n_1}{k_1}p^{k_1}(1-p)^{n_1-k_1}\tbinom{n_2}{k-k_1}p^{k-k_1}(1-p)^{n_2-(k-k_1)} \\
+            = & \left(\sum_{k_1=0}^k\tbinom{n_1}{k_1}\tbinom{n_2}{k-k_1}\right)p^k(1-p)^{n_1+n_2-k}                  \\
+            = & \tbinom{n_1+n_2}{k}p^k(1-p)^{n_1+n_2-k}
         \end{aligned}
-    \end{equation}
+    \end{equation*}
     因此 $Y\sim B(n_1+n_2,p)$。
 \end{example}
 
