@@ -41,18 +41,19 @@
 \end{proposition}
 
 \begin{proof}
-    记 $P_n(t)=P(N(t)=n)\ (n\in\mathbb N)$，则 $P_0(t+h)=P(N(t+h)=0)=P(N(t+h)-N(t)=0,N(t)=0)=P(N(t+h)-N(t)=0)P(N(t)=0)=(1-\lambda h+o(h))P_0(t)$，即 $\frac{P_0(t+h)-P_0(t)}h=-\lambda P_0(t)+\frac{o(h)}{h}$。当 $h\rightarrow0$ 时，$\frac{o(h)}{h}\rightarrow0$，因此 $\frac{P_0(t+h)-P_0(t)}{h}\rightarrow-\lambda P_0(t)$，即 $P_0'(t)=-\lambda P_0(t)$，由边界条件 $P_0(0)=P(N(0)=0)=1$ 解得 $P_0(t)=e^{-\lambda t}$。\\
-    同理，
+    记 $P_n(t)=P(N(t)=n)\ (n\in\mathbb N)$，则 $P_0(t+h)=P(N(t+h)=0)=P(N(t+h)-N(t)=0,N(t)=0)=P(N(t+h)-N(t)=0)P(N(t)=0)=(1-\lambda h+o(h))P_0(t)$，即 $\frac{P_0(t+h)-P_0(t)}h=-\lambda P_0(t)+\frac{o(h)}{h}$。当 $h\rightarrow0$ 时，$\frac{o(h)}{h}\rightarrow0$，因此 $\frac{P_0(t+h)-P_0(t)}{h}\rightarrow-\lambda P_0(t)$，即 $P_0'(t)=-\lambda P_0(t)$，由边界条件 $P_0(0)=P(N(0)=0)=1$ 解得 $P_0(t)=e^{-\lambda t}=\frac{(\lambda t)^0}{0!}e^{-\lambda t}$。同理，
     \begin{equation*}
         \begin{aligned}
-              & P_n(t+h)                                                 \\
-            = & P(N(t+h)=n)                                              \\
-            = & P(N(t+h)-N(t)=0,N(t)=n)+P(N(t+h)-N(t)=1,N(t)=n-1)        \\
-            + & P(N(t+h)-N(t)\geq2,N(t+h)=n)                             \\
-            = & P(N(t+h)-N(t)=0)P(N(t)=n)+P(N(t+h)-N(t)=1)P(N(t)=n-1)    \\
-            + & P(N(t+h)-N(t)\geq2,N(t+h)=n)                             \\
-            = & P(N(h)=0)P_n(t)+P(N(h)=1)P_{n-1}(t)+o(h)                 \\
-            = & (1-\lambda h+o(h))P_n(t)+(\lambda h+o(h))P_{n-1}(t)+o(h) \\
+              & P_n(t+h)                                                       \\
+            = & P(N(t+h)=n)                                                    \\
+            = & P(N(t+h)-N(t)=0,N(t)=n)+P(N(t+h)-N(t)=1,N(t)=n-1)              \\
+            + & P(N(t+h)-N(t)\geq2,N(t+h)=n)                                   \\
+            = & P(N(t+h)-N(t)=0)P(N(t)=n)+P(N(t+h)-N(t)=1)P(N(t)=n-1)          \\
+            + & P(N(t+h)-N(t)\geq2,N(t+h)=n)                                   \\
+            = & P(N(h)=0)P_n(t)+P(N(h)=1)P_{n-1}(t)+o(h)                       \\
+              & (\because P(N(t+h)-N(t)\geq2,N(t+h)=n)\leq P(N(t+h)-N(t)\geq2) \\
+              & =P(N(h)\geq2)=o(h))                                            \\
+            = & (1-\lambda h+o(h))P_n(t)+(\lambda h+o(h))P_{n-1}(t)+o(h)       \\
             = & P_n(t)+\lambda h(P_{n-1}(t)-P_n(t))+o(h)
         \end{aligned}
     \end{equation*}
