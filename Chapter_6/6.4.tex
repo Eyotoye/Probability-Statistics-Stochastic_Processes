@@ -98,4 +98,12 @@
     \end{equation*}
 \end{proof}
 
+\textbf{\textcolor{brown}{这个定理的证明让我有点疑惑。难道不需要取 $n$ 个小区间严谨讨论吗？为什么可以直接用 $W_1,\cdots,W_n$ 的 PDF？}}
+
+这提示我们生成 Poisson 过程的另一种方法。首先从 $P(\lambda t)$ 中采样 $n$ 为 $(0,t]$ 内事件发生数，然后从 $(0,t]$ 中均匀采样 $n$ 个点，即取 $U_1,\cdots,U_n$ 独立同分布且服从 $U(0,t)$，令 $T_k=U_{(k)}$ 为各事件发生时刻，即可确定一 Poisson 过程。
+
+\begin{example}
+    乘客到达火车站可视为一 Poisson 过程，设到达率为 $\lambda$。火车在 $t$ 时刻出发，则 $(0,t]$ 内到达的乘客总等待时间的期望为 $\mathrm E(\sum_{i=1}^{N(t)}(t-T_i))=\mathrm E(\mathrm E(\sum_{i=1}^{N(t)}(t-T_i)|N(t)))$。而 $\mathrm E(\sum_{i=1}^{N(t)}(t-T_i)|N(t)=n)=nt-\mathrm E(\sum_{i=1}^nT_i|N(t)=n)=nt-\mathrm E(\sum_{i=1}^nU_i)=nt-n\cdot\frac t2=\frac n2t$，因此 $\mathrm E(\sum_{i=1}^{N(t)}(t-T_i))=\mathrm E(\frac{N(t)}2t)=\frac{\lambda t^2}2$。
+\end{example}
+
 \end{document}

@@ -77,6 +77,8 @@ Poisson 过程还有一个等价定义如下。
     \end{enumerate}
 \end{definition}
 
+这提示我们，生成 Poisson 过程的一种方法便是从独立同分布的 $Exp(\lambda)$ 中抽取相邻两次到达间隔时间，据此给出各到达时刻，即可确定一 Poisson 过程。
+
 \begin{example}
     拨打服务热线时，被告知除了正在接受服务的人以外，前面还有 $55$ 人在等待。假设呼叫者离开服从 Poisson 过程，$\lambda=2\text{ 人/min}$，则平均等待时间为 $T_{56}=\sum_{i=1}^{56}W_i$，其中 $W_i\sim Exp(2)$ 且相互独立，因此平均等待时间为 $\mathrm E(T_{56})=\frac{56}{2}=28\text{ min}$，且 $\mathrm{Var}(T_{56})=\frac{56}{4}=14\text{ min}^2$。等待时间超过 $30$ 分钟的概率为 $P(T_{56}>30)=\int_{30}^{+\infty}f_{T_{56}}(t)\mathrm dt$。根据 CLT，近似有 $T_{56}\sim N(28,14)$，故有 $P(T_{56}>30)\approx P(Z>\frac{30-28}{\sqrt{14}})=1-\Phi(\frac2{\sqrt{14}})$，其中 $Z\sim N(0,1)$。
 \end{example}
