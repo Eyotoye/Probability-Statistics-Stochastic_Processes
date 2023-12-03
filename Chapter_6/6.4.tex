@@ -1,6 +1,89 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-进一步性质！
+首先介绍 Poisson 过程的\emph{分裂}。
+
+\begin{theorem}\label{thm:6.4.1}
+    假设某 Poisson 过程每次发生的事件分为 I 类和 II 类，每个事件独立地以概率 $p$ 成为 I 类事件，以概率 $1-p$ 成为 II 类事件，记 $N_1(t)$ 和 $N_2(t)$ 分别为 $(0,t]$ 内 I 类和 II 类事件的个数，则
+    \begin{enumerate}
+        \item $N(t)=N_1(t)+N_2(t)$
+        \item $\{N_1(t),t\geq0\}$ 和 $\{N_2(t),t\geq0\}$ 均为 Poisson 过程，且到达率分别为 $\lambda p$ 和 $\lambda(1-p)$
+        \item 这两个过程相互独立
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    仅对第二条给出简要证明。$\forall h>0,P(N_1(h)=1)=P(N_1(h)=1|N(h)=1)P(N(h)=1)+P(N_1(h)=1|N(h)\geq2)P(N(h)\geq2)=p(\lambda h+o(h))+o(h)=\lambda ph+o(h)$，而 $P(N_1(h)\geq2)\leq P(N(h)\geq2)=o(h)$，因此 $\{N_1(t),t\geq0\}$ 是 Poisson 过程，且到达率为 $\lambda p$。同理可证 $\{N_2(t),t\geq0\}$ 是 Poisson 过程，且到达率为 $\lambda(1-p)$。
+\end{proof}
+
+\begin{example}
+    设 $\{X_i\}_{i=1}^\infty$ 独立同分布且服从 $Exp(\lambda)$，$N$ 服从参数为 $p$ 的几何分布，且与 $\{X_i\}_{i=1}^\infty$ 相互独立，令 $Y=\sum_{i=1}^NX_i$。为求出 $Y$ 的分布，设每次事件都独立地以概率 $p$ 成为“特殊事件”，则 $N$ 可视为首次发生“特殊事件”时的事件总数，$Y$ 为特殊事件首次发生的时刻。由定理~\ref{thm:6.4.1}，特殊事件的发生是一个 Poisson 过程，到达率为 $\lambda p$，因此 $Y\sim Exp(\lambda p)$。
+\end{example}
+
+下面介绍 Poisson 过程的\emph{合并}。
+
+\begin{theorem}\label{thm:6.4.2}
+    若 $\{N_1(t),t\geq0\}$ 和 $\{N_2(t),t\geq0\}$ 是两个独立的 Poisson 过程，且到达率分别为 $\lambda_1$ 和 $\lambda_2$，则 $\{N_1(t)+N_2(t),t\geq0\}$ 也是 Poisson 过程，且到达率为 $\lambda_1+\lambda_2$。
+\end{theorem}
+
+\begin{proof}
+    \mbox{}
+    \begin{enumerate}
+        \item 显然有 $N(0)=0$。
+        \item 由 $N(t+s)-N(t)=(N_1(t+s)-N_1(t))+(N_2(t+s)-N_2(t))$ 易验证独立增量性。
+        \item 由于 $N_i(t+s)-N_i(s)\sim P(\lambda_i t),i=1,2$ 且独立，因此 $N(t+s)-N(s)\sim P((\lambda_1+\lambda_2)t)$。
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}\label{thm:6.4.3}
+    记定理~\ref{thm:6.4.2} 中的两类事件的首达时刻分别为 $T^{(1)}$ 和 $T^{(2)}$，则 $P(T^{(1)}<T^{(2)})=\frac{\lambda_1}{\lambda_1+\lambda_2}$。
+\end{theorem}
+
+\begin{example}
+    设 $X\sim Exp(\lambda)$，而在 $X=x$ 的条件下，$Y-1\sim P(x)$。为求出 $Y$ 的分布，首先考虑到达率为 $\lambda$ 的“成功”过程，则 $X$ 可视为首次成功的时刻。再考虑到达率为 $1$ 的“失败”过程，则 $(0,x]$ 内“失败”的次数服从 $P(x)$，因此 $Y-1$ 可视为首次“成功”之前“失败”的次数，即 $Y$ 为首次“成功”时的事件总数。合并两个过程，得到一个参数为 $\lambda+1$ 的 Poisson 过程，且每个事件属于“成功”的概率为 $p=\frac{\lambda}{\lambda+1}$，因此 $Y$ 服从参数为 $p$ 的几何分布，即 $P(Y=k)=p(1-p)^{k-1},k\in\mathbb N^*$。
+\end{example}
+
+最后介绍在 Poisson 过程在\emph{条件作用}下的性质。
+
+记 $T_i$ 为第 $i$ 次到达时刻，计算可得对于 $0\leq s<t$，条件概率 $P(T_1\leq s|N(t)=1)=\frac{P(T_1\leq s,N(t)=1)}{P(N(t)=1)}=\frac{P(N(s)=1,N(t)-N(s)=0)}{P(N(t)=1)}=\frac{P(N(s)=1)P(N(t)-N(s)=0)}{P(N(t)=1)}=\frac{\frac{(\lambda s)^1}{1!}e^{-\lambda s}\frac{(\lambda(t-s))^0}{0!}e^{-\lambda(t-s)}}{\frac{(\lambda t)^1}{1!}e^{-\lambda t}}=\frac st$，即在 $N(t)=1$ 的条件下，$T_1\sim U(0,t)$。
+
+一般地，我们有如下定理。
+
+\begin{theorem}\label{thm:6.4.4}
+    设 $\{N(t),t\geq0\}$ 是 Poisson 过程，则 $\forall 0\leq t_1<t_2$，在 $N(t_2)=n$ 的条件下，有 $N(t_1)\sim B(n,\frac{t_1}{t_2})$。
+\end{theorem}
+
+\begin{proof}
+    由 Poisson 过程性质知，$N(t_1)\sim P(\lambda t_1)$，而 $N(t_2)-N(t_1)\sim P(\lambda(t_2-t_1))$，且 $N(t_1)$ 和 $N(t_2)-N(t_1)$ 相互独立。据此，$\forall0\leq k\leq n$，有
+    \begin{equation*}
+        \begin{aligned}
+              & P(N(t_1)=k|N(t_2)=n)                                                                                                                                      \\
+            = & \frac{P(N(t_1)=k,N(t_2)=n)}{P(N(t_2)=n)}                                                                                                                  \\
+            = & \frac{P(N(t_1)=k)P(N(t_2)-N(t_1)=n-k)}{P(N(t_2)=n)}                                                                                                       \\
+            = & \frac{\frac{(\lambda t_1)^k}{k!}e^{-\lambda t_1}\frac{(\lambda(t_2-t_1))^{n-k}}{(n-k)!}e^{-\lambda(t_2-t_1)}}{\frac{(\lambda t_2)^n}{n!}e^{-\lambda t_2}} \\
+            = & \tbinom nk\left(\frac{t_1}{t_2}\right)^k\left(1-\frac{t_1}{t_2}\right)^{n-k}.                                                                             \\
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+事实上，上述讨论适用于任何长度为 $t_1$ 的子区间。因此，以 $N(t_2)=n$ 为条件，相当于在 $(0,t_2]$ 上以均匀分布随机放置 $n$ 个到达点，第 $i$ 次到达时刻就是这 $n$ 个独立且服从 $U(0,t_2)$ 的随机变量的第 $i$ 个\emph{次序统计量}。
+
+一般地，考虑随机样本 $X_1,\cdots,X_n$，将它们从小到大排序，记为 $X_{(1)}\leq\cdots\leq X_{(n)}$，则称 $X_{(i)}$ 为 $X_1,\cdots,X_n$ 的第 $i$ 个次序统计量，$X_{(1)}=\min\{X_1,\cdots,X_n\},X_{(n)}=\max\{X_1,\cdots,X_n\}$。严谨地说，$X_{(1)}$ 定义为 $\forall\omega\in\Omega,X_{(1)}(\omega)=\min\{X_1(\omega),\cdots,X_n(\omega)\}$，其余同理。
+
+\begin{proposition}
+    若连续型随机变量 $X_1,\cdots,X_n$ 独立同分布，且 CDF 为 $F(x)$，PDF 为 $f(x)$，则
+    \begin{enumerate}
+        \item $X_{(k)}$ 的 PDF 为 $f_{X_{(k)}}(x)=\frac{n!}{(k-1)!(n-k)!}F^{k-1}(x)(1-F(x))^{n-k}f(x)$
+        \item $(X_{(1)},\cdots,X_{(n)})$ 的联合 PDF 为 $f_{X_{(1)},\cdots,X_{(n)}}(x_1,\cdots,x_n)=n!f(x_1)\cdots f(x_n)\mathbf 1_{x_1\leq\cdots\leq x_n}$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    考虑小区间 $(x,x+\mathrm dx]$，当 $\mathrm dx$ 充分小时，有两个及以上随机变量落入其中的概率极小，因此事件 $X_{(k)}\in(x,x+\mathrm dx]$ 的概率近似为 $\tbinom{n}{k-1,1,n-k}F^{k-1}(x)f(x)\mathrm dx(1-F(x))^{n-k}$，即有 $(k-1)$ 个随机变量落入 $(-\infty,x]$，$1$ 个随机变量落入 $(x,x+\mathrm dx]$，$(n-k)$ 个随机变量落入 $(x+\mathrm dx,+\infty)$ 的概率。于是 $X_{(k)}$ 的 PDF 为 $f_{X_{(k)}}(x)=\frac{n!}{(k-1)!(n-k)!}F^{k-1}(x)(1-F(x))^{n-k}f(x)$。类似讨论可知，$(X_{(1)},\cdots,X_{(n)})$ 的联合 PDF 为 $\tbinom{n}{1,\cdots,1}f(x_1)\cdots f(x_n)\mathbf 1_{x_1\leq\cdots\leq x_n}=n!f(x_1)\cdots f(x_n)\mathbf 1_{x_1\leq\cdots\leq x_n}$。
+\end{proof}
+
+\begin{theorem}\label{thm:6.4.5}
+    等等
+\end{theorem}
 
 \end{document}

@@ -22,7 +22,7 @@
 
 利用平稳增量性可知，$\forall t\geq0,P(N(t+h)-N(t)=1)=\lambda h+o(h),P(N(t+h)-N(t)\geq2)=o(h)$。
 
-考虑 $[0,t]$ 时间段，将其分成 $n$ 个长度为 $\frac tn$ 的子区间，当 $n\gg1$ 时，每个小区间上发生 $2$ 次及以上事件的概率趋于 $0$，而发生 $1$ 次事件的概率 $p\approx \lambda\frac tn$，因此近似有 $N(t)\sim B(n,p)$，而我们知道当 $n\rightarrow\infty$ 时，$B(n,p)$ 会趋向于 Poisson 分布，即 $N(t)\sim P(\lambda t)$。稍后我们将严格证明这一结论。
+考虑 $(0,t]$ 时间段，将其分成 $n$ 个长度为 $\frac tn$ 的子区间，当 $n\gg1$ 时，每个小区间上发生 $2$ 次及以上事件的概率趋于 $0$，而发生 $1$ 次事件的概率 $p\approx \lambda\frac tn$，因此近似有 $N(t)\sim B(n,p)$，而我们知道当 $n\rightarrow\infty$ 时，$B(n,p)$ 会趋向于 Poisson 分布，即 $N(t)\sim P(\lambda t)$。稍后我们将严格证明这一结论。
 
 称 $\lambda$ 为 Poisson 过程的\emph{强度}或\emph{到达率}。
 
