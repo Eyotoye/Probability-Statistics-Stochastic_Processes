@@ -1,6 +1,56 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+我们本章讨论的离散时间 Markov 链是一种特殊的随机过程，其指标集 $T$ 和状态空间 $S$ 都是离散的，不妨记为 $T=\{0,1,\cdots\},S=\{0,1,\cdots\}$。
 
+\begin{definition}\label{def:7.1.1}
+    若随机过程 $\{X_n,n=0,1,\cdots\}$ 的状态空间为 $S$，满足 $\forall n\in\mathbb N,\forall i,j,i_0,\cdots,i_{n-1}\in S,P(X_{n+1}=j|X_0=i_0,\cdots,X_{n-1}=i_{n-1},X_n=i)=P(X_{n+1}=j|X_n=i)$，则称 $\{X_n,n=0,1,\cdots\}$ 为\emph{（离散时间）Markov 链}，上式称为 \emph{Markov 性}，又称\emph{无后效性}。
+\end{definition}
+
+我们可以直接利用 Markov 性给出 $(X_0,\cdots,X_n)$ 的联合分布，即
+\begin{equation*}
+    \begin{aligned}
+          & P(X_0=i_0,\cdots,X_n=i_n)                                                                       \\
+        = & P(X_n=i_n|X_0=i_0,\cdots,X_{n-1}=i_{n-1})P(X_0=i_0,\cdots,X_{n-1}=i_{n-1})                      \\
+        = & P(X_n=i_n|X_{n-1}=i_{n-1})P(X_0=i_0,\cdots,X_{n-1}=i_{n-1})                                     \\
+        = & \cdots                                                                                          \\
+        = & P(X_n=i_n|X_{n-1}=i_{n-1})P(X_{n-1}=i_{n-1}|X_{n-2}=i_{n-2})\cdots P(X_1=i_1|X_0=i_0)P(X_0=i_0)
+    \end{aligned}
+\end{equation*}
+
+\begin{definition}\label{def:7.1.2}
+    $P(X_{n+1}=j|X_n=i)$ 称为 Markov 链的\emph{（一步）转移概率}，若其与 $n$ 无关，则称该 Markov 链关于时间是\emph{齐次}的，此时记 $p_{ij}=P(X_{n+1}=j|X_n=i)$，称 $P=(p_{ij})$ 为\emph{转移概率矩阵}。
+\end{definition}
+
+显然有 $\forall i,j,p_{ij}\geq0,\sum_{j\in S}p_{ij}=1$。
+
+状态空间有限时称该 Markov 链为\emph{有限链}，否则称为\emph{无限链}。多数情况下我们只讨论关于时间齐次的有限 Markov 链。
+
+利用转移概率的记号，容易写出 $P(X_0=i_0,\cdots,X_n=i_n)=P(X_0=i_0)p_{i_0i_1}\cdots p_{i_{n-1}i_n}$。
+
+\begin{example}
+    设状态空间 $S=\{r,s\}$，其中 $r$ 和 $s$ 分别表示雨天和晴天。假设每天的天气只与前一天的天气有关，且转移概率矩阵为
+    \[
+        \begin{blockarray}{ccc}
+            & r & s \\
+            \begin{block}{c(cc)}
+                r & \frac13 & \frac23 \\
+                s & \frac12 & \frac12 \\
+            \end{block}
+        \end{blockarray}
+    \]
+    则该 Markov 链的转移概率图如下。
+    \begin{center}
+        \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
+            \tikzstyle{state}=[fill=white,draw=black,circle,thick]
+            \node[state] (r) {$r$};
+            \node[state] (s) [right of=r] {$s$};
+            \path (r) edge[bend left] node[above] {$2/3$} (s);
+            \path (s) edge[bend left] node[below] {$1/2$} (r);
+            \path (r) edge[loop left] node[left] {$1/3$} (r);
+            \path (s) edge[loop right] node[right] {$1/2$} (s);
+        \end{tikzpicture}
+    \end{center}
+\end{example}
 
 \end{document}
