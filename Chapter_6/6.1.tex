@@ -1,63 +1,6 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-首先简单介绍一下 Bernoulli 过程。
-
-\begin{definition}\label{def:6.1.1}
-    设 $T=\mathbb N^*$，$\{X_n\}_{n=1}^\infty$ 是一列独立同分布的随机变量，且 $P(X_n=1)=p,P(X_n=0)=1-p$，则称 $\{X_n\}_{n=1}^\infty$ 为参数为 $p$ 的\emph{Bernoulli 过程}。
-\end{definition}
-
-定义中提到的 $\{X_n\}_{n=1}^\infty$ 相互独立，指的是 $\forall n\in\mathbb N^*$，都有 $X_1,\cdots,X_n$ 相互独立。
-
-如果在每个离散时刻 $n$，事件 $X_n=1$ 即“第 $n$ 次试验成功”对应的是该时刻有一个顾客到达某商店，则 Bernoulli 过程可以理解为一种\emph{到达过程}。本章的主要内容 Poisson 过程也是一种到达过程。
-
-\begin{definition}\label{def:6.1.2}
-    称一个随机过程 $\{N(t),t\geq0\}$ 为\emph{计数过程}，若满足：
-    \begin{enumerate}
-        \item $N(0)=0$，且 $N(t)\in\mathbb N$
-        \item $\forall t>s\geq0,N(t)\geq N(s)$
-        \item $N(t)-N(s)$ 为 $(s,t]$ 时间内发生的事件数
-    \end{enumerate}
-\end{definition}
-
-\begin{definition}\label{def:6.1.3}
-    称一个计数过程 $\{N(t),t\geq0\}$ 为\emph{Poisson 过程}，若满足：
-    \begin{enumerate}
-        \item $N(0)=0$
-        \item $\{N(t),t\geq0\}$ 有平稳增量和独立增量
-        \item $\exists\lambda>0$，当 $h\rightarrow0$ 时，$P(N(h)=1)=\lambda h+o(h)$
-        \item 当 $h\rightarrow0$ 时，$P(N(h)\geq2)=o(h)$
-    \end{enumerate}
-\end{definition}
-
-利用平稳增量性可知，$\forall t\geq0,P(N(t+h)-N(t)=1)=\lambda h+o(h),P(N(t+h)-N(t)\geq2)=o(h)$。
-
-考虑 $[0,t]$ 时间段，将其分成 $n$ 个长度为 $\frac tn$ 的子区间，当 $n\gg1$ 时，每个小区间上发生 $2$ 次及以上事件的概率趋于 $0$，而发生 $1$ 次事件的概率 $p\approx \lambda\frac tn$，因此近似有 $N(t)\sim B(n,p)$，而我们知道当 $n\rightarrow\infty$ 时，$B(n,p)$ 会趋向于 Poisson 分布，即 $N(t)\sim P(\lambda t)$。稍后我们将严格证明这一结论。
-
-称 $\lambda$ 为 Poisson 过程的\emph{强度}或\emph{到达率}。
-
-\begin{proposition}
-    若 $\{N(t),t\geq0\}$ 是 Poisson 过程，则 $\forall t\geq0,N(t)\sim P(\lambda t)$。
-\end{proposition}
-
-\begin{proof}
-    记 $P_n(t)=P(N(t)=n)\ (n\in\mathbb N)$，则 $P_0(t+h)=P(N(t+h)=0)=P(N(t+h)-N(t)=0,N(t)=0)=P(N(t+h)-N(t)=0)P(N(t)=0)=(1-\lambda h+o(h))P_0(t)$，即 $\frac{P_0(t+h)-P_0(t)}h=-\lambda P_0(t)+\frac{o(h)}{h}$。当 $h\rightarrow0$ 时，$\frac{o(h)}{h}\rightarrow0$，因此 $\frac{P_0(t+h)-P_0(t)}{h}\rightarrow-\lambda P_0(t)$，即 $P_0'(t)=-\lambda P_0(t)$，由边界条件 $P_0(0)=P(N(0)=0)=1$ 解得 $P_0(t)=e^{-\lambda t}=\frac{(\lambda t)^0}{0!}e^{-\lambda t}$。同理，
-    \begin{equation*}
-        \begin{aligned}
-              & P_n(t+h)                                                       \\
-            = & P(N(t+h)=n)                                                    \\
-            = & P(N(t+h)-N(t)=0,N(t)=n)+P(N(t+h)-N(t)=1,N(t)=n-1)              \\
-            + & P(N(t+h)-N(t)\geq2,N(t+h)=n)                                   \\
-            = & P(N(t+h)-N(t)=0)P(N(t)=n)+P(N(t+h)-N(t)=1)P(N(t)=n-1)          \\
-            + & P(N(t+h)-N(t)\geq2,N(t+h)=n)                                   \\
-            = & P(N(h)=0)P_n(t)+P(N(h)=1)P_{n-1}(t)+o(h)                       \\
-              & (\because P(N(t+h)-N(t)\geq2,N(t+h)=n)\leq P(N(t+h)-N(t)\geq2) \\
-              & =P(N(h)\geq2)=o(h))                                            \\
-            = & (1-\lambda h+o(h))P_n(t)+(\lambda h+o(h))P_{n-1}(t)+o(h)       \\
-            = & P_n(t)+\lambda h(P_{n-1}(t)-P_n(t))+o(h)
-        \end{aligned}
-    \end{equation*}
-    因此 $\frac{P_n(t+h)-P_n(t)}h=\lambda(P_{n-1}(t)-P_n(t))+\frac{o(h)}h$，当 $h\rightarrow0$ 时，$\frac{P_n(t+h)-P_n(t)}h\rightarrow\lambda(P_{n-1}(t)-P_n(t))$，即 $P_n'(t)=\lambda(P_{n-1}(t)-P_n(t))$。由数学归纳法可证明 $P_n(t)=\frac{(\lambda t)^n}{n!}e^{-\lambda t},\forall n\in\mathbb N$，即 $N(t)\sim P(\lambda t)$。
-\end{proof}
+加入引言后，似乎“基本概念”这一节无内容了，有待确认。
 
 \end{document}

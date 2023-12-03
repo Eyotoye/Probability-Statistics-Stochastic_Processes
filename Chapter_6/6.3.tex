@@ -1,0 +1,84 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{definition}\label{def:6.1.2}
+    称一个随机过程 $\{N(t),t\geq0\}$ 为\emph{计数过程}，若其满足：
+    \begin{enumerate}
+        \item $N(t)\in\mathbb N$
+        \item $\forall t>s\geq0,N(t)\geq N(s)$
+        \item $N(t)-N(s)$ 为 $(s,t]$ 时间内发生的事件数
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}\label{def:6.1.3}
+    称一个计数过程 $\{N(t),t\geq0\}$ 为 \emph{Poisson 过程}，若其满足：
+    \begin{enumerate}
+        \item $N(0)=0$
+        \item $\{N(t),t\geq0\}$ 有平稳增量性和独立增量性
+        \item $\exists\lambda>0$，当 $h\rightarrow0$ 时，$P(N(h)=1)=\lambda h+o(h)$
+        \item 当 $h\rightarrow0$ 时，$P(N(h)\geq2)=o(h)$
+    \end{enumerate}
+\end{definition}
+
+利用平稳增量性可知，$\forall t\geq0,P(N(t+h)-N(t)=1)=\lambda h+o(h),P(N(t+h)-N(t)\geq2)=o(h)$。
+
+考虑 $[0,t]$ 时间段，将其分成 $n$ 个长度为 $\frac tn$ 的子区间，当 $n\gg1$ 时，每个小区间上发生 $2$ 次及以上事件的概率趋于 $0$，而发生 $1$ 次事件的概率 $p\approx \lambda\frac tn$，因此近似有 $N(t)\sim B(n,p)$，而我们知道当 $n\rightarrow\infty$ 时，$B(n,p)$ 会趋向于 Poisson 分布，即 $N(t)\sim P(\lambda t)$。稍后我们将严格证明这一结论。
+
+称 $\lambda$ 为 Poisson 过程的\emph{强度}或\emph{到达率}。
+
+\begin{proposition}
+    若 $\{N(t),t\geq0\}$ 是 Poisson 过程，则 $\forall t\geq0,N(t)\sim P(\lambda t)$。
+\end{proposition}
+
+\begin{proof}
+    记 $P_n(t)=P(N(t)=n)\ (n\in\mathbb N)$，则 $P_0(t+h)=P(N(t+h)=0)=P(N(t+h)-N(t)=0,N(t)=0)=P(N(t+h)-N(t)=0)P(N(t)=0)=(1-\lambda h+o(h))P_0(t)$，即 $\frac{P_0(t+h)-P_0(t)}h=-\lambda P_0(t)+\frac{o(h)}{h}$。当 $h\rightarrow0$ 时，$\frac{o(h)}{h}\rightarrow0$，因此 $\frac{P_0(t+h)-P_0(t)}{h}\rightarrow-\lambda P_0(t)$，即 $P_0'(t)=-\lambda P_0(t)$，由边界条件 $P_0(0)=P(N(0)=0)=1$ 解得 $P_0(t)=e^{-\lambda t}=\frac{(\lambda t)^0}{0!}e^{-\lambda t}$。同理，
+    \begin{equation*}
+        \begin{aligned}
+              & P_n(t+h)                                                       \\
+            = & P(N(t+h)=n)                                                    \\
+            = & P(N(t+h)-N(t)=0,N(t)=n)+P(N(t+h)-N(t)=1,N(t)=n-1)              \\
+            + & P(N(t+h)-N(t)\geq2,N(t+h)=n)                                   \\
+            = & P(N(t+h)-N(t)=0)P(N(t)=n)+P(N(t+h)-N(t)=1)P(N(t)=n-1)          \\
+            + & P(N(t+h)-N(t)\geq2,N(t+h)=n)                                   \\
+            = & P(N(h)=0)P_n(t)+P(N(h)=1)P_{n-1}(t)+o(h)                       \\
+              & (\because P(N(t+h)-N(t)\geq2,N(t+h)=n)\leq P(N(t+h)-N(t)\geq2) \\
+              & =P(N(h)\geq2)=o(h))                                            \\
+            = & (1-\lambda h+o(h))P_n(t)+(\lambda h+o(h))P_{n-1}(t)+o(h)       \\
+            = & P_n(t)+\lambda h(P_{n-1}(t)-P_n(t))+o(h)
+        \end{aligned}
+    \end{equation*}
+    因此 $\frac{P_n(t+h)-P_n(t)}h=\lambda(P_{n-1}(t)-P_n(t))+\frac{o(h)}h$，当 $h\rightarrow0$ 时，$\frac{P_n(t+h)-P_n(t)}h\rightarrow\lambda(P_{n-1}(t)-P_n(t))$，即 $P_n'(t)=\lambda(P_{n-1}(t)-P_n(t))$。由数学归纳法可证明 $P_n(t)=\frac{(\lambda t)^n}{n!}e^{-\lambda t},\forall n\in\mathbb N$，即 $N(t)\sim P(\lambda t)$。
+\end{proof}
+
+于是我们有 $\mathrm E(N(t))=\lambda t,\mathrm{Var}(N(t))=\lambda t$。
+
+下面给出 Poisson 过程的一个等价定义。
+
+\begin{definition}\label{def:6.1.4}
+    称一个计数过程 $\{N(t),t\geq0\}$ 为 \emph{Poisson 过程}，若其满足：
+    \begin{enumerate}
+        \item $N(0)=0$
+        \item $\{N(t),t\geq0\}$ 有独立增量性
+        \item $\exists\lambda>0,\forall t>s\geq0,n\in\mathbb N,P(N(t+s)-N(s)=n)=\frac{(\lambda t)^n}{n!}e^{-\lambda t}$，即 $N(t+s)-N(s)\sim P(\lambda t)$
+    \end{enumerate}
+\end{definition}
+
+记 $T_1$ 为首次到达时刻，则 $P(T_1\leq t)=1-P(T_1>t)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_1\sim Exp(\lambda)$。再记 $T_2$ 为第二次到达时刻，则在 $T_1=t_0$ 条件下，$T_2-T_1$ 的分布 $P(T_2-T_1\leq t)=P(T_2-t_0\leq t)=1-P(T_2-t_0>t)=1-P(N(t_0+t)-N(t_0)=0)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_2-T_1\sim Exp(\lambda)$，且 $T_2-T_1$ 与 $T_1$ 相互独立。一般地，记 $T_k$ 为第 $k$ 次到达时刻，$W_k=T_k-T_{k-1}$ 为相邻两次到达间隔时间，则 $\{W_i\}_{i=1}^\infty$ 相互独立且 $W_i\sim Exp(\lambda)$，而 $T_k=\sum_{i=1}^kW_i$，有 $T_k\sim \Gamma(k,\lambda)$，称为 \emph{Gamma 分布}，有 $\mathrm E(T_k)=\frac k\lambda,\mathrm{Var}(T_k)=\frac k{\lambda^2}$。$T_k$ 的分布又称之为 \emph{Erlang 分布}，事实上，Erlang 分布是 Gamma 分布在 $k$ 为正整数时的特例。$\Gamma(1,\lambda)$ 就是 $Exp(\lambda)$。
+
+利用 $\forall t\geq0,P(T_k\leq t)=P(N(t)\geq k)=1-\sum_{n=0}^{k-1}\frac{(\lambda t)^n}{n!}e^{-\lambda t}$，可得 $T_k$ 的 PDF 为 $f_{T_k}(t)=\frac{\lambda^kt^{k-1}}{(k-1)!}e^{-\lambda t}(t\geq 0)$。
+
+Poisson 过程还有一个等价定义如下。
+
+\begin{definition}\label{def:6.1.5}
+    称一个计数过程 $\{N(t),t\geq0\}$ 为 \emph{Poisson 过程}，若其满足：
+    \begin{enumerate}
+        \item $N(0)=0$
+        \item $\exists\lambda>0$，各相邻两次到达间隔时间 $\{W_i\}_{i=1}^\infty$ 相互独立且 $W_i\sim Exp(\lambda)$
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    拨打服务热线时，被告知除了正在接受服务的人以外，前面还有 $55$ 人在等待。假设呼叫者离开服从 Poisson 过程，$\lambda=2\text{ 人/min}$，则平均等待时间为 $W=\sum_{i=0}^{55}W_i$，其中 $W_i\sim Exp(2)$ 且相互独立，因此平均等待时间为 $\mathrm E(W)=\frac{56}{2}=28\text{ min}$，还可计算出 $\mathrm{Var}(W)=\frac{56}{4}=14\text{ min}^2$。等待时间超过 $30$ 分钟的概率为 $P(W>30)=\int_{30}^{+\infty}f_W(t)\mathrm dt$。根据 CLT，近似有 $W\sim N(28,14)$，此概率可近似为 $P(Z>\frac{30-28}{\sqrt{14}})=P(Z>\frac2{\sqrt{14}})$，其中 $Z\sim N(0,1)$。
+\end{example}
+
+\end{document}
