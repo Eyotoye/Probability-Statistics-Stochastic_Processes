@@ -1,7 +1,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-\begin{definition}\label{def:6.1.2}
+\begin{definition}\label{def:6.3.1}
     称一个随机过程 $\{N(t),t\geq0\}$ 为\emph{计数过程}，若其满足：
     \begin{enumerate}
         \item $N(t)\in\mathbb N$
@@ -10,7 +10,7 @@
     \end{enumerate}
 \end{definition}
 
-\begin{definition}\label{def:6.1.3}
+\begin{definition}\label{def:6.3.2}
     称一个计数过程 $\{N(t),t\geq0\}$ 为 \emph{Poisson 过程}，若其满足：
     \begin{enumerate}
         \item $N(0)=0$
@@ -26,9 +26,9 @@
 
 称 $\lambda$ 为 Poisson 过程的\emph{强度}或\emph{到达率}。
 
-\begin{proposition}
+\begin{theorem}\label{thm:6.3.1}
     若 $\{N(t),t\geq0\}$ 是 Poisson 过程，则 $\forall t\geq0,N(t)\sim P(\lambda t)$。
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
     记 $P_n(t)=P(N(t)=n)\ (n\in\mathbb N)$，则 $P_0(t+h)=P(N(t+h)=0)=P(N(t+h)-N(t)=0,N(t)=0)=P(N(t+h)-N(t)=0)P(N(t)=0)=(1-\lambda h+o(h))P_0(t)$，即 $\frac{P_0(t+h)-P_0(t)}h=-\lambda P_0(t)+\frac{o(h)}{h}$。当 $h\rightarrow0$ 时，$\frac{o(h)}{h}\rightarrow0$，因此 $\frac{P_0(t+h)-P_0(t)}{h}\rightarrow-\lambda P_0(t)$，即 $P_0'(t)=-\lambda P_0(t)$，由边界条件 $P_0(0)=P(N(0)=0)=1$ 解得 $P_0(t)=e^{-\lambda t}=\frac{(\lambda t)^0}{0!}e^{-\lambda t}$。同理，
@@ -54,7 +54,7 @@
 
 下面给出 Poisson 过程的一个等价定义。
 
-\begin{definition}\label{def:6.1.4}
+\begin{definition}\label{def:6.3.3}
     称一个计数过程 $\{N(t),t\geq0\}$ 为 \emph{Poisson 过程}，若其满足：
     \begin{enumerate}
         \item $N(0)=0$
@@ -63,13 +63,13 @@
     \end{enumerate}
 \end{definition}
 
-记 $T_1$ 为首次到达时刻，则 $P(T_1\leq t)=1-P(T_1>t)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_1\sim Exp(\lambda)$。再记 $T_2$ 为第二次到达时刻，则在 $T_1=t_0$ 条件下，$T_2-T_1$ 的分布 $P(T_2-T_1\leq t)=P(T_2-t_0\leq t)=1-P(T_2-t_0>t)=1-P(N(t_0+t)-N(t_0)=0)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_2-T_1\sim Exp(\lambda)$，且 $T_2-T_1$ 与 $T_1$ 相互独立。一般地，记 $T_k$ 为第 $k$ 次到达时刻，$W_k=T_k-T_{k-1}$ 为相邻两次到达间隔时间，则 $\{W_i\}_{i=1}^\infty$ 相互独立且 $W_i\sim Exp(\lambda)$，而 $T_k=\sum_{i=1}^kW_i$，有 $T_k\sim \Gamma(k,\lambda)$，称为 \emph{Gamma 分布}，有 $\mathrm E(T_k)=\frac k\lambda,\mathrm{Var}(T_k)=\frac k{\lambda^2}$。$T_k$ 的分布又称之为 \emph{Erlang 分布}，事实上，Erlang 分布是 Gamma 分布在 $k$ 为正整数时的特例。$\Gamma(1,\lambda)$ 就是 $Exp(\lambda)$。
+记 $T_1$ 为首次到达时刻，则 $P(T_1\leq t)=1-P(T_1>t)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_1\sim Exp(\lambda)$。再记 $T_2$ 为第二次到达时刻，则在 $T_1=t_0$ 条件下，$T_2-T_1$ 的分布 $P(T_2-T_1\leq t)=P(T_2-t_0\leq t)=1-P(T_2-t_0>t)=1-P(N(t_0+t)-N(t_0)=0)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_2-T_1\sim Exp(\lambda)$，且 $T_2-T_1$ 与 $T_1$ 相互独立。一般地，记 $T_k$ 为第 $k$ 次到达时刻，$W_k=T_k-T_{k-1}$ 为相邻两次到达间隔时间，约定 $T_0=0$，则 $\{W_i\}_{i=1}^\infty$ 相互独立且 $W_i\sim Exp(\lambda)$，而 $T_k=\sum_{i=1}^kW_i$，称 $T_k$ 服从参数为 $k$ 和 $\lambda$ 的 \emph{Gamma 分布}，记作 $T_k\sim \Gamma(k,\lambda)$，$\mathrm E(T_k)=\frac k\lambda,\mathrm{Var}(T_k)=\frac k{\lambda^2}$。$T_k$ 服从的分布又称之为 \emph{Erlang 分布}。事实上，Erlang 分布是 Gamma 分布在 $k\in\mathbb N^*$ 时的特例。$\Gamma(1,\lambda)$ 就是 $Exp(\lambda)$。
 
-利用 $\forall t\geq0,P(T_k\leq t)=P(N(t)\geq k)=1-\sum_{n=0}^{k-1}\frac{(\lambda t)^n}{n!}e^{-\lambda t}$，可得 $T_k$ 的 PDF 为 $f_{T_k}(t)=\frac{\lambda^kt^{k-1}}{(k-1)!}e^{-\lambda t}(t\geq 0)$。
+利用 $\forall t\geq0,P(T_k\leq t)=P(N(t)\geq k)=1-\sum_{n=0}^{k-1}\frac{(\lambda t)^n}{n!}e^{-\lambda t}$，求导可得 $T_k$ 的 PDF 为 $f_{T_k}(t)=\frac{\lambda^kt^{k-1}}{(k-1)!}e^{-\lambda t}(t\geq 0)$。
 
 Poisson 过程还有一个等价定义如下。
 
-\begin{definition}\label{def:6.1.5}
+\begin{definition}\label{def:6.3.4}
     称一个计数过程 $\{N(t),t\geq0\}$ 为 \emph{Poisson 过程}，若其满足：
     \begin{enumerate}
         \item $N(0)=0$
@@ -78,7 +78,7 @@ Poisson 过程还有一个等价定义如下。
 \end{definition}
 
 \begin{example}
-    拨打服务热线时，被告知除了正在接受服务的人以外，前面还有 $55$ 人在等待。假设呼叫者离开服从 Poisson 过程，$\lambda=2\text{ 人/min}$，则平均等待时间为 $W=\sum_{i=0}^{55}W_i$，其中 $W_i\sim Exp(2)$ 且相互独立，因此平均等待时间为 $\mathrm E(W)=\frac{56}{2}=28\text{ min}$，还可计算出 $\mathrm{Var}(W)=\frac{56}{4}=14\text{ min}^2$。等待时间超过 $30$ 分钟的概率为 $P(W>30)=\int_{30}^{+\infty}f_W(t)\mathrm dt$。根据 CLT，近似有 $W\sim N(28,14)$，此概率可近似为 $P(Z>\frac{30-28}{\sqrt{14}})=P(Z>\frac2{\sqrt{14}})$，其中 $Z\sim N(0,1)$。
+    拨打服务热线时，被告知除了正在接受服务的人以外，前面还有 $55$ 人在等待。假设呼叫者离开服从 Poisson 过程，$\lambda=2\text{ 人/min}$，则平均等待时间为 $T_{56}=\sum_{i=1}^{56}W_i$，其中 $W_i\sim Exp(2)$ 且相互独立，因此平均等待时间为 $\mathrm E(T_{56})=\frac{56}{2}=28\text{ min}$，且 $\mathrm{Var}(T_{56})=\frac{56}{4}=14\text{ min}^2$。等待时间超过 $30$ 分钟的概率为 $P(T_{56}>30)=\int_{30}^{+\infty}f_{T_{56}}(t)\mathrm dt$。根据 CLT，近似有 $T_{56}\sim N(28,14)$，故有 $P(T_{56}>30)\approx P(Z>\frac{30-28}{\sqrt{14}})=1-\Phi(\frac2{\sqrt{14}})$，其中 $Z\sim N(0,1)$。
 \end{example}
 
 \end{document}
