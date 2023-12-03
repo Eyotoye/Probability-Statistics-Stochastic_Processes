@@ -3,7 +3,7 @@
 
 设 $(X_1,\cdots,X_n)$ 的联合分布（PMF 或 PDF）为 $f(x_1,\cdots,x_n;\theta)$，其中 $\theta$ 为未知参数。
 
-对于观测 $(X_1,\cdots,X_n)$，我们定义\emph{似然函数}（likelihood function）为 $L(\theta)=f(X_1,\cdots,X_n;\theta)$。
+对于观测 $(X_1,\cdots,X_n)$，定义\emph{似然函数}（likelihood function）为 $L(\theta)=f(X_1,\cdots,X_n;\theta)$。
 
 对于离散情形，$L(\theta)$ 就是当参数为 $\theta$ 时出现观测 $(X_1,\cdots,X_n)$ 的概率。
 
@@ -14,8 +14,6 @@
 \begin{example}
     设 $X_1,\cdots,X_n$ 独立同分布，$X_i\sim N(\mu,\sigma^2)$，$\mu$ 和 $\sigma^2$ 未知，则 $f_1(x;\mu,\sigma^2)=\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$，似然函数 $L(\theta)=L(\mu,\sigma^2)=\prod_{i=1}^n\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(X_i-\mu)^2}{2\sigma^2}}$。
 \end{example}
-
-% 写到这了！
 
 \begin{definition}\label{def:6.2.1}
     $\theta^*=\underset{\theta}{\operatorname{argmax}}L(\theta)$ 称为 $\theta$ 的\emph{极大似然估计}（MLE）。
