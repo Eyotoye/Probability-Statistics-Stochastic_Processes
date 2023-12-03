@@ -16,8 +16,8 @@
     $\Omega=\{a,b,c,d\}$，以下是一些合法的事件集类：
     \begin{enumerate}
         \item $\mathcal{F}_1=2^\Omega$
-        \item $\mathcal{F}_2=\{\Omega,\emptyset\}$
-        \item $\mathcal{F}_3=\{\Omega,\emptyset,\{a,b\},\{c,d\}\}$
+        \item $\mathcal{F}_2=\{\Omega,\varnothing\}$
+        \item $\mathcal{F}_3=\{\Omega,\varnothing,\{a,b\},\{c,d\}\}$
     \end{enumerate}
 \end{example}
 
@@ -26,7 +26,7 @@
     \begin{enumerate}
         \item $P(A)\geq 0,\forall A\in\mathcal{F}$
         \item $P(\Omega)=1$
-        \item $A_i\in\mathcal{F},\forall i\in\mathbb{N}^*,A_iA_j=\emptyset,\forall i\neq j\Rightarrow P(\sum_{i=1}^\infty A_i)=\sum_{i=1}^\infty P(A_i)$（加法公理/可列可加性）
+        \item $A_i\in\mathcal{F},\forall i\in\mathbb{N}^*,A_iA_j=\varnothing,\forall i\neq j\Rightarrow P(\sum_{i=1}^\infty A_i)=\sum_{i=1}^\infty P(A_i)$（加法公理/可列可加性）
     \end{enumerate}
     我们称 $(\Omega,\mathcal{F},P)$ 是一个\emph{概率空间}。
 \end{definition}
@@ -35,9 +35,9 @@
     关于概率空间，有如下性质：
     \begin{enumerate}
         \item $P(A)\leq 1,\ \forall A\in\mathcal{F}$
-        \item $P(\emptyset)=0$
+        \item $P(\varnothing)=0$
         \item $P(A)+P(A^c)=1$
-        \item $A_i\in\mathcal{F},\forall i\in\{1,2,\cdots,n\},\ A_iA_j=\emptyset,\forall i\neq j\Rightarrow P(\sum_{i=1}^n A_i)=\sum_{i=1}^n P(A_i)$（有限可加性）
+        \item $A_i\in\mathcal{F},\forall i\in\{1,2,\cdots,n\},\ A_iA_j=\varnothing,\forall i\neq j\Rightarrow P(\sum_{i=1}^n A_i)=\sum_{i=1}^n P(A_i)$（有限可加性）
         \item $A\subset B\Rightarrow P(A)\leq P(B)$（我们称事件 $A$ \emph{蕴涵}事件 $B$）
         \item $P(A_1+\cdots+A_n)  \begin{aligned}[t]
                       = & \sum_{i=1}^n P(A_i)-\sum_{i_1<i_2}P(A_{i_1}A_{i_2})                       \\
