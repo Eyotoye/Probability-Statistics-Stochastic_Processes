@@ -21,7 +21,7 @@ Bayes 学派看待世界的视角与频率学派不同。简单来说，在 Baye
 
 已知了后验分布后，如何给出参数 $\theta$ 的合理估计呢？常用方法如：
 \begin{enumerate}
-    \item 后验众数 $\hat\theta_1$，即 $\beta(x+1,n-x+1)$ 的 PDF 最大值点 $\frac xn$（恰与 MLE 一致）
+    \item 后验众数 $\hat\theta_1$，即 $\beta(x+1,n-x+1)$ 的 PDF 最大值点 $\frac xn$（恰与 MLE 一致，这是因为我们选取了无信息先验，后验分布正比于样本分布作为参数的函数，即似然函数）
     \item 后验均值 $\hat\theta_2=\mathrm E(\Theta|X=x)=\frac{x+1}{n+2}$
     \item 后验中位数 $\hat\theta_3$
 \end{enumerate}
