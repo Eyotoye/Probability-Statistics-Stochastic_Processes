@@ -57,6 +57,7 @@
             = & P_n(t)+\lambda h(P_{n-1}(t)-P_n(t))+o(h)
         \end{aligned}
     \end{equation*}
+    因此 $\frac{P_n(t+h)-P_n(t)}h=\lambda(P_{n-1}(t)-P_n(t))+\frac{o(h)}h$，当 $h\rightarrow0$ 时，$\frac{P_n(t+h)-P_n(t)}h\rightarrow\lambda(P_{n-1}(t)-P_n(t))$，即 $P_n'(t)=\lambda(P_{n-1}(t)-P_n(t))$。由数学归纳法可证明 $P_n(t)=\frac{(\lambda t)^n}{n!}e^{-\lambda t},\forall n\in\mathbb N$，即 $N(t)\sim P(\lambda t)$。
 \end{proof}
 
 \end{document}
