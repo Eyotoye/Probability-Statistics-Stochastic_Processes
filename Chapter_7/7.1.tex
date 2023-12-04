@@ -19,4 +19,33 @@
 
 一种常见情形是假设可表示为参数形式，即 $H_0:\theta\in\Theta_0,H_1:\theta\in\Theta_1,\Theta_0\cap\Theta_1=\varnothing$，且 $\Theta_0\cup\Theta_1$ 为 $\theta$ 的所有可能取值之集合。
 
+\begin{example}
+    \mbox{}\\
+    设总体分布为 $X\sim N(\mu,\sigma^2)$，其中 $\sigma^2$ 已知，以下是一些原假设与备择假设的例子：
+    \begin{enumerate}
+        \item $H_0:\mu=\mu_0,H_1:\mu\neq\mu_0$
+        \item $H_0:\mu=\mu_0,H_1:\mu>\mu_0$
+        \item $H_0:\mu\leq\mu_0,H_1:\mu>\mu_0$
+    \end{enumerate}
+    设总体分布为 $X\sim N(\mu_1,\sigma^2),Y\sim N(\mu_2,\sigma^2)$，$X,Y$ 独立，$\sigma^2$ 已知，则一组可能的原假设与备择假设为：$H_0:\mu_1=\mu_2,H_1:\mu_1\neq\mu_2$。
+\end{example}
+
+我们称只对应一个总体的假设为\emph{简单假设}，对应多个总体的假设为\emph{复合假设}。例如上例中的 $H_0:\mu=\mu_0$ 为简单假设，$H_0:\mu\leq\mu_0$ 为复合假设。注意，若上例中的 $\sigma^2$ 未知，则 $H_0:\mu=\mu_0$ 等价于 $H_0:\mu=\mu_0,\sigma^2>0$，这是一个复合假设。
+
+依据样本（观测）对假设进行决策（拒绝 $H_0$ 或不拒绝 $H_0$）的过程，称为\emph{假设检验}。一个具体的\emph{检验（准则）}，就是做出决策的一个具体法则，即在何种情况下拒绝 $H_0$。根据小概率事件原理，若在原假设 $H_0$ 为真的前提下，所观测的样本出现的概率很小，则意味着样本提供了\emph{拒绝} $H_0$ 的证据。
+
+考虑所有可能出现的观测之集合 $\{(X_1(\omega),\cdots,X_n(\omega))|\omega\in\Omega\}$，其中样本量 $n$ 固定，则可以按照检验准则将之分为两部分 $R$ 和 $R^c$，其中 $R$ 称为\emph{拒绝域}或\emph{临界域}，当样本落在 $R$ 中时，拒绝原假设 $H_0$。一种常见的拒绝域形式为 $R=\{(X_1,\cdots,X_n)|T(X_1,\cdots,X_n)\geq c\}$，其中 $T(X_1,\cdots,X_n)$ 称为\emph{检验统计量}，$c$ 称为\emph{临界值}。若对于某个 $\alpha\in(0,1)$，有 $\forall\theta\in\Theta_0,P_\theta(T(X_1,\cdots,X_n)\geq c)\leq\alpha$，则称（$R$ 对应的）检验是（显著性）水平为 $\alpha$ 的检验。
+
+\begin{example}
+    \mbox{}\\
+    设总体分布为 $X\sim N(\mu,\sigma^2)$，其中 $\sigma^2$ 已知。考虑以下两个假设检验。
+    \begin{enumerate}
+        \item $H_0:\mu=\mu_0,H_1:\mu\neq\mu_0$，这是一个\emph{双侧检验}。对于给定的 $\alpha\in(0,1)$，设检验准则为当 $|\bar X-\mu_0|\geq c$ 时拒绝 $H_0$。这要求当 $H_0$ 为真时，$P_{H_0}(|\bar X-\mu_0|\geq c)\leq\alpha$。由于 $\bar X-\mu\sim N(0,\frac{\sigma^2}n)$，即 $H_0$ 为真时 $\frac{\bar X-\mu_0}{\frac\sigma{\sqrt n}}\sim N(0,1)$，要求为 $P_{H_0}(\frac{|\bar X-\mu_0|}{\frac\sigma{\sqrt n}}\geq\frac c{\frac\sigma{\sqrt n}})\leq\alpha$，因此取 $\frac c{\frac{\sigma}{\sqrt n}}=z_{\frac\alpha 2}$，即 $c=z_{\frac\alpha 2}\frac\sigma{\sqrt n}$。据此确定检验准则：若 $|\bar X-\mu_0|\geq z_{\frac\alpha 2}\frac\sigma{\sqrt n}$，则拒绝 $H_0$。
+        \item $H_0:\mu\geq\mu_0,H_1:\mu<\mu_0$，这是一个\emph{单侧检验}。对于给定的 $\alpha\in(0,1)$，设检验准则为当 $\bar X\leq c$ 时拒绝 $H_0$。这要求当 $H_0$ 为真时，$P_{H_0}(\bar X\leq c)\leq\alpha$。当 $H_0$ 为真时 $\frac{\bar X-\mu}{\frac\sigma{\sqrt n}}\sim N(0,1)$，要求为 $P_{\mu\geq\mu_0}(\frac{\bar X-\mu}{\frac\sigma{\sqrt n}}\leq\frac{c-\mu}{\frac\sigma{\sqrt n}})\leq\alpha$，因此 $\frac{c-\mu}{\frac{\sigma}{\sqrt n}}\leq-z_\alpha$，由于要对所有 $\mu\geq\mu_0$ 成立，取 $c=\mu_0-z_\alpha\frac\sigma{\sqrt n}$。据此确定检验准则：若 $\bar X\leq\mu_0-z_\alpha\frac\sigma{\sqrt n}$，则拒绝 $H_0$。
+    \end{enumerate}
+    本例有时也称为 $Z$-检验。
+\end{example}
+
+上例中，若 $\sigma^2$ 未知，则要根据 $\frac{\bar X-\mu}{\frac\sigma{\sqrt n}}\sim t(n-1)$ 来构造检验准则，称为 $t$-检验。
+
 \end{document}
