@@ -1,0 +1,23 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{definition}\label{def:7.4.1}
+    当原假设为真时，称“出现观测值以及更极端的观测的概率”为该检验的 \emph{p 值}。
+\end{definition}
+
+\begin{example}
+    （选举问题）\\
+    设 $p$ 为未知的真实支持率，样本容量 $n=1200$，其中有 $684$ 人支持，即观测比例为 $p_n=\frac{684}{1200}=0.57$。给定 $p_0\in(0,1)$，检验 $H_0:p=p_0,H_1:p>p_0$，选取检验统计量为 $P_n=\bar X$，其中 $\{X_i\}_{i=1}^n$ 独立同分布，$X_i\sim B(p)$。由 CLT，近似有 $\frac{P_n-p}{\mathrm{Se}(P_n)}\sim N(0,1)$，其中 $\mathrm{Se}(P_n)=\sqrt\frac{p(1-p)}n$。当 $H_0$ 为真时，$\mathrm{Se}(P_n)=\sqrt\frac{p_0(1-p_0)}n$，故 $p$ 值为 $P(P_n\geq p_n|H_0)=P(\frac{P_n-p_0}{\mathrm{Se}(P_n)}\geq\frac{p_n-p_0}{\mathrm{Se}(P_n)}|H_0)\approx P(Z\geq\frac{p_n-p_0}{\mathrm{Se}(P_n)})$，其中 $Z\sim N(0,1)$。代入 $p_0=0.5$，得 $\mathrm{Se}(P_n)\approx0.014$，$p$ 值 $\ll0.001$；代入 $p_0=0.55$，得 $\mathrm{Se}(P_n)\approx0.014$，$p$ 值 $\approx0.082$。
+\end{example}
+
+根据 $p$ 值的定义，容易发现设计检验准则时，拒绝 $H_0$ 的条件为 $p$ 值 $\leq\alpha$。非正式地，$p$ 值通常作为拒绝 $H_0$ 的证据强弱的度量。但需要强调，$p$ 值与 $P(H_0|\text{观测值})$ 完全是两回事。若 $p$ 值不小，则不拒绝 $H_0$，但这可能有多种原因，既可能是 $H_0$ 为真，也可能是 $H_0$ 不真，但检验的功效不够大。
+
+上例中，若 $H_0$ 改为 $p\leq p_0$，则 $p$ 值应当修正为 $\sup\limits_{p\leq p_0}P(P_n\geq p_n)$。此时当 $H_0$ 为真时，对 $\mathrm{Se}(P_n)$ 的估计 $\widehat{\mathrm{Se}}(P_n)=\sqrt\frac{P_n(1-P_n)}n$，$p$ 值的计算公式也相应修正为 $P(P_n\geq p_n|H_0)=P(\frac{P_n-p}{\widehat{\mathrm{Se}}(P_n)}\geq\frac{p_n-p}{\widehat{\mathrm{Se}}(P_n)}|H_0)\approx P(Z\geq\frac{p_n-p}{\widehat{\mathrm{Se}}(P_n)})$，其中 $Z\sim N(0,1)$。
+
+对 $p$ 值的定义给出一更具体的修订。
+
+\begin{definition}\label{def:7.4.2}
+    若检验准则为拒绝 $H_0:\theta\in\Theta_0$ 当且仅当 $T(X_1,\cdots,X_n)\geq C$，则检验的 \emph{$p$ 值}为 $\sup\limits_{\theta\in\Theta_0}P_\theta(T(X_1,\cdots,X_n)\geq T(x_1,\cdots,x_n))$。其中 $T(x_1,\cdots,x_n)$ 为检验统计量的观测值。
+\end{definition}
+
+\end{document}

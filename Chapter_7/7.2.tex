@@ -17,8 +17,10 @@
 
 利用上述概念，我们之前所做的假设检验“当 $T(X_1,\cdots,X_n)\geq c$ 时拒绝 $H_0$”需要满足的条件 $P_{H_0}(T(X_1,\cdots,X_n)\geq c)\leq\alpha$ 实际上就是犯第 I 类错误的概率不超过 $\alpha$。
 
-在假设检验中，有所谓 \emph{Neyman-Pearson 范式}：固定 $n$，对于预先给定的检验水平 $\alpha\in(0,1)$，首先保证犯第 I 类错误的概率不超过 $\alpha$，再在此限制之下使 $P_\theta(\text{II})(\theta\in\Theta_1)$ 尽可能小。
+在假设检验中，有所谓 \emph{Neyman-Pearson 范式}：固定 $n$，对于预先给定的检验水平 $\alpha\in(0,1)$，首先保证犯第 I 类错误的概率不超过 $\alpha$，再在此限制之下使 $P_\theta(\text{II})(\theta\in\Theta_1)$ 尽可能小。若 $\exists\alpha,\beta>0,\forall\theta\in\Theta_0,\alpha(R)\leq\alpha;\forall\theta\in\Theta_1,\beta(R)\leq\beta$，则 $\alpha,\beta$ 是检验程序的属性，即预先给定的可接受的长期错误率。
 
 此种范式下，$H_0$ 与 $H_1$ 一般来说地位不对等。原假设 $H_0$ 通常是受保护的，若证据不充分则不能予以拒绝；备择假设 $H_1$ 往往是我们真正感兴趣的，又称\emph{研究假设}。
+
+在~\ref{sec:7.1} 节中，我们强调过 Fisher 显著性检验中，“不拒绝”不等于“接受”。但在 Neyman-Perason 检验中，由于强调了两类错误，并量化了其概率，故若 $\beta(R)$ 足够小（即功效 $(1-\beta(R))$ 足够大），则可以接受 $H_0$。
 
 \end{document}
