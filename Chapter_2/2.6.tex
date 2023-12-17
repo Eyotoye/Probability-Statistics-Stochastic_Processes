@@ -14,11 +14,11 @@
 
 \begin{example}
     设 $X$ 为连续型随机变量，PDF 为 $f(x)$，考虑 $Y=X^2$。\\
-    从 CDF 入手，$\forall y>0,P(Y\leq y)=P(X^2\leq y)=P(-\sqrt{y}\leq X\leq \sqrt{y})=\int_{-\sqrt{y}}^{\sqrt{y}}f(x)\mathrm{d}x$，我们有 $Y$ 的 PDF 为 $l(y)=\frac{\mathrm{d}}{\mathrm{d}y}P(Y\leq y)=\frac{1}{2\sqrt{y}}(f(\sqrt{y})+f(-\sqrt{y}))(y>0)$。\\
+    从 CDF 入手，$\forall y>0,P(Y\leq y)=P(X^2\leq y)=P(-\sqrt{y}\leq X\leq \sqrt{y})=\int_{-\sqrt{y}}^{\sqrt{y}}f(x)\mathrm{d}x$，有 $Y$ 的 PDF 为 $l(y)=\frac{\mathrm{d}}{\mathrm{d}y}P(Y\leq y)=\frac{1}{2\sqrt{y}}(f(\sqrt{y})+f(-\sqrt{y}))(y>0)$。\\
     特别地，若 $X\sim N(0,1)$，称 $Y$ 服从自由度为 $1$ 的 $\chi^2$-分布，读作“卡方分布”。
 \end{example}
 
-若 $Y=g(X)$ 为随机变量，我们可以计算 $Y$ 的分布如下：
+若 $Y=g(X)$ 为随机变量，可以计算 $Y$ 的分布如下：
 \begin{itemize}
     \item $P(Y=y)=P(g(X)=y)=P(X\in g^{-1}(y))$
     \item $P(Y\leq y)=P(g(X)\leq y)=P(X\in g^{-1}((-\infty,y]))$

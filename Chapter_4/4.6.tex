@@ -36,7 +36,7 @@
 \end{proof}
 
 \begin{example}
-    若 $X\sim N(0,1)$，则 $M_X(t)=e^{\frac{t^2}2}=\sum_{n=0}^{+\infty}\frac{(\frac{t^2}2)^n}{n!}=\sum_{n=0}^{+\infty}\frac{(2n)!}{2^nn!}\frac{t^{2n}}{(2n)!}$，因此我们得出 $\mathrm E(X^{2n})=\frac{(2n)!}{2^nn!},\mathrm E(X^{2n+1})\equiv0\ (n=0,1,\cdots)$。\\
+    若 $X\sim N(0,1)$，则 $M_X(t)=e^{\frac{t^2}2}=\sum_{n=0}^{+\infty}\frac{(\frac{t^2}2)^n}{n!}=\sum_{n=0}^{+\infty}\frac{(2n)!}{2^nn!}\frac{t^{2n}}{(2n)!}$，因此 $\mathrm E(X^{2n})=\frac{(2n)!}{2^nn!},\mathrm E(X^{2n+1})\equiv0\ (n=0,1,\cdots)$。\\
     由此可以计算 $\mathrm{Var}(X)=\mathrm E(X^2)=1,\mathrm{Kurt}(X)=\mathrm E(X^4)=\frac{4!}{2^2\cdot2!}=3$。
 \end{example}
 
@@ -68,7 +68,7 @@
     设连续型随机变量 $X_1$ 和 $X_2$ 的 PDF 分别为 $f_1(x)=\frac{1}{\sqrt{2\pi}x}e^{-\frac{(\log x)^2}{2}},x>0$ 和 $f_2(x)=f_1(x)(1+\sin(2\pi\log x)),x>0$（$X_1$ 服从对数正态分布），则 $\mathrm E(X_2^n)=\mathrm E(X_1^n)+\int_0^{+\infty}x^nf_1(x)\sin(2\pi\log x)\mathrm dx$，其中后一项通过换元 $y=\log x-n$ 可以证明为 $0$，即 $X_1$ 和 $X_2$ 同矩但不同分布。
 \end{example}
 
-下面我们运用矩母函数，研究独立随机变量和的分布。
+下面运用矩母函数，研究独立随机变量和的分布。
 
 \begin{theorem}\label{thm:4.6.3}
     若随机变量 $X,Y$ 独立，$Z=X+Y$，则 $M_Z(t)=M_X(t)M_Y(t)$。
