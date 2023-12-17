@@ -41,7 +41,7 @@
 “其他”中的一个非常特殊的子类是所谓的混合型随机变量。
 
 \begin{definition}\label{def:2.1.2}
-  对于随机变量 $X$ 和 $\mathbb{R}$ 的可测子集 $I$（例如 $I=(a,b]$），令 $X^{-1}(I)=\{\omega\in\Omega|X(\omega)\in I\}\subset\Omega$ 为 $I$ 的原像集，我们定义记号 $P(X\in I)$ 表示“$X$ 的取值在 $I$ 中的概率”，其值为 $P(X^{-1}(I))$。
+  对于随机变量 $X$ 和 $\mathbb{R}$ 的可测子集 $I$（例如 $I=(a,b]$），令 $X^{-1}(I)=\{\omega\in\Omega|X(\omega)\in I\}\subset\Omega$ 为 $I$ 的原像集，定义记号 $P(X\in I)$ 表示“$X$ 的取值在 $I$ 中的概率”，其值为 $P(X^{-1}(I))$。
 \end{definition}
 
 例如，$P(a<X\leq b)=P(\{\omega|X(\omega)\in(a,b]\})$。
@@ -88,14 +88,14 @@
 
 可以证明，上述三条性质是任意函数 $F:\mathbb{R}\rightarrow\mathbb{R}$ 成为 CDF 的充要条件。
 
-思考：如果我们将 CDF 的定义改为 $P(X<x)$，上述性质会如何变化？
+思考：如果将 CDF 的定义改为 $P(X<x)$，上述性质会如何变化？
 
 \begin{proposition}
   若 $X,Y$ 为随机变量，则 $aX+bY,XY,X/Y\ (\text{需 }Y\neq 0)$ 都是随机变量。一般地，若 $g$ 为可测函数，则 $g(X,Y)$ 是随机变量。
 \end{proposition}
 
 \begin{definition}\label{def:2.1.4}
-  设 $X_1,X_2$ 的 CDF 分别为 $F_1,F_2$，我们称 $X_1$ 与 $X_2$ 同分布，若 $\forall x\in\mathbb{R},F_1(x)=F_2(x)$。
+  设 $X_1,X_2$ 的 CDF 分别为 $F_1,F_2$，称 $X_1$ 与 $X_2$ 同分布，若 $\forall x\in\mathbb{R},F_1(x)=F_2(x)$。
 \end{definition}
 
 \begin{proposition}
