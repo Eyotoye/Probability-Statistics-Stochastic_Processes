@@ -2,7 +2,23 @@
 \begin{document}
 
 \begin{example}
-    设连续掷一个六面骰 $60$ 次
+    设连续掷一个六面骰 $60$ 次，得到结果如下：
+
+    \bigskip
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        点数     & 1  & 2  & 3  & 4  & 5  & 6  & 总计 \\
+        \hline
+        观测频数 & 4  & 6  & 17 & 16 & 8  & 9  & 60   \\
+        \hline
+        期望频数 & 10 & 10 & 10 & 10 & 10 & 10 & 60   \\
+        \hline
+    \end{tabular}
+    \bigskip
+
+    检验 $H_0:\text{骰子是均匀的},H_1:\text{骰子不均匀}$。根据 Pearson 拟合优度检验，检验统计量为 $\chi^2=\sum_{i=1}^k\frac{(O_i-E_i)^2}{E_i}$，其中 $k=6$，$O_i$ 为观测频数，$E_i$ 为期望频数。
+
+    有如下一般性的定理：设 $k$ 为单元数，检验 $H_0:P(X\in\text{第 $i$ 单元})=p_i^0(i=1,\cdots,k)$，若 $H_0$ 为真，则当 $n\rightarrow\infty$ 时，上述检验统计量 $\chi^2$ 的分布收敛于 $\chi^2(k-1)$。
 \end{example}
 
 \end{document}
