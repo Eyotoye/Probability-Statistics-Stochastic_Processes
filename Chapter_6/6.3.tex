@@ -59,15 +59,15 @@
 
 然后是\emph{相合性}。若 $\forall\epsilon>0,\lim_{n\rightarrow+\infty}P(|\hat\theta-\theta|\geq\epsilon)=0$，则称 $\hat\theta$ 是 $\theta$ 的\emph{相合估计}。
 
-$\hat\theta$ 是 $\theta$ 的相合估计，当且仅当 $\hat\theta\overset{P}{\rightarrow}\theta$。例如，根据弱大数定律，$\bar X$ 是 $\mu$ 的相合估计。
+$\hat\theta$ 是 $\theta$ 的相合估计，当且仅当 $\hat\theta\overset{P}\rightarrow\theta$。例如，根据弱大数定律，$\bar X$ 是 $\mu$ 的相合估计。
 
 相合性是良好点估计的自然要求。
 
 \begin{example}
-    若随机变量 $X$ 的均值为 $\mu$，方差为 $\sigma^2$，考虑 $m_2=\frac1n\sum_{i=1}^n(X_i-\bar X)^2=\frac1n\sum_{i=1}^n(X_i-\mu)^2-(\bar X-\mu)^2$，由大数定律，$\frac1n\sum_{i=1}^n(X_i-\mu)^2\overset{P}{\rightarrow}\mathrm E((X_i-\mu)^2)=\sigma^2$，而 $(\bar X-\mu)^2\overset{P}{\rightarrow}0$，故 $m_2\overset{P}{\rightarrow}\sigma^2$，即 $m_2$ 是 $\sigma^2$ 的相合估计。同时，$S^2=\frac n{n-1}m_2\overset{P}{\rightarrow}\sigma^2$，故 $S^2$ 也是 $\sigma^2$ 的相合估计。
+    若随机变量 $X$ 的均值为 $\mu$，方差为 $\sigma^2$，考虑 $m_2=\frac1n\sum_{i=1}^n(X_i-\bar X)^2=\frac1n\sum_{i=1}^n(X_i-\mu)^2-(\bar X-\mu)^2$，由大数定律，$\frac1n\sum_{i=1}^n(X_i-\mu)^2\overset{P}\rightarrow\mathrm E((X_i-\mu)^2)=\sigma^2$，而 $(\bar X-\mu)^2\overset{P}\rightarrow0$，故 $m_2\overset{P}\rightarrow\sigma^2$，即 $m_2$ 是 $\sigma^2$ 的相合估计。同时，$S^2=\frac n{n-1}m_2\overset{P}\rightarrow\sigma^2$，故 $S^2$ 也是 $\sigma^2$ 的相合估计。
 \end{example}
 
-最后是\emph{渐进正态性}。若 $\frac{\hat\theta-\theta}{\mathrm{Se}(\hat\theta)}\overset{d}{\rightarrow}Z\sim N(0,1)$，则称 $\hat\theta$ 是 $\theta$ 的\emph{渐进正态估计}。
+最后是\emph{渐进正态性}。若 $\frac{\hat\theta-\theta}{\mathrm{Se}(\hat\theta)}\overset{d}\rightarrow Z\sim N(0,1)$，则称 $\hat\theta$ 是 $\theta$ 的\emph{渐进正态估计}。
 
 例如，根据 CLT，$\bar X$ 是 $\mu$ 的渐进正态估计，且 $\mathrm{Se}(\bar X)=\frac{\sigma}{\sqrt n}$。
 
