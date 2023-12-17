@@ -7,7 +7,7 @@
 
 在选择估计量时，有若干准则。首先介绍所谓\emph{无偏性}。
 
-我们称 $\mathrm E(\hat\theta-\theta)=\mathrm E(\hat\theta)-\theta$ 为 $\hat\theta$ 的\emph{偏差}（bias）。
+称 $\mathrm E(\hat\theta-\theta)=\mathrm E(\hat\theta)-\theta$ 为 $\hat\theta$ 的\emph{偏差}（bias）。
 
 \begin{definition}\label{def:6.3.1}
     设 $\hat\theta$ 是 $\theta$ 的估计量，若 $\forall\theta,\mathrm E(\hat\theta-\theta)=0$，则称 $\hat\theta$ 为 $\theta$ 的一个\emph{无偏估计（量）}。
@@ -35,7 +35,7 @@
 
 下面介绍\emph{均方误差}准则。
 
-我们定义均方误差（MSE）为 $\mathrm E((\hat\theta-\theta)^2)=\mathrm{Var}(\hat\theta)+\mathrm E^2(\hat\theta-\theta)$，其中等号右边的两项分别反映了\emph{精确度}（precision）和\emph{准确度}（accuracy）。
+定义均方误差（MSE）为 $\mathrm E((\hat\theta-\theta)^2)=\mathrm{Var}(\hat\theta)+\mathrm E^2(\hat\theta-\theta)$，其中等号右边的两项分别反映了\emph{精确度}（precision）和\emph{准确度}（accuracy）。
 
 \begin{definition}\label{def:6.3.2}
     若 $\hat\theta_1,\hat\theta_2$ 为 $\theta$ 的无偏估计，且 $\forall\theta,\mathrm{Var}(\hat\theta_1)\leq\mathrm{Var}(\hat\theta_2)$，且存在一个 $\theta$ 的值使得不等号严格成立，则称 $\hat\theta_1$ 在均方误差意义下优于 $\hat\theta_2$。

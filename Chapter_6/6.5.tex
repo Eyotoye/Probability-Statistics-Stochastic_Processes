@@ -1,7 +1,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-Bayes 学派看待世界的视角与频率学派不同。简单来说，在 Bayes 方法中，对未知参数 $\theta$ 的认知可以由概率分布来刻画，设对应的随机变量为 $\Theta$，则 $\theta$ 为 $\Theta$ 的实现值。在搜集数据前对 $\Theta$ 的分布的认知 $f_\Theta(\theta)$ 称为\emph{先验分布}。将试验观测抽象为随机变量 $X$，当参数为 $\theta$ 时，观测数据的分布为 $f_{X|\Theta}(x|\theta)$，称为\emph{样本分布}。当观测到数据 $x$ 后，可以利用 Bayes 公式来更新对 $\Theta$ 的认知，得到\emph{后验分布} $f_{\Theta|X}(\theta|x)=\frac{f_{X|\Theta}(x|\theta)f_\Theta(\theta)}{f_X(x)}$。这样，我们就可以利用后验分布来对 $\Theta$ 进行推断。
+Bayes 学派看待世界的视角与频率学派不同。简单来说，在 Bayes 方法中，对未知参数 $\theta$ 的认知可以由概率分布来刻画，设对应的随机变量为 $\Theta$，则 $\theta$ 为 $\Theta$ 的实现值。在搜集数据前对 $\Theta$ 的分布的认知 $f_\Theta(\theta)$ 称为\emph{先验分布}。将试验观测抽象为随机变量 $X$，当参数为 $\theta$ 时，观测数据的分布为 $f_{X|\Theta}(x|\theta)$，称为\emph{样本分布}。当观测到数据 $x$ 后，可以利用 Bayes 公式来更新对 $\Theta$ 的认知，得到\emph{后验分布} $f_{\Theta|X}(\theta|x)=\frac{f_{X|\Theta}(x|\theta)f_\Theta(\theta)}{f_X(x)}$。这样，就可以利用后验分布来对 $\Theta$ 进行推断。
 
 \begin{example}
     某枚硬币正面向上的概率为未知参数 $\theta$，设先验分布为 $f_\Theta(\theta)=1\ (\theta\in(0,1))$（无信息先验，体现了所谓的同等无知原则，是 Bayes 统计常用假设）。现抛硬币 $n$ 次，观测到正面向上的次数为 $x$。\\
