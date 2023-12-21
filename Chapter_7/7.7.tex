@@ -1,0 +1,93 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+设有两独立总体如下。
+
+\bigskip
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    总体 & 均值    & 方差         & 随机样本         \\
+    \hline
+    $X$  & $\mu_1$ & $\sigma_1^2$ & $X_1,\cdots,X_n$ \\
+    \hline
+    $Y$  & $\mu_2$ & $\sigma_2^2$ & $Y_1,\cdots,Y_m$ \\
+    \hline
+\end{tabular}
+\bigskip
+
+若要比较两总体均值，采用检验统计量 $\bar X-\bar Y$，有 $\mathrm E(\bar X-\bar Y)=\mu_1-\mu_2,\mathrm{Var}(\bar X-\bar Y)=\frac{\sigma_1^2}n+\frac{\sigma_2^2}m=\mathrm{Se}^2(\bar X-\bar Y)$，其中 $\mathrm{Se}(\bar X-\bar Y)$ 为标准误，若未知则需要进行估计。
+
+还有一种常见情形是比较两总体方差。以下以 $X,Y$ 均服从正态分布为例。（双侧）检验 $H_0:\sigma_1^2=\sigma_2^2,H_1:\sigma_1^2\neq\sigma_2^2$。利用 $\frac{(n-1)S_1^2}{\sigma_1^2}\sim\chi^2(n-1),\frac{(m-1)S_2^2}{\sigma_2^2}\sim\chi^2(m-1)$ 且独立，有 $\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}\sim F(n-1,m-1)$。检验统计量为 $\frac{S_1^2}{S_2^2}$，若 $H_0$ 为真，则 $\frac{S_1^2}{S_2^2}\sim F(n-1,m-1)$。检验准则为若 $\frac{S_1^2}{S_2^2}\geq F_{\frac\alpha2}(n-1,m-1)$ 或 $\frac{S_1^2}{S_2^2}\leq F_{1-\frac\alpha2}(n-1,m-1)$ 则拒绝 $H_0$。其中 $F_{1-\frac\alpha2}(n-1,m-1)=\frac1{F_{\frac\alpha2}(m-1,n-1)}$。
+
+\begin{example}
+    研究阿司匹林对于降低心脏病发病率的有效性，样本数据如下。
+
+    \bigskip
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+                 & 心脏病发作 & 未发作  & 总计        & 发作率   \\
+        \hline
+        阿司匹林 & $k_1=139$  & $10898$ & $n_1=11037$ & $1.26\%$ \\
+        \hline
+        安慰剂   & $k_2=239$  & $10795$ & $n_2=11034$ & $2.17\%$ \\
+        \hline
+    \end{tabular}
+    \bigskip
+
+    检验 $H_0:p_1=p_2,H_1:p_1<p_2$，其中 $p_1,p_2$ 为总体发作率，原假设和备择假设分别表示“有效”和“无效”。检验统计量为 $P_1-P_2$，其中 $P_1,P_2$ 为样本发作率（随机变量），有 $\mathrm E(P_1-P_2)=p_1-p_2,\mathrm{Var}(P_1-P_2)=\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}=\mathrm{Se}^2$，由 CLT 有 $\frac{(P_1-P_2)-(p_1-p_2)}{\mathrm{Se}}$ 近似服从 $N(0,1)$。在 $H_0$ 为真前提下有 $p_1=p_2=p$，根据观测值给出 $p$ 的估计 $p^*=\frac{k_1+k_2}{n_1+n_2}=\frac{139+239}{10898+10795}$，故 $\mathrm{Se}^2=p(1-p)(\frac 1{n_1}+\frac 1{n_2})\approx p^*(1-p^*)(\frac 1{n_1}+\frac 1{n_2})\approx0.00176^2=\widehat{\mathrm{Se}}^2$。此时近似有 $\frac{P_1-P_2}{\widehat{\mathrm{Se}}}\sim N(0,1)$，故 $p$ 值为 $P(P_1-P_2\leq1.26\%-2.17\%)\approx P(Z\leq\frac{1.26\%-2.17\%}{0.00176})\approx 10^{-7}$，其中 $Z\sim N(0,1)$。故拒绝 $H_0$。
+\end{example}
+
+上例的实验设计中需注意的几点：
+\begin{enumerate}
+    \item 随机分组
+    \item 双盲试验
+    \item 样本容量 $n$ 要充分大
+\end{enumerate}
+
+\begin{example}
+    某大型出租车公司比较两种油 A 和 B 的行驶里程，实验为将 $100$ 辆车随机平分为两组，样本数据如下。
+
+    \bigskip
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+             & 样本容量 & 平均里程 & 标准差 \\
+        \hline
+        油 A & $50$     & $25$     & $5.00$ \\
+        \hline
+        油 B & $50$     & $26$     & $4.00$ \\
+        \hline
+    \end{tabular}
+    \bigskip
+
+    直观来看，两组数据的标准差均较大，因此可能会统计不显著。进行（双边）检验 $H_0:\mu_A=\mu_B,H_1:\mu_A\neq\mu_B$，其中 $\mu_A,\mu_B$ 分别为油 A 和 B 的总体均值。检验统计量为 $\bar X_A-\bar X_B$，当 $H_0$ 为真时，近似有 $\frac{\bar X_A-\bar X_B}{\widehat{\mathrm{Se}}}\sim N(0,1)$，其中 $\widehat{\mathrm{Se}}$ 为标准误的估计 $\sqrt{\frac{S_A^2}{n_1}+\frac{S_B^2}{n_2}}$。$p$ 值为 $P(\left|\frac{\bar X_A-\bar X_B}{\widehat{\mathrm{Se}}}\right|\geq\left|\frac{25-26}{\sqrt{\frac{5^2}{50}+\frac{4^2}{50}}}\right|)\approx P(|Z|\geq1.1)\approx 0.1357\times2$，其中 $Z\sim N(0,1)$。故不拒绝 $H_0$。
+\end{example}
+
+如果是两相关总体比较，有更好的方法，如下例。
+
+\begin{example}
+    仍研究上例中的问题，但改进实验设计为：同一辆车（固定司机）在不同的日子加不同的油，即每辆车都测试两种油。样本数据如下。
+
+    \bigskip
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        车号   & 油 A    & 油 B    & 差异 $d_i$ \\
+        \hline
+        1      & $27.01$ & $26.95$ & $0.06$     \\
+        \hline
+        2      & $20.00$ & $20.44$ & $-0.44$    \\
+        \hline
+        \vdots & \vdots  & \vdots  & \vdots     \\
+        \hline
+        10     & $25.22$ & $26.01$ & $-0.79$    \\
+        \hline
+        均值   & $25.00$ & $25.60$ & $-0.60$    \\
+        \hline
+        标准差 & $4.27$  & $4.10$  & $0.61$     \\
+        \hline
+    \end{tabular}
+    \bigskip
+
+    可以看出 $d_i$ 的标准差明显较小。检验 $H_0:\mu_d=0,H_1:\mu_d\neq0$，假设近似有 $d_i\sim N(\mu,\sigma^2)$，则 $\frac{\bar d-\mu_d}{\frac{S_d}{\sqrt n}}\sim t(n-1)$，$p$ 值为 $P(|t_9|\geq\left|\frac{-0.60}{\frac{0.61}{\sqrt{10}}}\right|)\approx 0.006\times2$，其中 $t_9\sim t(9)$。故拒绝 $H_0$。
+\end{example}
+
+\end{document}

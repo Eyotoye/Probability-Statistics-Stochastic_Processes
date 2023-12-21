@@ -1,0 +1,21 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{example}
+    设有两种硬币，正面朝上的概率分别为 $p=0.5,0.7$。现有一硬币，掷之 $n=10$ 次，观测到 $X=x$ 次正面向上。检验 $H_0:p=0.5,H_1:p=0.7$。选取\emph{似然比}统计量 $\frac{P(X=x|H_0)}{P(X=x|H_1)}=\frac{\tbinom nx0.5^x(1-0.5)^{n-x}}{\tbinom nx0.7^x(1-0.7)^{n-x}}$，检验准则为若似然比 $\leq C$ 则拒绝 $H_0$，则需满足 $P(\text{似然比}\leq C|H_0)\leq\alpha$，可据此确定 $C$。
+\end{example}
+
+当 $H_0,H_1$ 均为简单假设时，Neyman 与 Pearson 证明了似然比检验的最优性（即功效最大）。当 $H_0,H_1$ 不全为简单假设时，似然比检验一般来说不是最优的，但通常表现不错。
+
+一般地，若检验 $H_0:\theta\in\Theta_0,H_1:\theta\in\Theta_1$，随机样本 $X_1,\cdots,X_n$，则\emph{广义似然比}为 $\Lambda^*=\frac{\sup\limits_{\theta\in\Theta_0}L(\theta)}{\sup\limits_{\theta\in\Theta_1}L(\theta)}$，其中 $L(\theta)$ 为似然函数。实际应用中，通常采用其修正形式 $\Lambda=\frac{\sup\limits_{\theta\in\Theta_0}L(\theta)}{\sup\limits_{\theta\in\Theta_0\cup\Theta_1}L(\theta)}=\min\{\Lambda^*,1\}$，其分母 $\sup\limits_{\theta\in\Theta_0\cup\Theta_1}L(\theta)$ 等于 $L(\theta^*)$，其中 $\theta^*$ 表示 MLE。显然 $\Lambda=\Lambda(X_1,\cdots,X_n)$ 越小越反对 $H_0$，故应根据 $P(\Lambda\leq\lambda_0|H_0)\leq\alpha$ 确定拒绝域。
+
+\begin{theorem}\label{thm:7.6.1}
+    在一定的光滑性条件下，当 $n\rightarrow\infty$ 时，在 $H_0$ 为真的前提下，$-2\log\Lambda\overset{d}\rightarrow\chi^2(d)$，其中自由度 $d=\dim(\Theta_0\cup\Theta_1)-\dim(\Theta_0)$，$\dim$ 表示自由参数个数。
+\end{theorem}
+
+\begin{example}
+    (多项分布检验)\\
+    设 $X=(X_1,\cdots,X_k)$ 服从多项分布，参数为 $n,p_1,\cdots,p_k$，检验 $H_0:p_1=p_1^0,\cdots,p_k=p_k^0$。观测频数为 $n_1,\cdots,n_k$，满足 $n_1+\cdots+n_k=n$。此时似然函数为 $L(p_1,\cdots,p_k)=\tbinom{n}{n_1,\cdots,n_k}p_1^{n_1}\cdots p_k^{n_k}$，故似然比为 $\Lambda=\frac{L(p_1^0,\cdots,p_k^0)}{L(p_1^*,\cdots,p_k^*)}=\frac{{p_1^0}^{n_1}\cdots {p_k^0}^{n_k}}{{p_1^*}^{n_1}\cdots {p_k^*}^{n_k}}$，其中 $p_i^*=\frac{n_i}n$。仍记 $O_i=np_i^*=n_i,E_i=np_i^0$，则 $-2\log\Lambda=-2\sum_{i=1}^kn_i\log\frac{p_i^0}{p_i^*}=2\sum_{i=1}^kO_i\log\frac{O_i}{E_i}$。利用 Taylor 展开 $x\log\frac x{x_0}=0+(x-x_0)+\frac{(x-x_0)^2}{2x_0}+\cdots$，有 $-2\log\Lambda=2\sum_{i=1}^k(O_i-E_i)+\sum_{i=1}^k\frac{(O_i-E_i)^2}{E_i}+\cdots=\sum_{i=1}^k\frac{(O_i-E_i)^2}{E_i}+\cdots$。由定理 \ref{thm:7.6.1}，当 $n\rightarrow\infty$ 时，$-2\log\Lambda\overset{d}\rightarrow\chi^2(d)$，其中 $d=(k-1)-0=k-1$。可以从中发现与 Pearson 拟合优度检验的联系。
+\end{example}
+
+\end{document}

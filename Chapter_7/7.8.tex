@@ -1,0 +1,8 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{example}
+    设有两种硬币，正面朝上的概率分别为 $p=0.5,0.7$。现有一硬币，掷之 $n$ 次，观测到 $X=x$ 次正面向上。检验 $H_0:p=0.5,H_1:p=0.7$。与之前不同，此时我们假定有先验概率 $P(H_0),P(H_1)$（如掌握一些硬币来源的信息），则 Bayes 检验准则为若后验概率比 $\frac{P(H_0|X=x)}{P(H_1|X=x)}<1$ 则拒绝 $H_0$。$\frac{P(H_0|X=x)}{P(H_1|X=x)}=\frac{P(H_0)P(X=x|H_0)}{P(H_1)P(X=x|H_1)}$，即先验比与似然比的乘积。
+\end{example}
+
+\end{document}

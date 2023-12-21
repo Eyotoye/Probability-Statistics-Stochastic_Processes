@@ -23,6 +23,28 @@
 
 应用中，需期望频数 $E_i=np_i^0\geq 5$，才可以保证应用上述定理的效果较好。
 
+\begin{example}
+    对于 $k=2$ 的简单情形，即检验 $H_0:p_1=p_1^0,p_2=1-p_1^0$，取检验统计量 $\chi^2=\frac{(O_1-np_1^0)^2}{np_1^0}+\frac{(O_2-n(1-p_1^0))^2}{n(1-p_1^0)}=\frac{(O_1-np_1^0)^2}{np_1^0(1-p_1^0)}$，近似有 $\chi^2\sim\chi^2(1)$。可以从中发现与 CLT 的联系：$\mathrm E(O_1)=np_1^0,\mathrm{Var}(O_1)=np_1^0(1-p_1^0)$，而 $\chi^2(1)$ 分布正是标准正态分布的平方。
+\end{example}
+
+需要强调，统计显著不一定实际显著，如下例。
+
+\begin{example}
+    设连续掷一个六面骰 $6\times10^{10}$ 次，得到结果如下：
+
+    \bigskip
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        点数          & 1       & 2               & 3              & 4             & 5              & 6               \\
+        \hline
+        $O_i-10^{10}$ & $-10^6$ & $1.5\times10^6$ & $-2\times10^6$ & $4\times10^6$ & $-3\times10^6$ & $0.5\times10^6$ \\
+        \hline
+    \end{tabular}
+    \bigskip
+
+    \noindent 检验 $H_0:\text{骰子是均匀的},H_1:\text{骰子不均匀}$。则 $\chi^2$ 统计量的观测值为 $\frac{(-10^6)^2}{10^{10}}+\cdots=3250$，故 $p$ 值为 $P(\chi^2\geq3250)\ll0.00001$，其中近似有 $\chi^2\sim\chi^2(5)$。$p$ 值非常小，拒绝 $H_0$。但实际上，观测值给出的 MLE 为 $p_1^*=\frac{10^{10}-10^6}{6\times10^{10}}=\frac16-\frac16\times10^{-4}$，与 $\frac16$ 相差非常小。
+\end{example}
+
 下面介绍列联表（独立性）检验。
 
 \begin{example}
