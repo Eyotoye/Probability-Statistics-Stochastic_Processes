@@ -15,7 +15,7 @@
 \end{tabular}
 \bigskip
 
-若要比较两总体均值，采用检验统计量 $\bar X-\bar Y$，有 $\mathrm E(\bar X-\bar Y)=\mu_1-\mu_2,\mathrm{Var}(\bar X-\bar Y)=\frac{\sigma_1^2}n+\frac{\sigma_2^2}m=\mathrm{Se}^2(\bar X-\bar Y)$，其中 $\mathrm{Se}(\bar X-\bar Y)$ 为标准误，若未知则需要进行估计。
+若要比较两总体均值，取检验统计量 $\bar X-\bar Y$，有 $\mathrm E(\bar X-\bar Y)=\mu_1-\mu_2,\mathrm{Var}(\bar X-\bar Y)=\frac{\sigma_1^2}n+\frac{\sigma_2^2}m=\mathrm{Se}^2(\bar X-\bar Y)$，其中 $\mathrm{Se}(\bar X-\bar Y)$ 为标准误，若未知则需要进行估计。
 
 还有一种常见情形是比较两总体方差。以下以 $X,Y$ 均服从正态分布为例。（双侧）检验 $H_0:\sigma_1^2=\sigma_2^2,H_1:\sigma_1^2\neq\sigma_2^2$。利用 $\frac{(n-1)S_1^2}{\sigma_1^2}\sim\chi^2(n-1),\frac{(m-1)S_2^2}{\sigma_2^2}\sim\chi^2(m-1)$ 且独立，有 $\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}\sim F(n-1,m-1)$。检验统计量为 $\frac{S_1^2}{S_2^2}$，若 $H_0$ 为真，则 $\frac{S_1^2}{S_2^2}\sim F(n-1,m-1)$。检验准则为若 $\frac{S_1^2}{S_2^2}\geq F_{\frac\alpha2}(n-1,m-1)$ 或 $\frac{S_1^2}{S_2^2}\leq F_{1-\frac\alpha2}(n-1,m-1)$ 则拒绝 $H_0$。其中 $F_{1-\frac\alpha2}(n-1,m-1)=\frac1{F_{\frac\alpha2}(m-1,n-1)}$。
 
@@ -34,7 +34,7 @@
     \end{tabular}
     \bigskip
 
-    检验 $H_0:p_1=p_2,H_1:p_1<p_2$，其中 $p_1,p_2$ 为总体发作率，原假设和备择假设分别表示“有效”和“无效”。检验统计量为 $P_1-P_2$，其中 $P_1,P_2$ 为样本发作率（随机变量），有 $\mathrm E(P_1-P_2)=p_1-p_2,\mathrm{Var}(P_1-P_2)=\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}=\mathrm{Se}^2$，由 CLT 有 $\frac{(P_1-P_2)-(p_1-p_2)}{\mathrm{Se}}$ 近似服从 $N(0,1)$。在 $H_0$ 为真前提下有 $p_1=p_2=p$，根据观测值给出 $p$ 的估计 $p^*=\frac{k_1+k_2}{n_1+n_2}=\frac{139+239}{10898+10795}$，故 $\mathrm{Se}^2=p(1-p)(\frac 1{n_1}+\frac 1{n_2})\approx p^*(1-p^*)(\frac 1{n_1}+\frac 1{n_2})\approx0.00176^2=\widehat{\mathrm{Se}}^2$。此时近似有 $\frac{P_1-P_2}{\widehat{\mathrm{Se}}}\sim N(0,1)$，故 $p$ 值为 $P(P_1-P_2\leq1.26\%-2.17\%)\approx P(Z\leq\frac{1.26\%-2.17\%}{0.00176})\approx 10^{-7}$，其中 $Z\sim N(0,1)$。故拒绝 $H_0$。
+    检验 $H_0:p_1=p_2,H_1:p_1<p_2$，其中 $p_1,p_2$ 为总体发作率，原假设和备择假设分别表示“有效”和“无效”。检验统计量为 $P_1-P_2$，其中 $P_1,P_2$ 为样本发作率（随机变量），有 $\mathrm E(P_1-P_2)=p_1-p_2,\mathrm{Var}(P_1-P_2)=\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}=\mathrm{Se}^2$，由 CLT 有 $\frac{(P_1-P_2)-(p_1-p_2)}{\mathrm{Se}}$ 近似服从 $N(0,1)$。在 $H_0$ 为真前提下有 $p_1=p_2=p$，根据观测值给出 $p$ 的估计 $p^*=\frac{k_1+k_2}{n_1+n_2}=\frac{139+239}{11037+11034}$，故 $\mathrm{Se}^2=p(1-p)(\frac 1{n_1}+\frac 1{n_2})\approx p^*(1-p^*)(\frac 1{n_1}+\frac 1{n_2})\approx0.00176^2=\widehat{\mathrm{Se}}^2$。此时近似有 $\frac{P_1-P_2}{\widehat{\mathrm{Se}}}\sim N(0,1)$，故 $p$ 值为 $P(P_1-P_2\leq1.26\%-2.17\%)\approx P(Z\leq\frac{1.26\%-2.17\%}{0.00176})\approx 10^{-7}$，其中 $Z\sim N(0,1)$。故拒绝 $H_0$。
 \end{example}
 
 上例的实验设计中需注意的几点：

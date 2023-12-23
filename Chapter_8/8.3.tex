@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+为估计参数 $\beta_0,\beta_1$，定义损失函数 $s_i(\beta_0,\beta_1)=(y_i-(\beta_0+\beta_1x_i))^2$，记 $s(\beta_0,\beta_1)=\sum_{i=1}^ns_i(\beta_0,\beta_1)$，则目标是最小化 $s(\beta_0,\beta_1)$。直接求导可得最小值点为 $\hat\beta_1=\frac{\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)}{\sum_{i=1}^n(x_i-\bar x)^2}=\frac{\sum_{i=1}^n(x_i-\bar x)y_i}{S_{xx}},\hat\beta_0=\bar y-\hat\beta_1\bar x=\sum_{i=1}^n(\frac1n-\frac{(x_i-\bar x)\bar x}{S_{xx}})y_i$，其中 $S_{xx}=\sum_{i=1}^n(x_i-\bar x)^2$。记 $\hat y=\hat\beta_0+\hat\beta_1x$。
+
+如果采用 \ref{sec:8.2}~节的建模，上述计算对任意的 $(X,Y)$ 总是可行的，但其实际效果如何取决于选择线性模型是否合理。
+
+\begin{proposition}
+    $\hat\beta_1,\hat\beta_0$ 分别是 $\beta_1,\beta_0$ 的无偏估计。
+\end{proposition}
+
+\begin{proof}
+    计算有 $\mathrm E(\hat\beta_1)=\frac{\sum_{i=1}^n(x_i-\bar x)\mathrm E(y_i)}{S_{xx}}=\frac{\sum_{i=1}^n(x_i-\bar x)(\beta_0+\beta_1x_i)}{S_{xx}}=\frac{\beta_1\sum_{i=1}^n(x_i-\bar x)x_i}{S_{xx}}=\frac{\beta_1\sum_{i=1}^n(x_i-\bar x)^2}{S_{xx}}=\beta_1$，以及 $\mathrm E(\hat\beta_0)=\mathrm E(\bar y-\hat\beta_1\bar x)=\frac1n\sum_{i=1}^n\mathrm E(y_i)-\bar x\mathrm E(\hat\beta_1)=\frac1n\sum_{i=1}^n(\beta_0+\beta_1x_i)-\bar x\beta_1=\beta_0$。
+\end{proof}
+
+进一步计算可以得出 $\mathrm{Var}(\hat\beta_1)=\mathrm{Var}\left(\frac{\sum_{i=1}^n(x_i-\bar x)y_i}{S_{xx}}\right)=\sum_{i=1}^n\frac{(x_i-\bar x)^2}{S_{xx}^2}\mathrm{Var}(y_i)=\frac1{S_{xx}^2}\sum_{i=1}^n(x_i-\bar x)^2\sigma^2=\frac{\sigma^2}{S_{xx}}$，以及 $\mathrm{Var}(\hat\beta_0)=\mathrm{Var}(\sum_{i=1}^n(\frac1n-\frac{(x_i-\bar x)\bar x}{S_{xx}})y_i)=\sum_{i=1}^n(\frac1n-\frac{(x_i-\bar x)\bar x}{S_{xx}})^2\sigma^2=(n\cdot\frac1{n^2}-\frac{\sum_{i=1}^n2(x_i-\bar x)\bar x}{nS_{xx}}+\frac{\sum_{i=1}^n(x_i-\bar x)^2\bar x^2}{S_{xx}^2})\sigma^2=(\frac1n+\frac{\bar x^2}{S_{xx}})\sigma^2=\frac{\sigma^2}{S_{xx}}\frac{\sum_{i=1}^nx_i^2}{n}$。
+
+可以将 $x_i$ 和 $y_i$ 的关系改写成某种“中心化”处理的形式：$y_i=\beta_0+\beta_1\bar x+\beta_1(x_i-\bar x)+\epsilon_i$，则其中的常数项 $\beta_0+\beta_1\bar x$ 的估计为 $\hat\beta_0+\hat\beta_1\bar x=\bar y$。
+
+当 $x=x_i$ 时，拟合直线上相应点为 $(x_i,\hat\beta_0+\hat\beta_1x_i)$。记 $\hat y_i=\hat\beta_0+\hat\beta_1x_i$ 为在 $x=x_i$ 处 $y$ 的拟合值，$y_i-\hat y_i$ 称之为\emph{残差}（Residual）或\emph{误差}。误差平方和（Sum of Squared Errors, SSE）或残差平方和（Residual Sum of Squares, RSS）为 $SSE=\sum_{i=1}^n(y_i-\hat y_i)^2=\sum_{i=1}^n(y_i-(\hat\beta_0+\hat\beta_1x_i))^2$。
+
+\begin{proposition}
+    $\hat\sigma^2=\frac{SSE}{n-2}$ 是 $\sigma^2$ 的无偏估计。
+\end{proposition}
+
+还可以据此给出 $\hat\beta_1,\hat\beta_0$ 的标准差的估计 $\widehat{\mathrm{Se}}(\hat\beta_1)=\frac{\hat\sigma}{\sqrt{S_{xx}}},\widehat{\mathrm{Se}}(\hat\beta_0)=\hat\sigma\sqrt{\frac1n+\frac{\bar x^2}{S_{xx}}}$。
+
+\end{document}

@@ -1,0 +1,16 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\emph{回归问题}可以表述为：已知存在变量关系 $Y=f(X_1,\cdots,X_n)+\epsilon$，其中 $Y$ 称为\emph{因变量}或\emph{响应变量}，$X_1,\cdots,X_n$ 称为\emph{自变量}、\emph{回归变量}或\emph{预测变量}，而 $\epsilon$ 为随机误差，可能无法测量或不重要，或在建模时无法想到。
+
+如果假定 $\mathrm E(\epsilon|X_1,\cdots,X_n)=0$，则 $\mathrm E(Y|X_1,\cdots,X_n)=f(X_1,\cdots,X_n)$，这便是 $Y$ 对 $X_1,\cdots,X_n$ 的（均值）回归。如果有 $(X_1,\cdots,X_n,Y)$ 的样本数据，则可以通过有监督的学习，推断出 $f$ 的信息。
+
+模型中的 $X_1,\cdots,X_n$ 可以是随机的，也可以是非随机的控制变量。例如，随机抽取一个人，则其所有属性（$X_1,\cdots,X_n$ 和 $Y$）都是随机的。但应用中，一律将 $X_1,\cdots,X_n$ 视为非随机的。
+
+最后，我们假设 $\mathrm E(\epsilon)=0,\mathrm{Var}(\epsilon)=\sigma^2$，其中 $\sigma^2$ 未知。与 $\sigma^2$ 大小有关的因素包括：
+\begin{enumerate}
+    \item 模型中的要素是否完全
+    \item $f$ 的形式是否准确
+\end{enumerate}
+
+\end{document}

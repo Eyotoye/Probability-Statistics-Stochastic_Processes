@@ -1,0 +1,22 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+沿用 \ref{sec:8.2}~节的建模，当 $x=x_0$ 时，$y_0=\beta_0+\beta_1x_0+\epsilon_0$，其中 $\epsilon_0\sim N(0,\sigma^2)$。记 $\mu_0=\mathrm E(y_0)=\beta_0+\beta_1x_0$，则 $\mu_0$ 的预测正是拟合直线上 $x_0$ 处的取值 $\hat y_0=\hat\beta_0+\hat\beta_1x_0=\bar y+\hat\beta_1(x_0-\bar x)=\sum_{i=1}^n(\frac1n+\frac{(x_i-\bar x)(x_0-\bar x)}{S_{xx}})y_i$。计算得 $\mathrm E(\hat y_0)=\mathrm E(\hat\beta_0+\hat\beta_1x_0)=\beta_0+\beta_1x_0=\mu_0,\mathrm{Se}^2(\hat y_0)=\mathrm{Var}(\hat y_0)=\sum_{i=1}^n(\frac1n+\frac{(x_i-\bar x)(x_0-\bar x)}{S_{xx}})^2\sigma^2=\sigma^2(\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}})$。
+
+利用 $\frac{\hat y_0-\mu_0}{\mathrm{Se}(\hat y_0)}\sim N(0,1)$，以及标准误的估计为 $\widehat{\mathrm{Se}}(\hat y_0)=\hat\sigma\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}}}$，有 $\frac{\hat y_0-\mu_0}{\widehat{\mathrm{Se}}(\hat y_0)}\sim t(n-2)$，可以据此给出 $\mu_0$ 的 $(1-\alpha)$-置信的（双侧）区间估计为 $(\hat y_0-t_{\frac\alpha2}(n-2)\widehat{\mathrm{Se}}(\hat y_0),\hat y_0+t_{\frac\alpha2}(n-2)\widehat{\mathrm{Se}}(\hat y_0))$。
+
+由于 $y_0\sim N(\mu_0,\sigma^2)$，$\mu_0$（若已知）是 $y_0$ 的均方意义下的最优估计。由于 $\mu_0$ 未知，用 $\hat y_0=\hat\beta_0+\hat\beta_1x_0$ 代替，也是 $y_0$ 的一个良好估计。可以证明 $y_0$ 与 $\hat y_0$ 相互独立，且 $\hat y_0-y_0$ 服从正态分布，有 $\mathrm E(\hat y_0-y_0)=0,\mathrm{Var}(\hat y_0-y_0)=\mathrm{Var}(\hat y_0)+\mathrm{Var}(y_0)=\sigma^2(1+\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}})$，即 $\frac{\hat y_0-y_0}{\sigma\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}}}}\sim N(0,1)$，分母的估计为 $\hat\sigma\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}}}$，有 $\frac{\hat y_0-y_0}{\hat\sigma\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}}}}\sim t(n-2)$，可以据此给出 $y_0$ 的 $(1-\alpha)$-置信的（双侧）区间估计为 $(\hat y_0-t_{\frac\alpha2}(n-2)\hat\sigma\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}}},\hat y_0+t_{\frac\alpha2}(n-2)\hat\sigma\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}}})$。
+
+% TODO 注：$\beta$ 的理解——结合实际
+
+当 $x_0$ 与 $\bar x$ 距离增加，估计误差会增大。特别是如果 $x_0$ 落在数据点范围外（即需要外推），则需谨慎对待。
+
+对于固定截距为 $0$ 的回归，上述推导中的自由度由 $(n-2)$ 改为 $(n-1)$。
+
+还需注意，由于模型中 $X$ 与 $Y$ 不是对称的，故不能将回归方程逆转使用。
+
+% TODO Example: $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$
+
+% TODO 回归的常见应用：(a) 描述趋势 (b) 预测均值、取值 (c) 试验控制
+
+\end{document}

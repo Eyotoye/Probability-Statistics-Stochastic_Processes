@@ -1,0 +1,19 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+本节开始讨论\emph{简单线性回归}，其具体形式为 $Y=\beta_0+\beta_1X+\epsilon$，该式称为理论模型，其中 $\beta_0$ 为\emph{截距}，$\beta_1$ 为\emph{斜率}或\emph{回归系数}，二者统称\emph{回归参数}，均未知且待定。
+
+这里的“简单”指的是只有一个自变量 $X$，“线性”指的是 $f$ 关于 $\beta_0,\beta_1$ 线性。
+
+设对 $(X,Y)$ 进行 $n$ 次独立观测，得到样本 $(x_1,y_1),\cdots,(x_n,y_n)$，即
+\begin{align*}
+    \left\{
+    \begin{aligned}
+         & y_i=\beta_0+\beta_1x_i+\epsilon_i(i=1,2,\cdots,n)                                       \\
+         & \epsilon_i\text{ 独立同分布，}\mathrm E(\epsilon_i)=0,\mathrm{Var}(\epsilon_i)=\sigma^2 \\
+    \end{aligned}
+    \right.
+\end{align*}
+称之为简单线性回归模型。由此，$\mathrm E(y_i)=\beta_0+\beta_1x_i,\mathrm{Var}(y_i)=\sigma^2$。
+
+\end{document}
