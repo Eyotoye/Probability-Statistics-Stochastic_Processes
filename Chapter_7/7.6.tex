@@ -1,6 +1,36 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+MCMC 的全称是 Markov Chain Monte Carlo，是一类模拟复杂分布的高效算法，其基本思想是从状态空间上已知的任意不可约 Markov 链出发，经过调整，构建一个不可约 Markov 链，使其收敛到给定的平稳分布。
 
+下面着重介绍 Metropolis-Hastings 算法。
+
+设 $\boldsymbol\pi=(\pi_1,\cdots,\pi_n)$ 为 $S=\{1,\cdots,M\}$ 上的目标分布，$\pi_j>0,\forall j\in S$，否则可以删掉 $\pi_j=0$ 的状态 $j$。现在已有 $S$ 上的某 Markov 链，转移概率为 $p_{ij}$，初始状态 $X_0$ 为随机或确定的。若当前状态 $X_n=i$，则遵循以下步骤调整链的下一次转移：
+\begin{enumerate}
+    \item 根据 $p_{ij}$ 给出转移到 $j$ 的概率
+    \item 计算接受建议的概率 $a_{ij}=
+              \left\{\begin{aligned}
+                  \min\{\frac{\pi_jp_{ji}}{\pi_ip_{ij}},1\} & , & p_{ij}>0, \\
+                  1                                         & , & p_{ij}=0
+              \end{aligned}\right.$
+    \item 若 $j\neq i$，调整后，以概率 $q_{ij}=p_{ij}a_{ij}$ 转入 $j$，即 $P(X_{n+1}=j|X_n=i)=q_{ij}$；若 $j=i$，则 $a_{ii}=1$，有 $q_{ii}=p_{ii}+\sum_{j\neq i}(1-a_{ij})p_{ij}=1-\sum_{j\neq i}a_{ij}p_{ij}=1-\sum_{j\neq i}q_{ij}$ 的概率留在 $i$，即 $P(X_{n+1}=i|X_n=i)=q_{ii}$。
+\end{enumerate}
+可以证明 $Q=(q_{ij})$ 为概率转移矩阵且关于 $\boldsymbol\pi$ 可逆，故 $\boldsymbol\pi$ 为其平稳分布。
+
+\begin{example}
+    用 Metropolis-Hastings 算法模拟 Zipf 分布。对于 $a>0$，有 $P(X=k)=\frac{\frac1{k^a}}{\sum_{j=1}^M\frac1{j^a}},k=1,\cdots,M$，状态空间 $S=\{1,\cdots,M\}$。建议选择原始链为 $S$ 上的 Random Walk，即\\
+    $P=\left[\begin{matrix}
+                \frac12 & \frac12 & 0       & 0       & \cdots  & 0       \\
+                \frac12 & 0       & \frac12 & 0       & \cdots  & 0       \\
+                \vdots  & \ddots  & \ddots  & \ddots  & \ddots  & \vdots  \\
+                0       & \cdots  & 0       & \frac12 & 0       & \frac12 \\
+                0       & \cdots  & 0       & 0       & \frac12 & \frac12
+            \end{matrix}\right]$，而 $a_{ij}=
+        \left\{\begin{aligned}
+            \min\{\frac{\pi_jp_{ji}}{\pi_ip_{ij}},1\} & , & |i-j|=1,     \\
+            1                                         & , & \text{其他},
+        \end{aligned}\right.$
+    据此给出 $Q=(q_{ij})$，可以验证 $q_{ii}>0,\forall i\in S$，故 $Q$ 不可约且所有状态遍历，故 $\boldsymbol\pi$ 为其唯一平稳分布。\\
+\end{example}
 
 \end{document}

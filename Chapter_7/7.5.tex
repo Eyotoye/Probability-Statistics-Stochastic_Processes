@@ -1,6 +1,28 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+\textbf{\textcolor{brown}{TODO: 当状态空间 $S$ 很大时，平稳分布难计算。}}
 
+\begin{definition}\label{def:7.5.1}
+    若 $\pi_j\geq0,\forall j\in S,\sum_{j\in S}\pi_j=1$，且 $\forall i,j\in S,\pi_ip_{ij}=\pi_jp_{ji}$，则称链关于 $\boldsymbol\pi$ \emph{可逆}。
+\end{definition}
+
+\begin{theorem}\label{thm:7.5.1}
+    若 $P$ 关于 $\boldsymbol\pi$ 可逆，则 $\boldsymbol\pi$ 为其平稳分布。
+\end{theorem}
+
+\begin{proof}
+    $\forall j\in S$，有 $\sum_{i\in S}\pi_ip_{ij}=\sum_{i\in S}\pi_jp_{ji}=\pi_j\sum_{i\in S}p_{ji}=\pi_j$，故 $\boldsymbol\pi P=\boldsymbol\pi$。又 $\sum_{j\in S}\pi_j=1$，故 $\boldsymbol\pi$ 为平稳分布。
+\end{proof}
+
+\begin{example}
+    （无向图上的 Random Walk）\\
+    设有一无向图，其结点集为 $S=\{1,\cdots,n\}$，边集为 $E$，各结点的度分别为 $d_1,\cdots,d_n$，且 $p_{ij}=
+        \left\{\begin{aligned}
+            \frac1{d_i} & , & (i,j)\in E,  \\
+            0           & , & \text{其他},
+        \end{aligned}\right.$
+    并记 $\pi_j=\frac{d_j}{\sum_{i=1}^nd_i}$，则对 $(i,j)\in E$ 有 $\pi_ip_{ij}=\frac1{\sum_{i=1}^nd_i}=\pi_jp_{ji}$，对 $(i,j)\notin E$ 有 $\pi_ip_{ij}=0=\pi_jp_{ji}$，即 $P$ 关于 $\boldsymbol\pi$ 可逆，故 $\boldsymbol\pi$ 为其平稳分布。
+\end{example}
 
 \end{document}
