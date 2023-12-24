@@ -1,14 +1,24 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+记 $T_1$ 为首次到达时刻，则 $P(T_1\leq t)=1-P(T_1>t)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_1\sim Exp(\lambda)$。再记 $T_2$ 为第二次到达时刻，则在 $T_1=t_0$ 条件下，$T_2-T_1$ 的分布 $P(T_2-T_1\leq t)=P(T_2-t_0\leq t)=1-P(T_2-t_0>t)=1-P(N(t_0+t)-N(t_0)=0)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_2-T_1\sim Exp(\lambda)$，且 $T_2-T_1$ 与 $T_1$ 相互独立。一般地，记 $T_i$ 为第 $i$ 次到达时刻，$W_i=T_i-T_{i-1}$ 为相邻两次到达间隔时间，约定 $T_0=0$，则 $\{W_i\}_{i=1}^\infty$ 相互独立且 $W_i\sim Exp(\lambda)$，而 $T_k=\sum_{i=1}^kW_i$，称 $T_k$ 服从参数为 $k$ 和 $\lambda$ 的 \emph{Gamma 分布}，记作 $T_k\sim \Gamma(k,\lambda)$，$\mathrm E(T_k)=\frac k\lambda,\mathrm{Var}(T_k)=\frac k{\lambda^2}$。$T_k$ 服从的分布又称之为 \emph{Erlang 分布}。事实上，Erlang 分布是 Gamma 分布在 $k\in\mathbb N^*$ 时的特例。$\Gamma(1,\lambda)$ 就是 $Exp(\lambda)$。
+
+利用 $\forall t\geq0,P(T_k\leq t)=P(N(t)\geq k)=1-\sum_{n=0}^{k-1}\frac{(\lambda t)^n}{n!}e^{-\lambda t}$，求导可得 $T_k$ 的 PDF 为 $f_{T_k}(t)=\frac{\lambda^kt^{k-1}}{(k-1)!}e^{-\lambda t}(t\geq 0)$。
+
+Poisson 过程还有一个等价定义如下。
+
 \begin{definition}\label{def:6.2.1}
-    设 $T=\mathbb N^*$，$\{X_n\}_{n=1}^\infty$ 是一列独立同分布的随机变量，且 $P(X_n=1)=p,P(X_n=0)=1-p$，则称 $\{X_n\}_{n=1}^\infty$ 为参数为 $p$ 的 \emph{Bernoulli 过程}。
+    称一个计数过程 $\{N(t),t\geq0\}$ 为 \emph{Poisson 过程}，若其满足：
+    \begin{enumerate}
+        \item $N(0)=0$
+        \item $\exists\lambda>0$，各相邻两次到达间隔时间 $\{W_i\}_{i=1}^\infty$ 相互独立且 $W_i\sim Exp(\lambda)$
+    \end{enumerate}
 \end{definition}
 
-定义中提到的 $\{X_n\}_{n=1}^\infty$ 相互独立，指的是 $\forall n\in\mathbb N^*$，都有 $X_1,\cdots,X_n$ 相互独立。
+这揭示了生成 Poisson 过程的一种方法便是从独立同分布的 $Exp(\lambda)$ 中抽取相邻两次到达间隔时间，据此给出各到达时刻，即可确定一 Poisson 过程。
 
-如果在每个离散时刻 $n$，将事件 $X_n=1$ 即“第 $n$ 次试验成功”理解为该时刻有一个顾客到达某商店，则 Bernoulli 过程属于一种\emph{到达过程}。
-
-本章的主要内容 Poisson 过程也是一种到达过程。
+\begin{example}
+    拨打服务热线时，被告知除了正在接受服务的人以外，前面还有 $55$ 人在等待。假设呼叫者离开服从 Poisson 过程，$\lambda=2\text{ 人/min}$，则平均等待时间为 $T_{56}=\sum_{i=1}^{56}W_i$，其中 $W_i\sim Exp(2)$ 且相互独立，因此平均等待时间为 $\mathrm E(T_{56})=\frac{56}{2}=28\text{ min}$，且 $\mathrm{Var}(T_{56})=\frac{56}{4}=14\text{ min}^2$。等待时间超过 $30$ 分钟的概率为 $P(T_{56}>30)=\int_{30}^{+\infty}f_{T_{56}}(t)\mathrm dt$。根据 CLT，近似有 $T_{56}\sim N(28,14)$，故有 $P(T_{56}>30)\approx P(Z>\frac{30-28}{\sqrt{14}})=1-\Phi(\frac2{\sqrt{14}})$，其中 $Z\sim N(0,1)$。
+\end{example}
 
 \end{document}

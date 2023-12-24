@@ -1,0 +1,87 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{definition}\label{def:7.3.1}
+    $\forall i,j\in S$，称状态 $i$ \emph{可达}状态 $j$，若 $\exists n\geq0,p_{ij}^{(n)}>0$，记作 $i\rightarrow j$。若 $i\rightarrow j$ 且 $j\rightarrow i$，则称 $i$ 和 $j$ 是\emph{互通}的，记作 $i\leftrightarrow j$。
+\end{definition}
+
+\begin{proposition}
+    $\leftrightarrow$ 是 $S$ 上的等价关系，即其具有
+    \begin{enumerate}
+        \item 自反性：$i\leftrightarrow i,\forall i\in S$
+        \item 对称性：$i\leftrightarrow j\Rightarrow j\leftrightarrow i,\forall i,j\in S$
+        \item 传递性：$i\leftrightarrow j,j\leftrightarrow k\Rightarrow i\leftrightarrow k,\forall i,j,k\in S$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    仅证明传递性。若 $i\rightarrow j,j\rightarrow k$，则 $\exists m,n\geq0,p_{ij}^{(m)}>0,p_{jk}^{(n)}>0$，由 C-K 方程可得 $p_{ik}^{(m+n)}=\sum_{l\in S}p_{il}^{(m)}p_{lk}^{(n)}\geq p_{ij}^{(m)}p_{jk}^{(n)}>0$，故 $i\rightarrow k$。同理可证 $k\rightarrow i$，故 $i\leftrightarrow k$。
+\end{proof}
+
+若 $i\leftrightarrow j$，则称 $i,j$ 归属一类。
+
+\begin{definition}\label{def:7.3.2}
+    若某 Markov 链的所有状态只有一类，则称该链\emph{不可约}，否则称为\emph{可约}。
+\end{definition}
+
+\begin{example}
+    下图中的三个 Markov 链分别是不可约、可约、可约的。\\
+    \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+        \tikzstyle{state} = [circle, draw, minimum size=1cm]
+        \node[state] (1) at (0,0) {1};
+        \node[state] (2) [below left=of 1] {2};
+        \node[state] (3) [below right=of 1] {3};
+        \node[state] (5) [below=of 2] {5};
+        \node[state] (4) [below=of 3] {4};
+        \draw[->] (1) -- (2);
+        \draw[->] (2) -- (3);
+        \draw[->] (3) -- (1);
+        \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
+        \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
+        \draw[->] ([xshift=-2pt]3.south) -- ([xshift=-2pt]4.north);
+        \draw[->] ([xshift=2pt]4.north) -- ([xshift=2pt]3.south);
+    \end{tikzpicture}
+    \qquad\qquad\qquad\qquad
+    \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+        \tikzstyle{state} = [circle, draw, minimum size=1cm]
+        \node[state] (1) at (0,0) {1};
+        \node[state] (2) [below left=of 1] {2};
+        \node[state] (3) [below right=of 1] {3};
+        \node[state] (5) [below=of 2] {5};
+        \node[state] (4) [below=of 3] {4};
+        \draw[->] (1) -- (2);
+        \draw[->] (2) -- (3);
+        \draw[->] (3) -- (1);
+        \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
+        \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
+    \end{tikzpicture}
+    \qquad\qquad\qquad\qquad
+    \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+        \tikzstyle{state} = [circle, draw, minimum size=1cm]
+        \node[state] (1) at (0,0) {1};
+        \node[state] (2) [below left=of 1] {2};
+        \node[state] (3) [below right=of 1] {3};
+        \node[state] (5) [below=of 2] {5};
+        \node[state] (4) [below=of 3] {4};
+        \draw[->] (1) -- (2);
+        \draw[->] (2) -- (3);
+        \draw[->] (3) -- (1);
+        \draw[->] (3) -- (4);
+        \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
+        \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
+    \end{tikzpicture}
+\end{example}
+
+\begin{definition}\label{def:7.3.3}
+    记 $f_{ij}^{(n)}$ 为从 $i$ 出发，经 $n$ 步首达 $j$ 的概率，即 $f_{ij}^{(n)}=P(X_n=j,X_k\neq j,k=1,\cdots,n-1|X_0=i)$。记 $f_{ij}=\sum_{n=1}^\infty f_{ij}^{(n)}$ 为从 $i$ 出发经有限步到达 $j$ 的概率。约定 $f_{ij}^{(0)}=\delta_{ij}$。
+\end{definition}
+
+\begin{definition}\label{def:7.3.4}
+    若 $f_{ii}=1$，则称状态 $i$ 为\emph{常返}（recurrent）的。若 $f_{ii}<1$，则称状态 $i$ 为\emph{非常返}的或\emph{瞬态}（transient）的。
+\end{definition}
+
+\begin{theorem}\label{thm:7.3.1}
+    $i$ 常返等价于 $\sum_{n=1}^\infty p_{ii}^{(n)}=+\infty$。$i$ 非常返等价于 $\sum_{n=1}^\infty p_{ii}^{(n)}=\frac1{1-f_{ii}}$。
+\end{theorem}
+
+\end{document}

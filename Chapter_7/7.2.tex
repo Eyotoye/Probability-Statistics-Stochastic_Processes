@@ -5,4 +5,31 @@
     若 $\{X_n,n=0,1,\cdots\}$ 为关于时间齐次的 Markov 链，对 $n\in\mathbb N^*$，称 $P(X_n=j|X_0=i)$ 为其 \emph{$n$ 步转移概率}，记为 $p_{ij}^{(n)}$。
 \end{definition}
 
+利用时间齐次性，可得 $P(X_{m+n}=j|X_m=i)=P(X_n=j|X_0=i),\forall m,n\in\mathbb N$。约定 $p_{ij}^{(0)}=\delta_{ij}=
+    \left\{\begin{aligned}
+        1 & , & i=j,     \\
+        0 & , & i\neq j.
+    \end{aligned}\right.$
+
+\begin{theorem}\label{thm:7.2.1}
+    $\forall m,n\in\mathbb N,\forall i,j\in S$，有 $p_{ij}^{(m+n)}=\sum_{k\in S}p_{ik}^{(m)}p_{kj}^{(n)}$。
+\end{theorem}
+
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+              & p_{ij}^{(m+n)}                                \\
+            = & P(X_{m+n}=j|X_0=i)                            \\
+            = & \sum_{k\in S}P(X_{m+n}=j|X_m=k)P(X_m=k|X_0=i) \\
+            = & \sum_{k\in S}p_{ik}^{(m)}p_{kj}^{(n)}.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+定理~\ref{thm:7.2.1} 称之为 \emph{Chapman-Kolmogorov 方程}。
+
+记 $P^{(n)}=(p_{ij}^{(n)})$ 为 \emph{$n$ 步转移概率矩阵}，则 C-K 方程可写为 $P^{(m+n)}=P^{(m)}P^{(n)}$，由此可得 $P^{(n)}=P^n$。
+
+根据 C-K 方程可给出 $X_n$ 的边际分布，即 $P(X_n=j)=\sum_{i\in S}P(X_n=j|X_0=i)P(X_0=i)=\sum_{i\in S}p_{ij}^{(n)}P(X_0=i),\forall j\in S$。若记 $\boldsymbol\beta_n=(\beta_{n0},\beta_{n1},\cdots)$，其中 $\beta_{ni}=P(X_n=i)$，则有 $\boldsymbol\beta_n=\boldsymbol\beta_0P^{(n)}=\boldsymbol\beta_0P^n$。
+
 \end{document}
