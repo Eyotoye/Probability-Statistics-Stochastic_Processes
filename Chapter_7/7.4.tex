@@ -1,6 +1,115 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+\begin{definition}\label{def:7.4.1}
+    若 $\boldsymbol\beta=(\beta_0,\cdots,\beta_j,\cdots)$ 为状态空间上的概率分布，即 $\beta_j\geq0,\forall j\in S,\sum_{j\in S}\beta_j=1$，且 $\boldsymbol\beta P=\boldsymbol\beta$，则称 $\boldsymbol\beta$ 为该 Markov 链的\emph{平稳分布}。
+\end{definition}
 
+若 $\boldsymbol\beta$ 是平稳分布且 $X_0$ 的分布为 $\boldsymbol\beta$，即 $P(X_0=j)=\beta_j,\forall j\in S$，则 $\forall n\in\mathbb N^*$，都有 $X_n$ 的边际分布是 $\boldsymbol\beta$。
+
+\begin{definition}\label{def:7.4.2}
+    设 $i$ 为常返态，定义\emph{平均首返时间} $u_i=\sum_{n=1}^\infty nf_{ii}^{(n)}$，若 $u_i<\infty$，则称 $i$ 为\emph{正常返}的，否则称 $i$ 为\emph{零常返}的。
+\end{definition}
+
+\begin{theorem}\label{thm:7.4.1}
+    若 $i$ 常返，则 $\lim_{n\rightarrow\infty}p_{ii}^{(nd(i))}=\frac{d(i)}{u_i}$。特别地，若 $u_i=+\infty$，则 $\frac{d(i)}{u_i}=0$。
+\end{theorem}
+
+\begin{theorem}\label{thm:7.4.2}
+    若 $i$ 为零常返或非常返，则 $\lim_{n\rightarrow\infty}p_{ii}^{(n)}=0$。
+\end{theorem}
+
+\begin{proof}
+    \mbox{}
+    \begin{itemize}
+        \item 若 $i$ 为零常返，则 $u_i=+\infty$，由定理~\ref{thm:7.4.1} 知 $\lim_{n\rightarrow\infty}p_{ii}^{(nd(i))}=0$，而对于不被 $d(i)$ 整除的 $m\in\mathbb N^*$，恒有 $p_{ii}^{(m)}=0$。故 $\lim_{n\rightarrow\infty}p_{ii}^{(n)}=0$。
+        \item 若 $i$ 为非常返，由 $\sum_{n=0}^\infty p_{ii}^{(n)}<+\infty$ 知 $\lim_{n\rightarrow\infty}p_{ii}^{(n)}=0$。
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}\label{thm:7.4.3}
+    若 $i\leftrightarrow j$ 且同常返，则 $i,j$ 同为正常返或同为零常返。
+\end{theorem}
+
+\begin{theorem}\label{thm:7.4.4}
+    若 $j$ 为零常返或非常返，则 $\forall i\in S,\lim_{n\rightarrow\infty}p_{ij}^{(n)}=0$。
+\end{theorem}
+
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+                 & p_{ij}^{(n)}                                                                    \\
+            =    & \sum_{k=1}^nf_{ij}^{(k)}p_{jj}^{(n-k)}                                          \\
+            =    & \sum_{k=1}^Mf_{ij}^{(k)}p_{jj}^{(n-k)}+\sum_{k=M+1}^nf_{ij}^{(k)}p_{jj}^{(n-k)} \\
+            \leq & \sum_{k=1}^Mf_{ij}^{(k)}p_{jj}^{(n-k)}+\sum_{k=M+1}^nf_{ij}^{(k)}
+        \end{aligned}
+    \end{equation*}
+    由于 $\sum_{k=1}^\infty f_{ij}^{(k)}=f_{ij}\leq1$，故 $\forall\epsilon>0,\exists M\in\mathbb N^*,\sum_{k=M+1}^\infty f_{ij}^{(k)}<\epsilon$，如此选取上式中的 $M$，有 $\lim_{n\rightarrow\infty}p_{ij}^{(n)}\leq\lim_{n\rightarrow\infty}\sum_{k=1}^Mf_{ij}^{(k)}p_{jj}^{(n-k)}+\epsilon$。由定理~\ref{thm:7.4.2} 知 $\lim_{n\rightarrow\infty}p_{jj}^{(n-k)}=0,k=1,\cdots,M$，故 $\lim_{n\rightarrow\infty}p_{ij}^{(n)}\leq\epsilon$，由 $\epsilon$ 的任意性知 $\lim_{n\rightarrow\infty}p_{ij}^{(n)}=0$。
+\end{proof}
+
+定理~\ref{thm:7.4.4} 的直观理解为，若 $j$ 不是正常返的，则从 $i$ 出发经足够长时间后处于 $j$ 的概率很小。
+
+可以证明，有限链不可能有零常返态，故不可约有限链的所有状态均为正常返的。并且若链有零常返态，则必有无穷多个零常返态。
+
+\begin{definition}\label{def:7.4.3}
+    若 $i$ 为正常返的和非周期的，则称 $i$ 为\emph{遍历}（ergodic）的。若链不可约，且所有状态都是遍历的，则称链为\emph{遍历}的。
+\end{definition}
+
+\begin{theorem}\label{thm:7.4.5}
+    对不可约、非周期的 Markov 链，有以下结论：
+    \begin{enumerate}
+        \item 若所有状态均为正常返，则 $\pi_j=\lim_{n\rightarrow\infty}p_{ij}^{(n)}(j\in S)$ 是唯一的平稳分布
+        \item 若所有状态均为零常返或非常返的，则平稳分布不存在
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    仅证明结论 1。不妨设 $S=\{0,1,\cdots\}$，则 $\forall M\in\mathbb N^*,\sum_{j=0}^Mp_{ij}^{(n)}\leq\sum_{j=0}^\infty p_{ij}^{(n)}=1$，令 $n\rightarrow\infty$ 有 $\sum_{j=0}^M\pi_j\leq1$，再令 $M\rightarrow\infty$ 有 $\sum_{j=0}^\infty\pi_j\leq1$。又由 $\forall M\in\mathbb N^*,p_{ij}^{(n+1)}=\sum_{k=0}^\infty p_{ik}^{(n)}p_{kj}\geq\sum_{k=0}^Mp_{ik}^{(n)}p_{kj}$，令 $n\rightarrow\infty$ 有 $\pi_j\geq\sum_{k=0}^M\pi_kp_{kj}$，再令 $M\rightarrow\infty$ 有 $\pi_j\geq\sum_{k=0}^\infty\pi_kp_{kj}$。若此不等式对某个 $j$ 取严格大于号，则 $\sum_{j=0}^\infty\pi_j>\sum_{j=0}^\infty\sum_{k=0}^\infty\pi_kp_{kj}=\sum_{k=0}^\infty\pi_k\sum_{j=0}^\infty p_{kj}=\sum_{k=0}^\infty\pi_k$，矛盾。故 $\pi_j=\sum_{k=0}^\infty\pi_kp_{kj},\forall j\in S$，即 $\boldsymbol\pi=\boldsymbol\pi P$。进而，有 $\boldsymbol\pi=\boldsymbol\pi P^n$，即 $\pi_j=\sum_{k=0}^\infty\pi_kp_{kj}^{(n)},\forall j\in S$，令 $n\rightarrow\infty$ 有 $\pi_j=\pi_j\sum_{k=0}^\infty\pi_k,\forall j\in S$，故 $\sum_{j=0}^\infty\pi_k=1$，至此证明了 $\boldsymbol\pi$ 是平稳分布。\\
+    下证唯一性。若 $\boldsymbol\beta=(\beta_0,\beta_1,\cdots)$ 为任一平稳分布，有 $\boldsymbol\beta=\boldsymbol\beta P=\cdots=\boldsymbol\beta P^n$，即 $\beta_j=\sum_{k=0}^\infty\beta_kp_{kj}^{(n)},\forall j\in S$，令 $n\rightarrow\infty$ 有 $\beta_j=\sum_{k=0}^\infty\beta_k\pi_j=\pi_j,\forall j\in S$，故 $\boldsymbol\beta=\boldsymbol\pi$。
+\end{proof}
+
+\begin{proposition}
+    若 $i\leftrightarrow j$ 且 $j$ 为遍历的，则 $\lim_{n\rightarrow\infty}p_{ij}^{(n)}=\frac1{u_j}$。
+\end{proposition}
+
+% 对上述命题的一种不严谨的直观理解：$p_{ij}^{(n)}=\sum_{k=1}^nf_{ij}^{(k)}p_{jj}^{(n-k)}$，又由定理~\ref{thm:7.4.1}，$\lim_{n\rightarrow\infty}p_{jj}^{(n-k)}=\frac1{u_j}$，故 $\lim_{n\rightarrow\infty}p_{ij}^{(n)}=\frac1{u_j}\sum_{k=1}^\infty f_{ij}^{(k)}=\frac{f_{ij}}{u_j}=\frac1{u_j}$。
+
+\begin{definition}\label{def:7.4.4}
+    若 $\pi_j=\lim_{n\rightarrow\infty}p_{ij}^{(n)}$ 存在，则 $\boldsymbol\pi=(\pi_0,\cdots)$ 称为该链的\emph{极限分布}。
+\end{definition}
+
+于是定理~\ref{thm:7.4.5} 的结论 1 可以表述为：不可约遍历链的极限分布存在，且为其唯一平稳分布。
+
+若极限分布 $\boldsymbol\pi$ 存在，则对于任意函数 $g$，有 $\frac1N\sum_{n=0}^{N-1}g(X_n)\overset{\mathrm{a.s.}}\rightarrow\mathrm E_{\boldsymbol\pi}(g(X))=\sum_{j=0}^\infty g(j)\pi_j$。由于 $\lim_{n\rightarrow\infty}P^{(n)}=\lim_{n\rightarrow\infty}P^n=
+    \left[\begin{matrix}
+            \pi_0  & \pi_1  & \cdots & \pi_j  & \cdots \\
+            \pi_0  & \pi_1  & \cdots & \pi_j  & \cdots \\
+            \vdots & \vdots & \ddots & \vdots & \ddots \\
+        \end{matrix}\right]=
+    \left[\begin{matrix}
+            \boldsymbol\pi \\
+            \boldsymbol\pi \\
+            \vdots
+        \end{matrix}\right]$，故对任意初始分布 $\boldsymbol\beta$，有 $\lim_{n\rightarrow\infty}\boldsymbol\beta P^{(n)}=\boldsymbol\beta\left[\begin{matrix}
+            \boldsymbol\pi \\
+            \boldsymbol\pi \\
+            \vdots
+        \end{matrix}\right]=\boldsymbol\pi$。
+
+需要强调，一个链有平稳分布并不意味着其极限分布存在，例如 $P=
+    \left[\begin{matrix}
+            0 & 1 \\
+            1 & 0
+        \end{matrix}\right]$，其平稳分布为 $\boldsymbol\pi=(\frac12,\frac12)$，但 $\lim_{n\rightarrow\infty}P^{(n)}$ 不存在。
+
+可以证明：
+\begin{enumerate}
+    \item 有限链总存在平稳分布
+    \item 不可约链的平稳分布若存在则唯一
+\end{enumerate}
+
+\begin{example}
+    \textbf{\textcolor{brown}{TODO: Google PageRank}}
+\end{example}
 
 \end{document}

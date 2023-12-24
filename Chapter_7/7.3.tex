@@ -25,51 +25,54 @@
 \end{definition}
 
 \begin{example}
-    下图中的三个 Markov 链分别是不可约、可约、可约的。\\
-    \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
-        \tikzstyle{state} = [circle, draw, minimum size=1cm]
-        \node[state] (1) at (0,0) {1};
-        \node[state] (2) [below left=of 1] {2};
-        \node[state] (3) [below right=of 1] {3};
-        \node[state] (5) [below=of 2] {5};
-        \node[state] (4) [below=of 3] {4};
-        \draw[->] (1) -- (2);
-        \draw[->] (2) -- (3);
-        \draw[->] (3) -- (1);
-        \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
-        \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
-        \draw[->] ([xshift=-2pt]3.south) -- ([xshift=-2pt]4.north);
-        \draw[->] ([xshift=2pt]4.north) -- ([xshift=2pt]3.south);
-    \end{tikzpicture}
-    \qquad\qquad\qquad\qquad
-    \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
-        \tikzstyle{state} = [circle, draw, minimum size=1cm]
-        \node[state] (1) at (0,0) {1};
-        \node[state] (2) [below left=of 1] {2};
-        \node[state] (3) [below right=of 1] {3};
-        \node[state] (5) [below=of 2] {5};
-        \node[state] (4) [below=of 3] {4};
-        \draw[->] (1) -- (2);
-        \draw[->] (2) -- (3);
-        \draw[->] (3) -- (1);
-        \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
-        \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
-    \end{tikzpicture}
-    \qquad\qquad\qquad\qquad
-    \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
-        \tikzstyle{state} = [circle, draw, minimum size=1cm]
-        \node[state] (1) at (0,0) {1};
-        \node[state] (2) [below left=of 1] {2};
-        \node[state] (3) [below right=of 1] {3};
-        \node[state] (5) [below=of 2] {5};
-        \node[state] (4) [below=of 3] {4};
-        \draw[->] (1) -- (2);
-        \draw[->] (2) -- (3);
-        \draw[->] (3) -- (1);
-        \draw[->] (3) -- (4);
-        \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
-        \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
-    \end{tikzpicture}
+    下图中的三个 Markov 链分别是不可约、可约、可约的。
+    \begin{center}
+        \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+            \tikzstyle{state} = [circle, draw, minimum size=1cm]
+            \node[state] (1) at (0,0) {1};
+            \node[state] (2) [below left=of 1] {2};
+            \node[state] (3) [below right=of 1] {3};
+            \node[state] (5) [below=of 2] {5};
+            \node[state] (4) [below=of 3] {4};
+            \draw[->] (1) -- (2);
+            \draw[->] (2) -- (3);
+            \draw[->] (3) -- (1);
+            \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
+            \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
+            \draw[->] ([xshift=-2pt]3.south) -- ([xshift=-2pt]4.north);
+            \draw[->] ([xshift=2pt]4.north) -- ([xshift=2pt]3.south);
+        \end{tikzpicture}
+        \qquad\qquad
+        \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+            \tikzstyle{state} = [circle, draw, minimum size=1cm]
+            \node[state] (1) at (0,0) {1};
+            \node[state] (2) [below left=of 1] {2};
+            \node[state] (3) [below right=of 1] {3};
+            \node[state] (5) [below=of 2] {5};
+            \node[state] (4) [below=of 3] {4};
+            \draw[->] (1) -- (2);
+            \draw[->] (2) -- (3);
+            \draw[->] (3) -- (1);
+            \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
+            \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
+        \end{tikzpicture}
+        \qquad\qquad
+        \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+            \tikzstyle{state} = [circle, draw, minimum size=1cm]
+            \node[state] (1) at (0,0) {1};
+            \node[state] (2) [below left=of 1] {2};
+            \node[state] (3) [below right=of 1] {3};
+            \node[state] (5) [below=of 2] {5};
+            \node[state] (4) [below=of 3] {4};
+            \draw[->] (1) -- (2);
+            \draw[->] (2) -- (3);
+            \draw[->] (3) -- (1);
+            \draw[->] (3) -- (4);
+            \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
+            \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
+        \end{tikzpicture}
+    \end{center}
+    \bigskip
 \end{example}
 
 \begin{definition}\label{def:7.3.3}
@@ -81,7 +84,143 @@
 \end{definition}
 
 \begin{theorem}\label{thm:7.3.1}
-    $i$ 常返等价于 $\sum_{n=1}^\infty p_{ii}^{(n)}=+\infty$。$i$ 非常返等价于 $\sum_{n=1}^\infty p_{ii}^{(n)}=\frac1{1-f_{ii}}$。
+    $i$ 常返等价于 $\sum_{n=0}^\infty p_{ii}^{(n)}=+\infty$。$i$ 非常返等价于 $\sum_{n=0}^\infty p_{ii}^{(n)}=\frac1{1-f_{ii}}$。
 \end{theorem}
+
+先证明一个引理。
+
+\begin{lemma}
+    $\forall i,j\in S,n\in\mathbb N^*$，有 $p_{ij}^{(n)}=\sum_{k=1}^nf_{ij}^{(k)}p_{jj}^{(n-k)}$。
+\end{lemma}
+
+\begin{proof}
+    用数学归纳法。对 $n=1$，由 $p_{ij}^{(1)}=f_{ij}^{(1)},p_{jj}^{(0)}=1$ 显然成立。假设对 $n-1$ 成立，即 $p_{ij}^{(n-1)}=\sum_{k=1}^{n-1}f_{ij}^{(k)}p_{jj}^{(n-1-k)}$，则
+    \begin{equation*}
+        \begin{aligned}
+              & p_{ij}^{(n)}                                                                                        \\
+            = & \sum_{l\in S}p_{il}^{(1)}p_{lj}^{(n-1)}                                                             \\
+            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{l\neq j}p_{il}^{(1)}p_{lj}^{(n-1)}                                 \\
+            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{l\neq j}f_{il}^{(1)}(\sum_{k=1}^{n-1}f_{lj}^{(k)}p_{jj}^{(n-1-k)}) \\
+            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{k=1}^{n-1}(\sum_{l\neq j}f_{il}^{(1)}f_{lj}^{(k)})p_{jj}^{(n-1-k)} \\
+            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{k=1}^{n-1}f_{ij}^{(k+1)}p_{jj}^{(n-1-k)}                           \\
+            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{k=2}^nf_{ij}^{(k)}p_{jj}^{(n-k)}                                   \\
+            = & \sum_{k=1}^nf_{ij}^{(k)}p_{jj}^{(n-k)}.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+下面证明定理~\ref{thm:7.3.1}。
+
+\begin{proof}
+    $\sum_{n=0}^\infty p_{ii}^{(n)}=1+\sum_{n=1}^\infty p_{ii}^{(n)}=1+\sum_{n=1}^\infty\sum_{k=1}^nf_{ii}^{(k)}p_{ii}^{(n-k)}=1+\sum_{k=1}^\infty f_{ii}^{(k)}\sum_{n=k}^\infty p_{ii}^{(n-k)}=1+\sum_{k=1}^\infty f_{ii}^{(k)}\sum_{n=0}^\infty p_{ii}^{(n)}=1+f_{ii}\sum_{n=0}^\infty p_{ii}^{(n)}$，故若 $i$ 非常返，则 $\sum_{n=0}^\infty p_{ii}^{(n)}=\frac1{1-f_{ii}}<+\infty$。而若 $i$ 常返，则 $\sum_{n=0}^\infty p_{ii}^{(n)}=+\infty$。
+\end{proof}
+
+若令 $I_n=\left\{\begin{aligned}
+        1 & , & X_n=i,     \\
+        0 & , & X_n\neq i,
+    \end{aligned}\right.$，则 $\sum_{n=0}^\infty I_n$ 为经过状态 $i$ 的次数，$\mathrm E(\sum_{n=0}^\infty I_n|X_0=i)=\sum_{n=0}^\infty\mathrm E(I_n|X_0=i)=\sum_{n=0}^\infty p_{ii}^{(n)}$ 为链从 $i$ 出发经过 $i$ 的期望次数。若 $i$ 常返，从 $i$ 出发必定经过 $i$ 无穷多次。若 $i$ 非常返，从 $i$ 出发有概率 $1-f_{ii}$ 回不到 $i$（逃离 $i$），经过 $i$ 的次数为 $k$ 的概率为 $f_{ii}^{k-1}(1-f_{ii})$，即经过 $i$ 的次数服从几何分布，链以概率 $1$ 最终逃离 $i$。
+
+\begin{theorem}\label{thm:7.3.2}
+    关于常返性，有如下性质：
+    \begin{enumerate}
+        \item 若 $i\leftrightarrow j$，则 $i,j$ 同为常返态或同为非常返态
+        \item 有限链至少存在一个常返态
+        \item 若链有限且不可约，则所有状态均为常返态
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    仅证明性质 1。由 $i\leftrightarrow j$，知 $\exists m,n,p_{ij}^{(m)}>0,p_{ji}^{(n)}>0$，且由 C-K 方程知 $p_{ii}^{(m+n+k)}\geq p_{ij}^{(m)}p_{jj}^{(k)}p_{ji}^{(n)}$，故 $\sum_{k=0}^\infty p_{ii}^{(k)}\geq\sum_{k=0}^\infty p_{ii}^{(m+n+k)}\geq p_{ij}^{(m)}p_{ji}^{(n)}\sum_{k=0}^\infty p_{jj}^{(k)}$。交换 $i$ 与 $j$ 可得类似不等式，故 $\sum_{k=0}^\infty p_{ii}^{(k)}$ 与 $\sum_{k=0}^\infty p_{jj}^{(k)}$ 同为发散或同为收敛，故 $i,j$ 同为常返态或同为非常返态。
+\end{proof}
+
+\begin{example}
+    一维随机游走，状态空间 $S=\mathbb Z$，转移概率为 $p_{i,i+1}=p\in(0,1),p_{i,i-1}=q=1-p$，则显然其不可约。可以证明，若 $p=\frac12$，则该链常返，否则非常返。
+\end{example}
+
+\begin{proposition}
+    若 $i\rightarrow j$ 且 $i$ 常返，则 $f_{ji}=1$。
+\end{proposition}
+
+\begin{proof}
+    若 $f_{ji}<1$，则从 $j$ 出发以概率 $1-f_{ji}>0$ 不能到 $i$。又 $i\rightarrow j$，则从 $i$ 出发有正概率回不到 $i$，与 $i$ 常返矛盾。
+\end{proof}
+
+上述命题说明，从常返态出发不能到达非常返态。对于有限链，从非常返态出发，最终一定会到达某个常返态。
+
+\begin{definition}\label{def:7.3.5}
+    若集合 $\{n|p_{ii}^{(n)}>0\}$ 非空，则其所有元素的最大公约数 $d(i)$ 称为 $i$ 的\emph{周期}。若 $d(i)>1$，则称 $i$ 为\emph{周期}的，否则称为\emph{非周期}的。若链的所有状态都是非周期的，则称链是\emph{非周期}的，否则称链是\emph{周期}的。
+\end{definition}
+
+\begin{example}
+    下图中的 Markov 链满足 $d(1)=d(2)=d(3)=3,d(4)=d(5)=1$，因此是周期的。
+    \begin{center}
+        \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+            \tikzstyle{state} = [circle, draw, minimum size=1cm]
+            \node[state] (1) at (0,0) {1};
+            \node[state] (2) [below left=of 1] {2};
+            \node[state] (3) [below right=of 1] {3};
+            \node[state] (5) [below=of 2] {5};
+            \node[state] (4) [below=of 3] {4};
+            \draw[->] (1) -- (2);
+            \draw[->] (2) -- (3);
+            \draw[->] (3) -- (1);
+            \draw[->] (3) -- (4);
+            \draw[->] ([yshift=2pt]5.east) -- ([yshift=2pt]4.west);
+            \draw[->] ([yshift=-2pt]4.west) -- ([yshift=-2pt]5.east);
+            \draw[->] (4) edge [loop right] ();
+        \end{tikzpicture}
+    \end{center}
+    \bigskip
+\end{example}
+
+需注意，一般情况下 $p_{ii}^{(nd(i))}(n\in\mathbb N^*)$ 不一定大于 $0$，如下例。
+
+\begin{example}
+    下图中的 Markov 链满足 $p_{11}^{(n)}>0,n=4,6,8,10,12,\cdots$，故 $d(1)=2$，但 $p_{11}^{(2)}=0$。
+    \begin{center}
+        \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+            \tikzstyle{state} = [circle, draw, minimum size=1cm]
+            \node[state] (1) {1};
+            \node[state] (2) [above right=of 1] {2};
+            \node[state] (3) [below right=of 2] {3};
+            \node[state] (4) [below left=of 3] {4};
+            \node[state] (5) [below left=of 1] {5};
+            \node[state] (6) [left=of 5] {6};
+            \node[state] (7) [above left=of 6] {7};
+            \node[state] (9) [above left=of 1] {9};
+            \node[state] (8) [left=of 9] {8};
+            \draw[->] (1) -- (2);
+            \draw[->] (2) -- (3);
+            \draw[->] (3) -- (4);
+            \draw[->] (4) -- (1);
+            \draw[->] (1) -- (5);
+            \draw[->] (5) -- (6);
+            \draw[->] (6) -- (7);
+            \draw[->] (7) -- (8);
+            \draw[->] (8) -- (9);
+            \draw[->] (9) -- (1);
+        \end{tikzpicture}
+    \end{center}
+    \bigskip
+\end{example}
+
+但可以证明，$\forall i\in S,\exists N\in\mathrm N^*,\forall n\geq N,p_{ii}^{(nd(i))}>0$。
+
+\begin{theorem}\label{thm:7.3.3}
+    若 $i\leftrightarrow j$，则 $d(i)=d(j)$。
+\end{theorem}
+
+\begin{proof}
+    由 $i\leftrightarrow j$，知 $\exists m,n,p_{ij}^{(m)}>0,p_{ji}^{(n)}>0$，且由 C-K 方程知 $p_{ii}^{(m+n)}\geq p_{ij}^{(m)}p_{ji}^{(n)}>0$。对于所有满足 $p_{jj}^{(s)}>0$ 的 $s$，都有 $p_{ii}^{(m+n+s)}\geq p_{ij}^{(m)}p_{jj}^{(s)}p_{ji}^{(n)}>0$，则 $d(i)|m+n+s$ 且 $d(i)|m+n$，故 $d(i)|s$，于是 $d(i)|d(j)$。同理可证 $d(j)|d(i)$，故 $d(i)=d(j)$。
+\end{proof}
+
+一般地，可根据状态的分类对状态重新编号，实现状态空间的分解，形如 $S=C_1\cup\cdots\cup C_r\cup C_0$，其中 $C_i\cap C_j=\varnothing,i\neq j$，且 $C_0$ 为非常返的，$C_1,\cdots,C_r$ 为常返互通类，此时转移概率矩阵可写为
+$\left[\begin{matrix}
+            P_1    & \cdots & O      &   \\
+            \vdots & \ddots & \vdots & O \\
+            O      & \cdots & P_r    &   \\
+                   & W      &        & Q
+        \end{matrix}\right]$。
+其中，$P_1,\cdots,P_r,Q$ 分别为 $C_1,\cdots,C_r,C_0$ 内部的转移概率矩阵。
 
 \end{document}
