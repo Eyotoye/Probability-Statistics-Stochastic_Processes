@@ -2,7 +2,7 @@
 \begin{document}
 
 \begin{definition}\label{def:7.4.1}
-    若 $\boldsymbol\beta=(\beta_0,\cdots,\beta_j,\cdots)$ 为状态空间上的概率分布，即 $\beta_j\geq0,\forall j\in S,\sum_{j\in S}\beta_j=1$，且 $\boldsymbol\beta P=\boldsymbol\beta$，则称 $\boldsymbol\beta$ 为该 Markov 链的\emph{平稳分布}。
+    若 $\boldsymbol\beta=(\beta_0,\cdots,\beta_j,\cdots)$ 为状态空间上的概率分布，即 $\beta_j\geq0,\forall j\in S,\sum_{j\in S}\beta_j\equiv1$，且 $\boldsymbol\beta P=\boldsymbol\beta$，则称 $\boldsymbol\beta$ 为该 Markov 链的\emph{平稳分布}。
 \end{definition}
 
 若 $\boldsymbol\beta$ 是平稳分布且 $X_0$ 的分布为 $\boldsymbol\beta$，即 $P(X_0=j)=\beta_j,\forall j\in S$，则 $\forall n\in\mathbb N^*$，都有 $X_n$ 的边际分布是 $\boldsymbol\beta$。
@@ -64,7 +64,7 @@
 \end{theorem}
 
 \begin{proof}
-    仅证明结论 1。不妨设 $S=\{0,1,\cdots\}$，则 $\forall M\in\mathbb N^*,\sum_{j=0}^Mp_{ij}^{(n)}\leq\sum_{j=0}^\infty p_{ij}^{(n)}=1$，令 $n\rightarrow\infty$ 有 $\sum_{j=0}^M\pi_j\leq1$，再令 $M\rightarrow\infty$ 有 $\sum_{j=0}^\infty\pi_j\leq1$。又由 $\forall M\in\mathbb N^*,p_{ij}^{(n+1)}=\sum_{k=0}^\infty p_{ik}^{(n)}p_{kj}\geq\sum_{k=0}^Mp_{ik}^{(n)}p_{kj}$，令 $n\rightarrow\infty$ 有 $\pi_j\geq\sum_{k=0}^M\pi_kp_{kj}$，再令 $M\rightarrow\infty$ 有 $\pi_j\geq\sum_{k=0}^\infty\pi_kp_{kj}$。若此不等式对某个 $j$ 取严格大于号，则 $\sum_{j=0}^\infty\pi_j>\sum_{j=0}^\infty\sum_{k=0}^\infty\pi_kp_{kj}=\sum_{k=0}^\infty\pi_k\sum_{j=0}^\infty p_{kj}=\sum_{k=0}^\infty\pi_k$，矛盾。故 $\pi_j=\sum_{k=0}^\infty\pi_kp_{kj},\forall j\in S$，即 $\boldsymbol\pi=\boldsymbol\pi P$。进而，有 $\boldsymbol\pi=\boldsymbol\pi P^n$，即 $\pi_j=\sum_{k=0}^\infty\pi_kp_{kj}^{(n)},\forall j\in S$，令 $n\rightarrow\infty$ 有 $\pi_j=\pi_j\sum_{k=0}^\infty\pi_k,\forall j\in S$，故 $\sum_{j=0}^\infty\pi_k=1$，至此证明了 $\boldsymbol\pi$ 是平稳分布。\\
+    仅证明结论 1。不妨设 $S=\{0,1,\cdots\}$，则 $\forall M\in\mathbb N^*,\sum_{j=0}^Mp_{ij}^{(n)}\leq\sum_{j=0}^\infty p_{ij}^{(n)}=1$，令 $n\rightarrow\infty$ 有 $\sum_{j=0}^M\pi_j\leq1$，再令 $M\rightarrow\infty$ 有 $\sum_{j=0}^\infty\pi_j\leq1$。又由 $\forall M\in\mathbb N^*,p_{ij}^{(n+1)}=\sum_{k=0}^\infty p_{ik}^{(n)}p_{kj}\geq\sum_{k=0}^Mp_{ik}^{(n)}p_{kj}$，令 $n\rightarrow\infty$ 有 $\pi_j\geq\sum_{k=0}^M\pi_kp_{kj}$，再令 $M\rightarrow\infty$ 有 $\pi_j\geq\sum_{k=0}^\infty\pi_kp_{kj}$。若此不等式对某个 $j$ 取严格大于号，则 $\sum_{j=0}^\infty\pi_j>\sum_{j=0}^\infty\sum_{k=0}^\infty\pi_kp_{kj}=\sum_{k=0}^\infty\pi_k\sum_{j=0}^\infty p_{kj}=\sum_{k=0}^\infty\pi_k$，矛盾。故 $\pi_j=\sum_{k=0}^\infty\pi_kp_{kj},\forall j\in S$，即 $\boldsymbol\pi=\boldsymbol\pi P$。进而，有 $\boldsymbol\pi=\boldsymbol\pi P^n$，即 $\pi_j=\sum_{k=0}^\infty\pi_kp_{kj}^{(n)},\forall j\in S$，令 $n\rightarrow\infty$ 有 $\pi_j=\pi_j\sum_{k=0}^\infty\pi_k,\forall j\in S$，故 $\sum_{k=0}^\infty\pi_k=1$，至此证明了 $\boldsymbol\pi$ 是平稳分布。\\
     下证唯一性。若 $\boldsymbol\beta=(\beta_0,\beta_1,\cdots)$ 为任一平稳分布，有 $\boldsymbol\beta=\boldsymbol\beta P=\cdots=\boldsymbol\beta P^n$，即 $\beta_j=\sum_{k=0}^\infty\beta_kp_{kj}^{(n)},\forall j\in S$，令 $n\rightarrow\infty$ 有 $\beta_j=\sum_{k=0}^\infty\beta_k\pi_j=\pi_j,\forall j\in S$，故 $\boldsymbol\beta=\boldsymbol\pi$。
 \end{proof}
 

@@ -100,8 +100,8 @@
               & p_{ij}^{(n)}                                                                                        \\
             = & \sum_{l\in S}p_{il}^{(1)}p_{lj}^{(n-1)}                                                             \\
             = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{l\neq j}p_{il}^{(1)}p_{lj}^{(n-1)}                                 \\
-            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{l\neq j}f_{il}^{(1)}(\sum_{k=1}^{n-1}f_{lj}^{(k)}p_{jj}^{(n-1-k)}) \\
-            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{k=1}^{n-1}(\sum_{l\neq j}f_{il}^{(1)}f_{lj}^{(k)})p_{jj}^{(n-1-k)} \\
+            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{l\neq j}p_{il}^{(1)}(\sum_{k=1}^{n-1}f_{lj}^{(k)}p_{jj}^{(n-1-k)}) \\
+            = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{k=1}^{n-1}(\sum_{l\neq j}p_{il}^{(1)}f_{lj}^{(k)})p_{jj}^{(n-1-k)} \\
             = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{k=1}^{n-1}f_{ij}^{(k+1)}p_{jj}^{(n-1-k)}                           \\
             = & p_{ij}^{(1)}p_{jj}^{(n-1)}+\sum_{k=2}^nf_{ij}^{(k)}p_{jj}^{(n-k)}                                   \\
             = & \sum_{k=1}^nf_{ij}^{(k)}p_{jj}^{(n-k)}.
@@ -118,7 +118,7 @@
 若令 $I_n=\left\{\begin{aligned}
         1 & , & X_n=i,     \\
         0 & , & X_n\neq i,
-    \end{aligned}\right.$，则 $\sum_{n=0}^\infty I_n$ 为经过状态 $i$ 的次数，$\mathrm E(\sum_{n=0}^\infty I_n|X_0=i)=\sum_{n=0}^\infty\mathrm E(I_n|X_0=i)=\sum_{n=0}^\infty p_{ii}^{(n)}$ 为链从 $i$ 出发经过 $i$ 的期望次数。若 $i$ 常返，从 $i$ 出发必定经过 $i$ 无穷多次。若 $i$ 非常返，从 $i$ 出发有概率 $1-f_{ii}$ 回不到 $i$（逃离 $i$），经过 $i$ 的次数为 $k$ 的概率为 $f_{ii}^{k-1}(1-f_{ii})$，即经过 $i$ 的次数服从几何分布，链以概率 $1$ 最终逃离 $i$。
+    \end{aligned}\right.$ 则 $\sum_{n=0}^\infty I_n$ 为经过状态 $i$ 的次数，$\mathrm E(\sum_{n=0}^\infty I_n|X_0=i)=\sum_{n=0}^\infty\mathrm E(I_n|X_0=i)=\sum_{n=0}^\infty p_{ii}^{(n)}$ 为链从 $i$ 出发经过 $i$ 的期望次数。若 $i$ 常返，从 $i$ 出发以概率 $1$ 经过 $i$ 无穷多次。若 $i$ 非常返，从 $i$ 出发有概率 $(1-f_{ii})$ 回不到 $i$（逃离 $i$），经过 $i$ 的次数为 $k$ 的概率为 $f_{ii}^{k-1}(1-f_{ii})$，即经过 $i$ 的次数服从几何分布，链以概率 $1$ 最终逃离 $i$。
 
 \begin{theorem}\label{thm:7.3.2}
     关于常返性，有如下性质：
@@ -130,7 +130,7 @@
 \end{theorem}
 
 \begin{proof}
-    仅证明性质 1。由 $i\leftrightarrow j$，知 $\exists m,n,p_{ij}^{(m)}>0,p_{ji}^{(n)}>0$，且由 C-K 方程知 $p_{ii}^{(m+n+k)}\geq p_{ij}^{(m)}p_{jj}^{(k)}p_{ji}^{(n)}$，故 $\sum_{k=0}^\infty p_{ii}^{(k)}\geq\sum_{k=0}^\infty p_{ii}^{(m+n+k)}\geq p_{ij}^{(m)}p_{ji}^{(n)}\sum_{k=0}^\infty p_{jj}^{(k)}$。交换 $i$ 与 $j$ 可得类似不等式，故 $\sum_{k=0}^\infty p_{ii}^{(k)}$ 与 $\sum_{k=0}^\infty p_{jj}^{(k)}$ 同为发散或同为收敛，故 $i,j$ 同为常返态或同为非常返态。
+    仅证明性质 1。由 $i\leftrightarrow j$，知 $\exists m,n,p_{ij}^{(m)}>0,p_{ji}^{(n)}>0$，且由 C-K 方程知 $p_{ii}^{(m+n+k)}\geq p_{ij}^{(m)}p_{jj}^{(k)}p_{ji}^{(n)}$，故 $\sum_{k=0}^\infty p_{ii}^{(k)}\geq\sum_{k=0}^\infty p_{ii}^{(m+n+k)}\geq p_{ij}^{(m)}p_{ji}^{(n)}\sum_{k=0}^\infty p_{jj}^{(k)}$。交换 $i$ 与 $j$ 可得类似不等式，故 $\sum_{k=0}^\infty p_{ii}^{(k)}$ 与 $\sum_{k=0}^\infty p_{jj}^{(k)}$ 相互控制，二者同为发散或同为收敛，故 $i,j$ 同为常返态或同为非常返态。
 \end{proof}
 
 \begin{example}
@@ -145,7 +145,7 @@
     若 $f_{ji}<1$，则从 $j$ 出发以概率 $1-f_{ji}>0$ 不能到 $i$。又 $i\rightarrow j$，则从 $i$ 出发有正概率回不到 $i$，与 $i$ 常返矛盾。
 \end{proof}
 
-上述命题说明，从常返态出发不能到达非常返态。对于有限链，从非常返态出发，最终一定会到达某个常返态。
+上述命题说明，从常返态出发不能到达非常返态。对于有限链，若从非常返态出发，最终一定会到达某个常返态。
 
 \begin{definition}\label{def:7.3.5}
     若集合 $\{n|p_{ii}^{(n)}>0\}$ 非空，则其所有元素的最大公约数 $d(i)$ 称为 $i$ 的\emph{周期}。若 $d(i)>1$，则称 $i$ 为\emph{周期}的，否则称为\emph{非周期}的。若链的所有状态都是非周期的，则称链是\emph{非周期}的，否则称链是\emph{周期}的。
@@ -211,10 +211,10 @@
 \end{theorem}
 
 \begin{proof}
-    由 $i\leftrightarrow j$，知 $\exists m,n,p_{ij}^{(m)}>0,p_{ji}^{(n)}>0$，且由 C-K 方程知 $p_{ii}^{(m+n)}\geq p_{ij}^{(m)}p_{ji}^{(n)}>0$。对于所有满足 $p_{jj}^{(s)}>0$ 的 $s$，都有 $p_{ii}^{(m+n+s)}\geq p_{ij}^{(m)}p_{jj}^{(s)}p_{ji}^{(n)}>0$，则 $d(i)|m+n+s$ 且 $d(i)|m+n$，故 $d(i)|s$，于是 $d(i)|d(j)$。同理可证 $d(j)|d(i)$，故 $d(i)=d(j)$。
+    由 $i\leftrightarrow j$，知 $\exists m,n,p_{ij}^{(m)}>0,p_{ji}^{(n)}>0$，且由 C-K 方程知 $p_{ii}^{(m+n)}\geq p_{ij}^{(m)}p_{ji}^{(n)}>0$。对于所有满足 $p_{jj}^{(s)}>0$ 的 $s\in\mathbb N^*$，都有 $p_{ii}^{(m+n+s)}\geq p_{ij}^{(m)}p_{jj}^{(s)}p_{ji}^{(n)}>0$，则 $d(i)|m+n+s$ 且 $d(i)|m+n$，故 $d(i)|s$，于是 $d(i)|d(j)$。同理可证 $d(j)|d(i)$，故 $d(i)=d(j)$。
 \end{proof}
 
-一般地，可根据状态的分类对状态重新编号，实现状态空间的分解，形如 $S=C_1\cup\cdots\cup C_r\cup C_0$，其中 $C_i\cap C_j=\varnothing,i\neq j$，且 $C_0$ 为非常返的，$C_1,\cdots,C_r$ 为常返互通类，此时转移概率矩阵可写为
+一般地，可根据状态的分类对状态重新编号，实现状态空间的分解，形如 $S=C_1\cup\cdots\cup C_r\cup C_0$，其中 $C_i\cap C_j=\varnothing,\forall i\neq j$，且 $C_0$ 为非常返状态集，而 $C_1,\cdots,C_r$ 为常返互通类，此时转移概率矩阵可写为
 $\left[\begin{matrix}
             P_1    & \cdots & O      &   \\
             \vdots & \ddots & \vdots & O \\
