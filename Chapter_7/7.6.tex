@@ -18,7 +18,7 @@ MCMC 的全称是 Markov Chain Monte Carlo，是一类模拟复杂分布的高�
 可以证明 $Q=(q_{ij})$ 为概率转移矩阵且关于 $\boldsymbol\pi$ 可逆，故 $\boldsymbol\pi$ 为其平稳分布。
 
 \begin{example}
-    用 Metropolis-Hastings 算法模拟 Zipf 分布。对于 $a>0$，有 $P(X=k)=\frac{\frac1{k^a}}{\sum_{j=1}^M\frac1{j^a}},k=1,\cdots,M$，状态空间 $S=\{1,\cdots,M\}$。建议选择原始链为 $S$ 上的 Random Walk，即\\
+    用 Metropolis-Hastings 算法模拟 Zipf 分布。对于 $a>0$，有 $\pi_k=P(X=k)=\frac{\frac1{k^a}}{\sum_{j=1}^M\frac1{j^a}},k=1,\cdots,M$，状态空间 $S=\{1,\cdots,M\}$。建议选择原始链为 $S$ 上的 Random Walk，即\\
     $P=\left[\begin{matrix}
                 \frac12 & \frac12 & 0       & 0       & \cdots  & 0       \\
                 \frac12 & 0       & \frac12 & 0       & \cdots  & 0       \\
