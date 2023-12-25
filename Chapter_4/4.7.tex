@@ -3,16 +3,15 @@
 
 定义\emph{条件期望} $\mathrm E(Y|X\in A)=\left\{
     \begin{aligned}
-        \sum_iy_iP(Y=y_i|X\in A) \\
-        \int_{-\infty}^{+\infty}yf_{Y|X}(y|X\in A)\mathrm dy
-    \end{aligned}\right.$，两种定义分别针对 $Y$ 为离散型和连续型随机变量。
+        \sum_iy_iP(Y=y_i|X\in A), \\
+        \int_{-\infty}^{+\infty}yf_{Y|X}(y|X\in A)\mathrm dy,
+    \end{aligned}\right.$ 两种定义分别针对 $Y$ 为离散型和连续型随机变量。
 
 进而，定义 $\mathrm E(Y|x)=\mathrm E(Y|X=x)=\left\{
     \begin{aligned}
-        \sum_iy_iP(Y=y_i|X=x) \\
-        \int_{-\infty}^{+\infty}yf_{Y|X}(y|x)\mathrm dy
-    \end{aligned}\right.$
-，注意到这是一个 $x$ 的函数，记作 $h(x)$。将其作用在 $X$ 上，得到 $h(X)=\mathrm E(Y|X)$，这是一个 $X$ 的函数（称为 $Y$ 对 $X$ 的回归函数），因此是一个新的随机变量。
+        \sum_iy_iP(Y=y_i|X=x), \\
+        \int_{-\infty}^{+\infty}yf_{Y|X}(y|x)\mathrm dy,
+    \end{aligned}\right.$ 注意到这是一个 $x$ 的函数，记作 $h(x)$。将其作用在 $X$ 上，得到 $h(X)=\mathrm E(Y|X)$，这是一个 $X$ 的函数（称为 $Y$ 对 $X$ 的回归函数），因此是一个新的随机变量。
 
 \begin{example}
     $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，则 $\mathrm E(Y|x)=\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1)$。
