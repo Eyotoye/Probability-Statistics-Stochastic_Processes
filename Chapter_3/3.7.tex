@@ -37,15 +37,13 @@
 
 设随机向量 $(X_1,X_2)$ 有联合 PDF $f(x_1,x_2)$，且有可逆可微的映射关系 $
     \left\{\begin{aligned}
-        Y_1 & =g_1(X_1,X_2) \\
-        Y_2 & =g_2(X_1,X_2)
-    \end{aligned}\right.
-$，据此解出逆映射 $
+        Y_1 & = & g_1(X_1,X_2), \\
+        Y_2 & = & g_2(X_1,X_2),
+    \end{aligned}\right.$ 据此解出逆映射 $
     \left\{\begin{aligned}
-        X_1 & =h_1(Y_1,Y_2) \\
-        X_2 & =h_2(Y_1,Y_2)
-    \end{aligned}\right.
-$，则对于任意可测集 $A$，若 $(h_1,h_2)$ 将 $A$ 映射到集合 $B$，则由可逆性可知 $B$ 在 $(g_1,g_2)$ 的映射下的值域为 $A$。因此 $P((Y_1,Y_2)\in A)=P((X_1,X_2)\in B)=\int_Bf(x_1,x_2)\mathrm dx_1\mathrm dx_2=\int_Af(h_1(y_1,y_2),h_2(y_1,y_2))|J|\mathrm dy_1\mathrm dy_2$，其中 $J$ 为 Jacobi 行列式 $
+        X_1 & = & h_1(Y_1,Y_2), \\
+        X_2 & = & h_2(Y_1,Y_2),
+    \end{aligned}\right.$ 则对于任意可测集 $A$，若 $(h_1,h_2)$ 将 $A$ 映射到集合 $B$，则由可逆性可知 $B$ 在 $(g_1,g_2)$ 的映射下的值域为 $A$。因此 $P((Y_1,Y_2)\in A)=P((X_1,X_2)\in B)=\int_Bf(x_1,x_2)\mathrm dx_1\mathrm dx_2=\int_Af(h_1(y_1,y_2),h_2(y_1,y_2))|J|\mathrm dy_1\mathrm dy_2$，其中 $J$ 为 Jacobi 行列式 $
     \det \left[\begin{matrix}
             \frac{\partial h_1}{\partial y_1} & \frac{\partial h_1}{\partial y_2} \\
             \frac{\partial h_2}{\partial y_1} & \frac{\partial h_2}{\partial y_2} \\
@@ -55,16 +53,13 @@ $，因此 $(Y_1,Y_2)$ 的联合 PDF 为 $l(y_1,y_2)=f(h_1(y_1,y_2),h_2(y_1,y_2)
 \begin{example}
     随机向量 $(X_1,X_2)$ 有联合 PDF $f(x_1,x_2)$，为求 $Y=X_1+X_2$ 的 PDF，引入 $Z=X_1$，则 $
         \left\{\begin{aligned}
-            X_1 & =Z   \\
-            X_2 & =Y-Z
-        \end{aligned}\right.
-    $，Jacobi 行列式为 $
+            X_1 & = & Z,   \\
+            X_2 & = & Y-Z,
+        \end{aligned}\right.$ Jacobi 行列式为 $
         \det \left[\begin{matrix}
                 0 & 1  \\
                 1 & -1
-            \end{matrix}\right]=-1
-    $
-    ，故 $(Y,Z)$ 的联合 PDF 为 $f(z,y-z)|-1|=f(z,y-z)$，$Y$ 的边际 PDF 为 $l_Y(y)=\int_{-\infty}^{+\infty}f(z,y-z)\mathrm dz$。
+            \end{matrix}\right]=-1$，故 $(Y,Z)$ 的联合 PDF 为 $f(z,y-z)|-1|=f(z,y-z)$，$Y$ 的边际 PDF 为 $l_Y(y)=\int_{-\infty}^{+\infty}f(z,y-z)\mathrm dz$。
 \end{example}
 
 上例中，若 $X_1,X_2$ 相互独立，则 $f(x_1,x_2)=f_1(x_1)f_2(x_2)\Rightarrow l_Y(y)=\int_{-\infty}^{+\infty}f_1(z)f_2(y-z)\mathrm dz$，这称之为 $f_1$ 和 $f_2$ 的\emph{卷积}，记作 $f_1\ast f_2$。
