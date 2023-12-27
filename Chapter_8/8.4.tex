@@ -1,10 +1,10 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-本节中追加假设 $\epsilon_i\sim N(0,\sigma^2)(i=1,\cdots,n)$，则有 $y_i\sim N(\beta_0+\beta_1x_i,\sigma^2)$ 且独立。对于此模型，似然函数 $L(\beta_0,\beta_1,\sigma^2)=\prod_{i=1}^n\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(y_i-(\beta_0+\beta_1x_i))^2}{2\sigma^2}}$，可以证明 $\beta_0,\beta_1,\sigma^2$ 的 MLE 为 $\hat\beta_0,\hat\beta_1,\frac{SSE}n$。
+本节中追加假设 $\epsilon_i\sim N(0,\sigma^2)(i=1,\cdots,n)$，则有 $y_i\sim N(\beta_0+\beta_1x_i,\sigma^2)$ 且独立。对于此模型，似然函数 $L(\beta_0,\beta_1)=\prod_{i=1}^n\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(y_i-(\beta_0+\beta_1x_i))^2}{2\sigma^2}}$，可以证明 $\beta_0,\beta_1$ 的 MLE 为 $\hat\beta_0,\hat\beta_1$。
 
-考虑假设检验：$H_0:\beta_1=0,H_1:\beta_1\neq0$。注意到 $\frac{\hat\beta_1-\beta_1}{\frac\sigma{\sqrt{S_{xx}}}}\sim N(0,1)$，以及可以证明 $\frac{SSE}{\sigma^2}=\frac{(n-2)\hat\sigma^2}{\sigma^2}\sim\chi^2(n-2)$，且二者独立，故 $\frac{\frac{\hat\beta_1-\beta_1}{\frac\sigma{\sqrt{S_{xx}}}}}{\sqrt{\frac{SSE}{\sigma^2}/(n-2)}}=\frac{\hat\beta_1-\beta_1}{\hat\sigma/\sqrt{S_{xx}}}=\frac{\hat\beta_1-\beta_1}{\widehat{\mathrm{Se}}(\hat\beta_1)}\sim t(n-2)$。取检验统计量 $T=\frac{\hat\beta_1}{\widehat{\mathrm{Se}}(\hat\beta_1)}$，当 $H_0$ 为真时，$T\sim t(n-2)$。检验准则为若 $|T|\geq t_{\frac\alpha2}(n-2)$ 则拒绝 $H_0$。若 $H_0$ 被拒绝，说明有理由相信 $\beta_1\neq0$，即模型是有意义的。
+考虑假设检验：$H_0:\beta_1=0,H_1:\beta_1\neq0$。注意到 $\frac{\hat\beta_1-\beta_1}{\frac\sigma{\sqrt{S_{xx}}}}\sim N(0,1)$，以及可以证明 $\frac{SSE}{\sigma^2}=\frac{(n-2)\hat\sigma^2}{\sigma^2}\sim\chi^2(n-2)$，且二者独立，故 $\frac{\frac{\hat\beta_1-\beta_1}{\frac\sigma{\sqrt{S_{xx}}}}}{\sqrt{\frac{SSE}{\sigma^2}/(n-2)}}=\frac{\hat\beta_1-\beta_1}{\hat\sigma/\sqrt{S_{xx}}}\sim t(n-2)$。取检验统计量 $T=\frac{\hat\beta_1}{\hat\sigma/\sqrt{S_{xx}}}$，当 $H_0$ 为真时，$T\sim t(n-2)$。检验准则为若 $|T|\geq t_{\frac\alpha2}(n-2)$ 则拒绝 $H_0$。
 
-除了检验 $\beta_1=0$ 之外，还可以针对其他的 $\beta_1$ 可能值进行检验，也可以对 $\beta_1$ 作区间估计。也可以对 $\beta_0$ 进行相应的推断，过程类似。
+% 除了检验 $\beta_1=0$ 之外，还可以针对其他的 $\beta_1$ 可能值进行检验，也可以对 $\beta_1$ 作区间估计。也可以对 $\beta_0$ 进行相应的推断，过程类似。
 
 \end{document}
