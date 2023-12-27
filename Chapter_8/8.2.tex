@@ -1,6 +1,53 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+由 $B(t)\sim N(0,t)$ 知其 PDF 为 $f_t(x)=\frac1{\sqrt{2\pi}t}e^{-\frac{x^2}{2t}},x\in\mathbb R$。
 
+可以证明，$f_t(x)$ 满足 $\frac{\partial f}{\partial t}=\frac12\frac{\partial^2f}{\partial x^2}$（称为热传导方程），且是其在定解条件 $\int_{-\infty}^{+\infty}f(x,t)\equiv1,\lim_{t\rightarrow0}f(x,t)=0,\forall x\neq0$ 下的唯一解。
+
+由 $\forall t_1<t_2<\cdots<t_n,B(t_1)=x_1,\cdots,B(t_n)=x_n$ 等价于 $B(t_1)=x_1,B(t_2)-B(t_1)=x_2-x_1,\cdots,B(t_n)-B(t_{n-1})=x_n-x_{n-1}$，可得 $B(t_1),\cdots,B(t_n)$ 的联合 PDF 为 $f(x_1,\cdots,x_n)=f_{t_1}(x_1)f_{t_2-t_1}(x_2-x_1)\cdots f_{t_n-t_{n-1}}(x_n-x_{n-1})$。需要指出，这里由 $B(t_1),B(t_2)-B(t_1),\cdots,B(t_n)-B(t_{n-1})$ 的分布过渡到 $B(t_1),\cdots,B(t_n)$ 的分布时，严格的证明过程应当使用密度函数变换的方法。
+
+由于 Brown 运动的良好性质，原则上我们可以计算任何想要的概率分布。
+
+\begin{example}
+    $\forall0<s<t$，求在 $B(t)=a$ 下 $B(s)$ 的条件分布。\\
+    由 $B(t)=a,B(s)=x$ 等价于 $B(s)=x,B(t)-B(s)=a-x$，故所求条件 PDF 为 $f_{B(s)|B(t)}(x|B(t)=a)=\frac{f_s(x)f_{t-s}(a-x)}{f_t(a)}\propto e^{-\frac{x^2}{2s}-\frac{(x-a)^2}{2(t-s)}}\propto e^{-\frac{(x-\frac{as}t)^2}{2\frac{s(t-s)}t}}$，故服从 $N(\frac{as}t,\frac{s(t-s)}t)$。\\
+    若记 $\alpha=\frac st$，则当 $B(t)=a$ 时，$\mathrm E(B(s))=\alpha a,\mathrm{Var}(B(s))=\alpha(1-\alpha)t$，即方差与 $a$ 无关。
+\end{example}
+
+\begin{proposition}
+    Brown 运动具有对称性，即 $P(B(t_0+t)\geq x_0|B(t_0)=x_0)=P(B(t_0+t)\leq x_0|B(t_0)=x_0)=\frac12,\forall t_0\geq0,t>0$。
+\end{proposition}
+
+\begin{definition}\label{def:8.2.1}
+    若对于 $\forall n\geq1,\forall0\leq t_1<t_2<\cdots<t_n$，有 $X(t_1),\cdots,X(t_n)$ 服从多元正态分布，则称 $\{X(t),t\geq0\}$ 为 \emph{Gauss 过程}。
+\end{definition}
+
+Brown 运动是 Gauss 过程。
+
+\begin{theorem}\label{thm:8.2.1}
+    Gauss 过程 $\{X(t),t\geq0\}$ 是标准 Brown 运动的充要条件为
+    \begin{enumerate}
+        \item $X(0)=0$
+        \item $\mathrm E(X(t))=0$
+        \item $\mathrm E(X(t)X(s))=s,\forall0\leq s<t$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    必要性是显然的。下证充分性。\\
+    $\forall 0\leq t_1<t_2<t_3<t_4$，有 $\mathrm E((X(t_2)-X(t_1))(X(t_4)-X(t_3)))=t_2-t_2-t_1+t_1=0$，故 $X(t_2)-X(t_1)$ 与 $X(t_4)-X(t_3)$ 不相关，又由多元正态分布性质知 $X(t_2)-X(t_1)$ 与 $X(t_4)-X(t_3)$ 相互独立，即证明了增量独立性。又由 $\mathrm E((X(t)-X(s))^2)=t+s-2s=t-s,\forall0\leq s<t$，得 $X(t)-X(s)\sim N(0,t-s)$。
+\end{proof}
+
+\begin{proposition}
+    若 $\{W(t),t\geq0\}$ 定义如下，则其为标准 Brown 运动。
+    \begin{enumerate}
+        \item $W(t)=-B(t),t\geq0$（反射，reflection）
+        \item $W(t)=B(t+h)-B(h),t\geq0$，其中 $h>0$ 固定（平移，translation）
+        \item $W(t)=\frac{B(at)}{\sqrt a},t\geq0$，其中 $a>0$ 固定（伸缩，scaling）
+        \item $W(t)=tB(\frac1t),t>0,W(0)=0$（反演，inversion）
+        \item $W(t)=B(T-t)-B(T),t\in[0,T]$，其中 $T>0$ 固定
+    \end{enumerate}
+\end{proposition}
 
 \end{document}

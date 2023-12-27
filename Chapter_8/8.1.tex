@@ -1,6 +1,24 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+本章的主题 Brown 运动是一种随机连续运动，其指标集 $T=[0,+\infty)$，状态空间 $S=\mathbb R$。
 
+为理解 Brown 运动，先来考虑熟悉的随机游走。假设 $X(0)=0$，各 $X_i$ 独立同分布且 $P(X_i=1)=P(X_i=-1)=\frac12$，以 $\Delta x$ 为步长，$\Delta t$ 为时间跨度，令 $t$ 时刻的粒子位置为 $X(t)=\Delta x\sum_{i=1}^{\lfloor t/\Delta t\rfloor}X_i$，则 $\mathrm E(X(t))=0,\mathrm{Var}(X(t))=(\Delta x)^2\lfloor t/\Delta t\rfloor$。令 $(\Delta x)^2=\sigma^2\Delta t$，则 $\mathrm{Var}(X(t))\rightarrow \sigma^2t(\Delta t\rightarrow0)$，且 $\{X(t)\}$ 具有平稳增量和独立增量性。
+
+\begin{definition}\label{def:8.1.1}
+    称一个随机过程 $\{X(t),t\geq 0\}$ 为 \emph{Brown 运动}，若其满足：
+    \begin{enumerate}
+        \item $X(0)=0$（这一要求并不本质）
+        \item $\{X(t),t\geq 0\}$ 有平稳增量和独立增量性
+        \item $\forall t>0$，$X(t)\sim N(0,\sigma^2t)$
+    \end{enumerate}
+    若 $\sigma^2=1$，称之为\emph{标准 Brown 运动}，记为 $\{B(t),t\geq0\}$。
+\end{definition}
+
+历史上，Brown 运动是由 Brown 在 1827 年发现的，Einstein 于 1905 年给出了其数学解释，而 Wiener 在 1918 年给出了精确的数学刻画。
+
+根据平稳增量性可知，$\forall0<s<t,B(t+s)-B(s)\sim N(0,\sigma^2t)$。而根据独立增量性，$P(B(t+s)\leq x|B(s)=a,B(u)(0\leq u<s))=P(B(t+s)-B(s)\leq x-a|B(s)=a,B(u)(0\leq u<s))=P(B(t+s)-B(s)\leq x-a)=P(B(t+s)\leq x|B(s)=a)$，这说明 Brown 运动有 Markov 性（是 Markov 过程）。
+
+可以证明，$B(t)$ 以概率 $1$ 关于 $t$ 连续且处处不可微。直观地，$\mathrm E((B(t+\Delta t)-B(t))^2)=\Delta t$，故 $B(t+\Delta t)-B(t)\sim\sqrt{\Delta t}$，因此 $\lim_{\Delta t\rightarrow0}\frac{B(t+\Delta t)-B(t)}{\Delta t}$ 不存在。
 
 \end{document}
