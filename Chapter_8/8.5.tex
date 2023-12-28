@@ -20,7 +20,15 @@
 接下来介绍形如 $\int_0^tg(s)\mathrm dB(s)$ 的积分。
 
 \begin{definition}\label{def:8.5.2}
-    TODO
+    若均方极限 $\lim_{\lambda_n\rightarrow0}\sum_{k=1}^ng(t_{k-1})(B(t_k)-B(t_{k-1}))$ 存在，则定义 $\int_0^tg(s)\mathrm dB(s)$ 为该极限，称之为 $g(t)$ 关于 $\{B(t),t\geq0\}$ 在 $[0,t]$ 上的 \emph{It\"o 积分}。
 \end{definition}
+
+\begin{example}
+    考虑 $\int_0^t2B(s)\mathrm dB(s)$。由 $S_n=\sum_{k=1}^n2B(t_{k-1})(B(t_k)-B(t_{k-1}))=\sum_{k=1}^n(B^2(t_k)-B^2(t_{k-1}))-\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2=B^2(t)-B^2(0)-\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2$，又 $\mathrm E(\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2)=\sum_{k=1}^n(t_k-t_{k-1})=t,
+        \mathrm{Var}(\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2)
+        =\mathrm E((\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2-t)^2)
+        =\mathrm E((\sum_{k=1}^n((B(t_k)-B(t_{k-1}))^2-(t_k-t_{k-1})))^2)
+        =\mathrm E(\sum_{k=1}^n((B(t_k)-B(t_{k-1})^2-(t_k-t_{k-1}))^2))+\sum_{i\neq j}\mathrm E((B(t_i)-B(t_{i-1}))^2-(t_i-t_{i-1}))\mathrm E((B(t_j)-B(t_{j-1}))^2-(t_j-t_{j-1}))$
+\end{example}
 
 \end{document}
