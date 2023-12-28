@@ -6,10 +6,10 @@
 为理解 Brown 运动，先来考虑熟悉的随机游走。假设 $X(0)=0$，各 $X_i$ 独立同分布且 $P(X_i=1)=P(X_i=-1)=\frac12$，以 $\Delta x$ 为步长，$\Delta t$ 为时间跨度，令 $t$ 时刻的粒子位置为 $X(t)=\Delta x\sum_{i=1}^{\lfloor t/\Delta t\rfloor}X_i$，则 $\mathrm E(X(t))=0,\mathrm{Var}(X(t))=(\Delta x)^2\lfloor t/\Delta t\rfloor$。令 $(\Delta x)^2=\sigma^2\Delta t$，则 $\mathrm{Var}(X(t))\rightarrow \sigma^2t(\Delta t\rightarrow0)$，且 $\{X(t)\}$ 具有平稳增量性和独立增量性。
 
 \begin{definition}\label{def:8.1.1}
-    称一个随机过程 $\{X(t),t\geq 0\}$ 为 \emph{Brown 运动}，若其满足：
+    称一个随机过程 $\{X(t),t\geq0\}$ 为 \emph{Brown 运动}，若其满足：
     \begin{enumerate}
         \item $X(0)=0$（这一要求并不本质）
-        \item $\{X(t),t\geq 0\}$ 有平稳增量性和独立增量性
+        \item $\{X(t),t\geq0\}$ 有平稳增量性和独立增量性
         \item $\forall t>0$，$X(t)\sim N(0,\sigma^2t)$
     \end{enumerate}
     若 $\sigma^2=1$，称之为\emph{标准 Brown 运动}，记为 $\{B(t),t\geq0\}$。

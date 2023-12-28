@@ -3,7 +3,7 @@
 
 记 $T_1$ 为首次到达时刻，则 $P(T_1\leq t)=1-P(T_1>t)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_1\sim Exp(\lambda)$。再记 $T_2$ 为第二次到达时刻，则在 $T_1=t_0$ 条件下，$T_2-T_1$ 的分布 $P(T_2-T_1\leq t)=P(T_2-t_0\leq t)=1-P(T_2-t_0>t)=1-P(N(t_0+t)-N(t_0)=0)=1-P(N(t)=0)=1-e^{-\lambda t}$，因此 $T_2-T_1\sim Exp(\lambda)$，且 $T_2-T_1$ 与 $T_1$ 相互独立。一般地，记 $T_i$ 为第 $i$ 次到达时刻，$W_i=T_i-T_{i-1}$ 为相邻两次到达间隔时间，约定 $T_0=0$，则 $\{W_i\}_{i=1}^\infty$ 相互独立且 $W_i\sim Exp(\lambda)$，而 $T_k=\sum_{i=1}^kW_i$，称 $T_k$ 服从参数为 $k$ 和 $\lambda$ 的 \emph{Gamma 分布}，记作 $T_k\sim \Gamma(k,\lambda)$，$\mathrm E(T_k)=\frac k\lambda,\mathrm{Var}(T_k)=\frac k{\lambda^2}$。$T_k$ 服从的分布又称之为 \emph{Erlang 分布}。事实上，Erlang 分布是 Gamma 分布在 $k\in\mathbb N^*$ 时的特例。$\Gamma(1,\lambda)$ 就是 $Exp(\lambda)$。
 
-利用 $\forall t\geq0,P(T_k\leq t)=P(N(t)\geq k)=1-\sum_{n=0}^{k-1}\frac{(\lambda t)^n}{n!}e^{-\lambda t}$，求导可得 $T_k$ 的 PDF 为 $f_{T_k}(t)=\frac{\lambda^kt^{k-1}}{(k-1)!}e^{-\lambda t}(t\geq 0)$。
+利用 $\forall t\geq0,P(T_k\leq t)=P(N(t)\geq k)=1-\sum_{n=0}^{k-1}\frac{(\lambda t)^n}{n!}e^{-\lambda t}$，求导可得 $T_k$ 的 PDF 为 $f_{T_k}(t)=\frac{\lambda^kt^{k-1}}{(k-1)!}e^{-\lambda t}(t\geq0)$。
 
 Poisson 过程还有一个等价定义如下。
 

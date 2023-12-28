@@ -20,15 +20,77 @@
 接下来介绍形如 $\int_0^tg(s)\mathrm dB(s)$ 的积分。
 
 \begin{definition}\label{def:8.5.2}
-    若均方极限 $\lim_{\lambda_n\rightarrow0}\sum_{k=1}^ng(t_{k-1})(B(t_k)-B(t_{k-1}))$ 存在，则定义 $\int_0^tg(s)\mathrm dB(s)$ 为该极限，称之为 $g(t)$ 关于 $\{B(t),t\geq0\}$ 在 $[0,t]$ 上的 \emph{It\"o 积分}。
+    若均方极限 $\lim_{\lambda_n\rightarrow0}\sum_{k=1}^ng(t_{k-1})(B(t_k)-B(t_{k-1}))$ 存在，则定义 $\int_0^tg(s)\mathrm dB(s)$ 为该极限，称之为 $g(t)$ 关于 $\{B(t),t\geq0\}$ 在 $[0,t]$ 上的 \emph{It\^o 积分}。
 \end{definition}
 
-\begin{example}
-    考虑 $\int_0^t2B(s)\mathrm dB(s)$。由 $S_n=\sum_{k=1}^n2B(t_{k-1})(B(t_k)-B(t_{k-1}))=\sum_{k=1}^n(B^2(t_k)-B^2(t_{k-1}))-\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2=B^2(t)-B^2(0)-\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2$，又 $\mathrm E(\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2)=\sum_{k=1}^n(t_k-t_{k-1})=t,
-        \mathrm{Var}(\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2)
-        =\mathrm E((\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2-t)^2)
-        =\mathrm E((\sum_{k=1}^n((B(t_k)-B(t_{k-1}))^2-(t_k-t_{k-1})))^2)
-        =\mathrm E(\sum_{k=1}^n((B(t_k)-B(t_{k-1})^2-(t_k-t_{k-1}))^2))+\sum_{i\neq j}\mathrm E((B(t_i)-B(t_{i-1}))^2-(t_i-t_{i-1}))\mathrm E((B(t_j)-B(t_{j-1}))^2-(t_j-t_{j-1}))$
+注意，上述定义中 $g(t_{k-1})$ 为每个小区间的左端点处取值，若换成其他点的值，则均方极限不一定存在。特别地，若换成 $\frac12(g(t_k)+g(_{k-1}))$，则均方极限存在，称之为 \emph{Stratonovich 积分}。
+
+\begin{example}\label{Ito}
+    考虑 $\int_0^t2B(s)\mathrm dB(s)$。由 $S_n=\sum_{k=1}^n2B(t_{k-1})(B(t_k)-B(t_{k-1}))=\sum_{k=1}^n(B^2(t_k)-B^2(t_{k-1}))-\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2=B^2(t)-B^2(0)-\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2$，其中
+    \begin{equation*}
+        \mathrm E(\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2)=\sum_{k=1}^n(t_k-t_{k-1})=t,
+    \end{equation*}
+    而
+    \begin{equation*}
+        \begin{aligned}
+                 & \mathrm{Var}(\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2)                                                               \\
+            =    & \mathrm E((\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2-t)^2)                                                            \\
+            =    & \mathrm E((\sum_{k=1}^n((B(t_k)-B(t_{k-1}))^2-(t_k-t_{k-1})))^2)                                              \\
+            =    & \mathrm E(\sum_{k=1}^n((B(t_k)-B(t_{k-1}))^2-(t_k-t_{k-1}))^2)                                                \\
+            +    & \sum_{i\neq j}\mathrm E((B(t_i)-B(t_{i-1}))^2-(t_i-t_{i-1}))\mathrm E((B(t_j)-B(t_{j-1}))^2-(t_j-t_{j-1}))    \\
+            =    & \sum_{k=1}^n(\mathrm E((B(t_k)-B(t_{k-1}))^4)-2(t_k-t_{k-1})\mathrm E((B(t_k)-B(t_{k-1}))^2)+(t_k-t_{k-1})^2) \\
+            =    & \sum_{k=1}^n(3(t_k-t_{k-1})^2-2(t_k-t_{k-1})^2+(t_k-t_{k-1})^2)                                               \\
+            =    & 2\sum_{k=1}^n(t_k-t_{k-1})^2                                                                                  \\
+            \leq & 2\lambda_nt\rightarrow0(n\rightarrow\infty),
+        \end{aligned}
+    \end{equation*}
+    故 $\lim_{n\rightarrow\infty}\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2=t$（这称之为 Brown 运动的\emph{二次变差}，而可微函数的二次变差总是 $0$），于是 $S_n$ 的均方极限为 $B^2(t)-t$，即 $\int_0^t2B(s)\mathrm dB(s)=B^2(t)-t$。
 \end{example}
+
+上例的结果可形式上写为 $2B(t)\mathrm dB(t)=\mathrm dB^2(t)-\mathrm dt$。若在每个小区间选择右端点处的值，即 $\tilde S_n=\sum_{k=1}^n2B(t_k)(B(t_k)-B(t_{k-1}))=S_n+\sum_{k=1}^n2(B(t_k)-B(t_{k-1}))^2$，则 $\tilde S_n$ 的均方极限为 $B^2(t)+t$。Stratonovich 积分的结果为 $\frac12(S_n+\tilde S_n)$ 的均方极限，等于 $B^2(t)$。
+
+可类似地根据定义计算 It\^o 积分 $\int_0^t\mathrm dB(s)=B(t)-B(0)=B(t)$。
+
+一个常用的性质是 $(\mathrm dB(t))^2\sim\mathrm dt$（只差一个 $\mathrm dt$ 的高阶项）。
+
+由例~\ref{Ito} 知 $\mathrm dB^2(t)=2B(t)\mathrm dB(t)+\mathrm dt$，为回答更一般的问题，即 $\mathrm df(t,B(t))$ 的表达式，引入以下定义。
+
+\begin{definition}\label{def:8.5.3}
+    若 $\forall t\geq0,\int_0^t\mathrm dX(s)=X(t)-X(0)=\int_0^t\alpha(s)\mathrm ds+\int_0^t\beta(s)\mathrm dB(s)$，其中 $\int_0^t|\alpha(s)|\mathrm ds<+\infty,\mathrm E(\int_0^t\beta^2(s)\mathrm ds)<+\infty$，则称 $\{X(t),t\geq0\}$ 为 \emph{It\^o 过程}，记为 $\mathrm dX(t)=\alpha(t)\mathrm dt+\beta(t)\mathrm dB(t)$。
+\end{definition}
+
+\textbf{\textcolor{brown}{TODO: $\mathrm dB^2(t)=2B(t)\mathrm dB(t)+\frac1{2!}\cdot2(\mathrm dB(t))^2+\cdots$ 怎么理解？}}
+
+\begin{theorem}\label{thm:8.5.1}
+    设 $f(t,x)$ 关于 $t,x$ 分别有一阶、二阶连续偏导，则
+    \begin{equation*}
+        \mathrm df(t,B(t))=\left(\frac{\partial f}{\partial t}(t,B(t))+\frac12\frac{\partial^2f}{\partial x^2}(t,B(t))\right)\mathrm dt+\frac{\partial f}{\partial x}(t,B(t))\mathrm dB(t),
+    \end{equation*}
+    上式称之为 \emph{It\^o 微分公式}。
+\end{theorem}
+
+\begin{proof}
+    仅给出描述性简略证明。由 $\mathrm df=\frac{\partial f}{\partial t}\mathrm dt+\frac{\partial f}{\partial x}\mathrm dx+\frac12\frac{\partial^2f}{\partial x^2}(\mathrm dx)^2$，其中 $\mathrm dx=\mathrm dB(t)$，故 $\mathrm df=\left(\frac{\partial f}{\partial t}(t,B(t))+\frac12\frac{\partial^2f}{\partial x^2}(t,B(t))\right)\mathrm dt+\frac{\partial f}{\partial x}(t,B(t))\mathrm dB(t)$。
+\end{proof}
+
+\textbf{\textcolor{brown}{TODO: 上面这个证明这样就可以吗？}}
+
+一般地，若 $\mathrm dX(t)=\alpha(t)\mathrm dt+\beta(t)\mathrm dB(t),Y(t)=f(t,X(t))$，则有
+\begin{equation*}
+    \mathrm dY(t)=\left(\frac{\partial f}{\partial t}(t,X(t))+\frac{\partial f}{\partial x}(t,X(t))\alpha(t)+\frac12\frac{\partial^2f}{\partial x^2}(t,X(t))\beta^2(t)\right)\mathrm dt+\frac{\partial f}{\partial x}(t,X(t))\beta(t)\mathrm dB(t).
+\end{equation*}
+
+\begin{example}
+    设 $t$ 时刻的股价为 $S(t)$，其服从几何 Brown 运动 $\mathrm dS(t)=S(t)(u\mathrm dt+\sigma\mathrm dB(t))$。取 $f(t,S(t))=\log S(t)$，则 $\frac{\partial f}{\partial t}=0,\frac{\partial f}{\partial x}=\frac1x,\frac{\partial^2f}{\partial x^2}=-\frac1{x^2}$，故 $\mathrm d\log S(t)=\left(u-\frac12\sigma^2\right)\mathrm dt+\sigma\mathrm dB(t)$，即 $\log S(t)=\log S(0)+\left(u-\frac12\sigma^2\right)t+\sigma B(t)$，故 $S(t)=S(0)e^{\left(u-\frac12\sigma^2\right)t+\sigma B(t)}$。
+\end{example}
+
+\begin{example}
+    设 $t$ 时刻的股价为 $S(t)$，一种金融产品称之为欧式看涨期权（European Call Option），拥有该期权的人可以在 $T$ 时刻选择是否“行权”，即是否以某预先指定的执行价格 $K$ 买入股票。显然，应当行权当且仅当 $S(T)>K$。期权在 $t$ 时刻的价格定义为 $g(t,S(t))$，则 $g(T,S(T))=\max\{S(T)-K,0\}$。假设股价服从几何 Brown 运动 $\mathrm dS(t)=S(t)(u\mathrm dt+\sigma\mathrm dB(t))$，则由 It\^o 微分方程有 $\mathrm dg(t,S(t))=\left(\frac{\partial g}{\partial t}+\frac{\partial g}{\partial S}S(t)u+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt+\frac{\partial g}{\partial S}S(t)\sigma\mathrm dB(t)$。称 $P(t)=g(t,S(t))-\delta S(t)$ 为一个投资组合（Portfolio），其中 $-\delta S(t)$ 项表示同时做空该股票，于是 $\mathrm dP(t)=\mathrm dg(t,S(t))-\delta\mathrm dS(t)=\left(\frac{\partial g}{\partial t}+\left(\frac{\partial g}{\partial S}-\delta\right)S(t)u+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt+\left(\frac{\partial g}{\partial S}-\delta\right)S(t)\sigma\mathrm dB(t)$。为进行风险对冲以消除随机波动的影响，取 $\delta=\frac{\partial g}{\partial S}$，则 $\mathrm dP(t)=\left(\frac{\partial g}{\partial t}+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt$。假设无套利机会，则 $\mathrm dP(t)=rP(t)\mathrm dt$，其中 $r$ 为无风险利率，故 $\frac{\partial g}{\partial t}+rS\frac{\partial g}{\partial S}+\frac12\frac{\partial^2g}{\partial S^2}S^2\sigma^2=rg$，称之为 \emph{Black-Scholes 方程}，其终值条件为 $g(T,S(T))=\max\{S(T)-K,0\}$。\\
+    该模型中涉及的主要假设包括：股票服从几何 Brown 运动、无套利机会、标的资产不支付利息、可做空、无交易税费、$\sigma$ 保持不变、$r$ 为已知常数、交易连续等。
+\end{example}
+
+\textbf{\textcolor{brown}{TODO: 为什么无套利机会可以推出 $\mathrm dP(t)=rP(t)\mathrm dt$？}}
+
+\textbf{\textcolor{brown}{TODO: 历史注记}}
 
 \end{document}
