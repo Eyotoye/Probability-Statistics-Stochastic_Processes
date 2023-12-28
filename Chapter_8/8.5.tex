@@ -1,6 +1,26 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
+本节介绍关于 Brown 运动的积分。
 
+首先通过一个例子引入形如 $\int_a^bf(B(t))\mathrm dt$ 的均方积分。
+
+\begin{example}
+    $\int_0^tB(u)\mathrm du$ 称之为\emph{积分 Brown 运动}。设有分划 $0=t_0<t_1<\cdots<t_n=t$，记 $\lambda_n=\max_{k=1,\cdots,n}\{t_k-t_{k-1}\}$，则 $\lim_{n\rightarrow\infty}\lambda_n=0$。定义 $S_n=\sum_{k=1}^nB(u_k)(t_k-t_{k-1})(u_k\in[t_{k-1},t_k])$，若 $\lim_{n\rightarrow\infty}S_n$ 存在，记为 $Y(t)$，则定义 $\int_0^tB(u)\mathrm du=Y(t)$。
+\end{example}
+
+需要注意，定义中出现的极限是均方极限，以下详述。
+
+\begin{definition}\label{def:8.5.1}
+    可以证明，对零均值随机变量 $X,Y$，有 $\langle X,Y\rangle=\mathrm E(XY)$ 是内积。记 $||X||=\sqrt{\langle X,X\rangle}$ 为其诱导的范数，则定义 $X$ 和 $Y$ 的\emph{均方距离}为 $||X-Y||$。若一个随机过程 $\{X(t),t\geq0\}$ 满足 $\mathrm E(X^2(t))=||X(t)||^2<+\infty,\forall t\geq0$，则称其为\emph{二阶矩过程}。标准 Brown 运动是二阶矩过程。对二阶矩存在的随机变量列 $\{X_n\}$，若存在二阶矩存在的随机变量 $X$ 满足 $\lim_{n\rightarrow\infty}||X_n-X||=0$，则称 $X$ 为 $\{X_n\}$ 的\emph{均方极限}。
+\end{definition}
+
+可以证明，$\{Y(t),t\geq0\}$ 仍为 Gauss 过程，且 $\mathrm E(Y(t))=0,\mathrm{Var}(Y(t))=\mathrm E(Y^2(t))=\mathrm E(\int_0^t\int_0^tB(u)B(s)\mathrm ds\mathrm du)=\frac{t^3}3$，但无独立增量性。
+
+接下来介绍形如 $\int_0^tg(s)\mathrm dB(s)$ 的积分。
+
+\begin{definition}\label{def:8.5.2}
+    TODO
+\end{definition}
 
 \end{document}

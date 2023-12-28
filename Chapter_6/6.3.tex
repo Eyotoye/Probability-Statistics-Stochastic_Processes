@@ -20,7 +20,7 @@
     设 $\{X_i\}_{i=1}^\infty$ 独立同分布且服从 $Exp(\lambda)$，$N$ 服从参数为 $p$ 的几何分布，且与 $\{X_i\}_{i=1}^\infty$ 相互独立，令 $Y=\sum_{i=1}^NX_i$。为求出 $Y$ 的分布，设每次事件都独立地以概率 $p$ 成为“特殊事件”，则 $N$ 可视为首次发生“特殊事件”时的事件总数，$Y$ 为特殊事件首次发生的时刻。由定理~\ref{thm:6.3.1}，特殊事件的发生是一个 Poisson 过程，到达率为 $\lambda p$，因此 $Y\sim Exp(\lambda p)$。
 \end{example}
 
-下面介绍 Poisson 过程的\emph{合并}。
+接下来介绍 Poisson 过程的\emph{合并}。
 
 \begin{theorem}\label{thm:6.3.2}
     若 $\{N_1(t),t\geq0\}$ 和 $\{N_2(t),t\geq0\}$ 是两个独立的 Poisson 过程，且到达率分别为 $\lambda_1$ 和 $\lambda_2$，则 $\{N_1(t)+N_2(t),t\geq0\}$ 也是 Poisson 过程，且到达率为 $\lambda_1+\lambda_2$。
@@ -50,7 +50,7 @@
 一般地，有如下定理。
 
 \begin{theorem}\label{thm:6.3.4}
-    设 $\{N(t),t\geq0\}$ 是 Poisson 过程，则 $\forall 0\leq t_1\leq t_2$，在 $N(t_2)=n$ 的条件下，有 $N(t_1)\sim B(n,\frac{t_1}{t_2})$。
+    设 $\{N(t),t\geq0\}$ 是 Poisson 过程，则 $\forall0\leq t_1\leq t_2$，在 $N(t_2)=n$ 的条件下，有 $N(t_1)\sim B(n,\frac{t_1}{t_2})$。
 \end{theorem}
 
 \begin{proof}
