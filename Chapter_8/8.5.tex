@@ -12,7 +12,7 @@
 需要注意，定义中出现的极限是均方极限，以下详述。
 
 \begin{definition}\label{def:8.5.1}
-    可以证明，对零均值随机变量 $X,Y$，有 $\langle X,Y\rangle=\mathrm E(XY)$ 是内积。记 $||X||=\sqrt{\langle X,X\rangle}$ 为其诱导的范数，则定义 $X$ 和 $Y$ 的\emph{均方距离}为 $||X-Y||$。若一个随机过程 $\{X(t),t\geq0\}$ 满足 $\mathrm E(X^2(t))=||X(t)||^2<+\infty,\forall t\geq0$，则称其为\emph{二阶矩过程}。标准 Brown 运动是二阶矩过程。对二阶矩存在的随机变量列 $\{X_n\}$，若存在二阶矩存在的随机变量 $X$ 满足 $\lim_{n\rightarrow\infty}||X_n-X||=0$，则称 $X$ 为 $\{X_n\}$ 的\emph{均方极限}。
+    可以证明，对零均值随机变量 $X,Y$，有 $\langle X,Y\rangle=\mathrm E(XY)$ 是内积。对于一般的随机变量 $X,Y$，内积 $\langle X,Y\rangle$ 定义为协方差 $\mathrm E((X-\mathrm E(X))(Y-\mathrm E(Y)))$。记 $||X||=\sqrt{\langle X,X\rangle}$ 为其诱导的范数，则定义 $X$ 和 $Y$ 的\emph{均方距离}为 $||X-Y||$。若一个随机过程 $\{X(t),t\geq0\}$ 满足 $\mathrm E(X^2(t))=||X(t)||^2<+\infty,\forall t\geq0$，则称其为\emph{二阶矩过程}。标准 Brown 运动是二阶矩过程。对二阶矩存在的随机变量列 $\{X_n\}$，若存在二阶矩存在的随机变量 $X$ 满足 $\lim_{n\rightarrow\infty}||X_n-X||=0$，则称 $X$ 为 $\{X_n\}$ 的\emph{均方极限}。
 \end{definition}
 
 可以证明，$\{Y(t),t\geq0\}$ 仍为 Gauss 过程，且 $\mathrm E(Y(t))=0,\mathrm{Var}(Y(t))=\mathrm E(Y^2(t))=\mathrm E(\int_0^t\int_0^tB(u)B(s)\mathrm ds\mathrm du)=\frac{t^3}3$，但无独立增量性。
@@ -51,15 +51,13 @@
 
 可类似地根据定义计算 It\^o 积分 $\int_0^t\mathrm dB(s)=B(t)-B(0)=B(t)$。
 
-一个常用的性质是 $(\mathrm dB(t))^2\sim\mathrm dt$（只差一个 $\mathrm dt$ 的高阶项）。
+一个常用的性质是 $(\mathrm dB(t))^2\sim\mathrm dt$（只差一个 $\mathrm dt$ 的高阶项）。可以由此形式化地理解 $\mathrm dB^2(t)$ 的表达式：由 Taylor 展开，有 $\mathrm dB^2(t)=2B(t)\mathrm dB(t)+\frac12\cdot2(\mathrm dB(t))^2+\cdots=2B(t)\mathrm dB(t)+\mathrm dt$，其中忽略了 $\mathrm dt$ 的高阶项。
 
 由例~\ref{Ito} 知 $\mathrm dB^2(t)=2B(t)\mathrm dB(t)+\mathrm dt$，为回答更一般的问题，即 $\mathrm df(t,B(t))$ 的表达式，引入以下定义。
 
 \begin{definition}\label{def:8.5.3}
     若 $\forall t\geq0,\int_0^t\mathrm dX(s)=X(t)-X(0)=\int_0^t\alpha(s)\mathrm ds+\int_0^t\beta(s)\mathrm dB(s)$，其中 $\int_0^t|\alpha(s)|\mathrm ds<+\infty,\mathrm E(\int_0^t\beta^2(s)\mathrm ds)<+\infty$，则称 $\{X(t),t\geq0\}$ 为 \emph{It\^o 过程}，记为 $\mathrm dX(t)=\alpha(t)\mathrm dt+\beta(t)\mathrm dB(t)$。
 \end{definition}
-
-\textbf{\textcolor{brown}{TODO: $\mathrm dB^2(t)=2B(t)\mathrm dB(t)+\frac1{2!}\cdot2(\mathrm dB(t))^2+\cdots$ 怎么理解？}}
 
 \begin{theorem}\label{thm:8.5.1}
     设 $f(t,x)$ 关于 $t,x$ 分别有一阶、二阶连续偏导，则
