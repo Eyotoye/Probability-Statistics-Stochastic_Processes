@@ -47,7 +47,7 @@ $X\sim N(\mu,\sigma^2)$ 的充要条件是 $Y=\frac{X-\mu}{\sigma}\sim N(0,1)$�
 
 首先引入\emph{失效率}或\emph{危险率}的概念。设 $X$ 为连续型随机变量（表示某种零件的寿命），其 CDF 为 $F(x)$，且 $F(0)=0$。考虑条件概率 $P(x<X<x+\mathrm{d}x|X>x)=\frac{P(x<X<x+\mathrm{d}x)}{P(X>x)}=\frac{F(x+\mathrm{d}x)-F(x)}{1-F(x)}\approx\frac{F^\prime(x)}{1-F(x)}\mathrm{d}x$，即“年龄”为 $x$ 的零件不能继续工作的条件概率密度为 $\frac{F^\prime(x)}{1-F(x)}$，称其为瞬时失效率 $\lambda(x)$，则 $F(x)=1-e^{-\int_0^x\lambda(t)\mathrm{d}t}$。
 
-在“无老化”假设下，即 $\lambda(t)\equiv \lambda$ 不随时间变化，则 $F(x)=1-e^{-\lambda t}(x>0)$，$X$ 服从指数分布。
+在“无老化”假设下，即 $\lambda(t)\equiv \lambda$ 不随时间变化，则 $F(x)=1-e^{-\lambda x}(x>0)$，$X$ 服从指数分布。
 
 指数分布有所谓“无记忆性”：$P(X>t+s|X>s)=\frac{P(X>t+s)}{P(X>s)}=e^{-\lambda t}=P(X>t)(t,s>0)$。
 
