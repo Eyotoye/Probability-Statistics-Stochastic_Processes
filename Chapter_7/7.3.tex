@@ -118,7 +118,7 @@
 若令 $I_n=\left\{\begin{aligned}
         1 & , & X_n=i,     \\
         0 & , & X_n\neq i,
-    \end{aligned}\right.$ 则 $\sum_{n=0}^\infty I_n$ 为经过状态 $i$ 的次数，$\mathrm E(\sum_{n=0}^\infty I_n|X_0=i)=\sum_{n=0}^\infty\mathrm E(I_n|X_0=i)=\sum_{n=0}^\infty p_{ii}^{(n)}$ 为链从 $i$ 出发经过 $i$ 的期望次数。若 $i$ 常返，从 $i$ 出发以概率 $1$ 经过 $i$ 无穷多次。若 $i$ 非常返，从 $i$ 出发有概率 $(1-f_{ii})$ 回不到 $i$（逃离 $i$），经过 $i$ 的次数为 $k$ 的概率为 $f_{ii}^{k-1}(1-f_{ii})$，即经过 $i$ 的次数服从几何分布，链以概率 $1$ 最终逃离 $i$。
+    \end{aligned}\right.$ 则 $\sum_{n=0}^\infty I_n$ 为经过状态 $i$ 的次数，于是 $\mathrm E(\sum_{n=0}^\infty I_n|X_0=i)=\sum_{n=0}^\infty\mathrm E(I_n|X_0=i)=\sum_{n=0}^\infty p_{ii}^{(n)}$ 为链从 $i$ 出发经过 $i$ 的期望次数。若 $i$ 常返，从 $i$ 出发以概率 $1$ 经过 $i$ 无穷多次。若 $i$ 非常返，从 $i$ 出发有概率 $(1-f_{ii})$ 回不到 $i$（逃离 $i$），经过 $i$ 的次数为 $k$ 的概率为 $f_{ii}^{k-1}(1-f_{ii})$，即经过 $i$ 的次数服从几何分布，链以概率 $1$ 最终逃离 $i$。
 
 \begin{theorem}\label{thm:7.3.2}
     关于常返性，有如下性质：

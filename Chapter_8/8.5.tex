@@ -12,7 +12,7 @@
 需要注意，定义中出现的极限是均方极限，以下详述。
 
 \begin{definition}\label{def:8.5.1}
-    可以证明，对零均值随机变量 $X,Y$，有 $\langle X,Y\rangle=\mathrm E(XY)$ 是内积。对于一般的随机变量 $X,Y$，内积 $\langle X,Y\rangle$ 定义为协方差 $\mathrm E((X-\mathrm E(X))(Y-\mathrm E(Y)))$。记 $||X||=\sqrt{\langle X,X\rangle}$ 为其诱导的范数，则定义 $X$ 和 $Y$ 的\emph{均方距离}为 $||X-Y||$。若一个随机过程 $\{X(t),t\geq0\}$ 满足 $\mathrm E(X^2(t))=||X(t)||^2<+\infty,\forall t\geq0$，则称其为\emph{二阶矩过程}。标准 Brown 运动是二阶矩过程。对二阶矩存在的随机变量列 $\{X_n\}$，若存在二阶矩存在的随机变量 $X$ 满足 $\lim_{n\rightarrow\infty}||X_n-X||=0$，则称 $X$ 为 $\{X_n\}$ 的\emph{均方极限}。
+    对随机变量 $X,Y$，有 $\langle X,Y\rangle=\mathrm E(XY)$ 是内积（符合内积的定义）。记 $||X||=\sqrt{\langle X,X\rangle}$ 为其诱导的范数，则定义 $X$ 和 $Y$ 的\emph{均方距离}为 $||X-Y||$。若一个随机过程 $\{X(t),t\geq0\}$ 满足 $\mathrm E(X^2(t))=||X(t)||^2<+\infty,\forall t\geq0$，则称其为\emph{二阶矩过程}。标准 Brown 运动是二阶矩过程。对二阶矩存在的随机变量列 $\{X_n\}$，若存在二阶矩存在的随机变量 $X$ 满足 $\lim_{n\rightarrow\infty}||X_n-X||=0$，则称 $X$ 为 $\{X_n\}$ 的\emph{均方极限}。
 \end{definition}
 
 可以证明，$\{Y(t),t\geq0\}$ 仍为 Gauss 过程，且 $\mathrm E(Y(t))=0,\mathrm{Var}(Y(t))=\mathrm E(Y^2(t))=\mathrm E(\int_0^t\int_0^tB(u)B(s)\mathrm ds\mathrm du)=\frac{t^3}3$，但无独立增量性。
@@ -23,7 +23,7 @@
     若均方极限 $\lim_{\lambda_n\rightarrow0}\sum_{k=1}^ng(t_{k-1})(B(t_k)-B(t_{k-1}))$ 存在，则定义 $\int_0^tg(s)\mathrm dB(s)$ 为该极限，称之为 $g(t)$ 关于 $\{B(t),t\geq0\}$ 在 $[0,t]$ 上的 \emph{It\^o 积分}。
 \end{definition}
 
-注意，上述定义中 $g(t_{k-1})$ 为每个小区间的左端点处取值，若换成其他点的值，则均方极限不一定存在。特别地，若换成 $\frac12(g(t_k)+g(_{k-1}))$，则均方极限存在，称之为 \emph{Stratonovich 积分}。
+注意，上述定义中 $g(t_{k-1})$ 为每个小区间的左端点处取值，若换成其他点的值，则均方极限不一定存在。特别地，若换成 $\frac12(g(t_k)+g(t_{k-1}))$，则均方极限存在，称之为 \emph{Stratonovich 积分}。
 
 \begin{example}\label{Ito}
     考虑 $\int_0^t2B(s)\mathrm dB(s)$。由 $S_n=\sum_{k=1}^n2B(t_{k-1})(B(t_k)-B(t_{k-1}))=\sum_{k=1}^n(B^2(t_k)-B^2(t_{k-1}))-\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2=B^2(t)-B^2(0)-\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2$，其中
@@ -33,8 +33,7 @@
     而
     \begin{equation*}
         \begin{aligned}
-                 & \mathrm{Var}(\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2)                                                               \\
-            =    & \mathrm E((\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2-t)^2)                                                            \\
+                 & \mathrm E((\sum_{k=1}^n(B(t_k)-B(t_{k-1}))^2-t)^2)                                                            \\
             =    & \mathrm E((\sum_{k=1}^n((B(t_k)-B(t_{k-1}))^2-(t_k-t_{k-1})))^2)                                              \\
             =    & \mathrm E(\sum_{k=1}^n((B(t_k)-B(t_{k-1}))^2-(t_k-t_{k-1}))^2)                                                \\
             +    & \sum_{i\neq j}\mathrm E((B(t_i)-B(t_{i-1}))^2-(t_i-t_{i-1}))\mathrm E((B(t_j)-B(t_{j-1}))^2-(t_j-t_{j-1}))    \\
@@ -68,10 +67,8 @@
 \end{theorem}
 
 \begin{proof}
-    仅给出描述性简略证明。由 $\mathrm df=\frac{\partial f}{\partial t}\mathrm dt+\frac{\partial f}{\partial x}\mathrm dx+\frac12\frac{\partial^2f}{\partial x^2}(\mathrm dx)^2$，其中 $\mathrm dx=\mathrm dB(t)$，故 $\mathrm df=\left(\frac{\partial f}{\partial t}(t,B(t))+\frac12\frac{\partial^2f}{\partial x^2}(t,B(t))\right)\mathrm dt+\frac{\partial f}{\partial x}(t,B(t))\mathrm dB(t)$。
+    仅给出描述性简略说明。由 $\mathrm df=\frac{\partial f}{\partial t}\mathrm dt+\frac{\partial f}{\partial x}\mathrm dx+\frac12\frac{\partial^2f}{\partial x^2}(\mathrm dx)^2$，其中 $\mathrm dx=\mathrm dB(t)$，故 $\mathrm df=\left(\frac{\partial f}{\partial t}(t,B(t))+\frac12\frac{\partial^2f}{\partial x^2}(t,B(t))\right)\mathrm dt+\frac{\partial f}{\partial x}(t,B(t))\mathrm dB(t)$。
 \end{proof}
-
-\textbf{\textcolor{brown}{TODO: 上面这个证明这样就可以吗？}}
 
 一般地，若 $\mathrm dX(t)=\alpha(t)\mathrm dt+\beta(t)\mathrm dB(t),Y(t)=f(t,X(t))$，则有
 \begin{equation*}
@@ -83,12 +80,15 @@
 \end{example}
 
 \begin{example}
-    设 $t$ 时刻的股价为 $S(t)$，一种金融产品称之为欧式看涨期权（European Call Option），拥有该期权的人可以在 $T$ 时刻选择是否“行权”，即是否以某预先指定的执行价格 $K$ 买入股票。显然，应当行权当且仅当 $S(T)>K$。期权在 $t$ 时刻的价格定义为 $g(t,S(t))$，则 $g(T,S(T))=\max\{S(T)-K,0\}$。假设股价服从几何 Brown 运动 $\mathrm dS(t)=S(t)(u\mathrm dt+\sigma\mathrm dB(t))$，则由 It\^o 微分方程有 $\mathrm dg(t,S(t))=\left(\frac{\partial g}{\partial t}+\frac{\partial g}{\partial S}S(t)u+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt+\frac{\partial g}{\partial S}S(t)\sigma\mathrm dB(t)$。称 $P(t)=g(t,S(t))-\delta S(t)$ 为一个投资组合（Portfolio），其中 $-\delta S(t)$ 项表示同时做空该股票，于是 $\mathrm dP(t)=\mathrm dg(t,S(t))-\delta\mathrm dS(t)=\left(\frac{\partial g}{\partial t}+\left(\frac{\partial g}{\partial S}-\delta\right)S(t)u+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt+\left(\frac{\partial g}{\partial S}-\delta\right)S(t)\sigma\mathrm dB(t)$。为进行风险对冲以消除随机波动的影响，取 $\delta=\frac{\partial g}{\partial S}$，则 $\mathrm dP(t)=\left(\frac{\partial g}{\partial t}+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt$。假设无套利机会，则 $\mathrm dP(t)=rP(t)\mathrm dt$，其中 $r$ 为无风险利率，故 $\frac{\partial g}{\partial t}+rS\frac{\partial g}{\partial S}+\frac12\frac{\partial^2g}{\partial S^2}S^2\sigma^2=rg$，称之为 \emph{Black-Scholes 方程}，其终值条件为 $g(T,S(T))=\max\{S(T)-K,0\}$。\\
+    设 $t$ 时刻的股价为 $S(t)$，一种金融产品称之为欧式看涨期权（European Call Option），拥有该期权的人可以在 $T$ 时刻选择是否“行权”，即是否以某预先指定的执行价格 $K$ 买入股票。显然，应当行权当且仅当 $S(T)>K$。期权在 $t$ 时刻的价格定义为 $g(t,S(t))$，则 $g(T,S(T))=\max\{S(T)-K,0\}$。假设股价服从几何 Brown 运动 $\mathrm dS(t)=S(t)(u\mathrm dt+\sigma\mathrm dB(t))$，则由 It\^o 微分方程有 $\mathrm dg(t,S(t))=\left(\frac{\partial g}{\partial t}+\frac{\partial g}{\partial S}S(t)u+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt+\frac{\partial g}{\partial S}S(t)\sigma\mathrm dB(t)$。称 $P(t)=g(t,S(t))-\delta S(t)$ 为一个投资组合（Portfolio），其中 $-\delta S(t)$ 项表示同时做空该股票，于是 $\mathrm dP(t)=\mathrm dg(t,S(t))-\delta\mathrm dS(t)=\left(\frac{\partial g}{\partial t}+\left(\frac{\partial g}{\partial S}-\delta\right)S(t)u+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt+\left(\frac{\partial g}{\partial S}-\delta\right)S(t)\sigma\mathrm dB(t)$。为进行风险对冲以消除随机波动的影响，取 $\delta=\frac{\partial g}{\partial S}$，则 $\mathrm dP(t)=\left(\frac{\partial g}{\partial t}+\frac12\frac{\partial^2g}{\partial S^2}S^2(t)\sigma^2\right)\mathrm dt$。假设无套利机会，即 $\mathrm dP(t)=rP(t)\mathrm dt$，其中 $r$ 为无风险利率，故 $\frac{\partial g}{\partial t}+rS\frac{\partial g}{\partial S}+\frac12\frac{\partial^2g}{\partial S^2}S^2\sigma^2=rg$，称之为 \emph{Black-Scholes 方程}，其终值条件为 $g(T,S(T))=\max\{S(T)-K,0\}$。\\
     该模型中涉及的主要假设包括：股票服从几何 Brown 运动、无套利机会、标的资产不支付利息、可做空、无交易税费、$\sigma$ 保持不变、$r$ 为已知常数、交易连续等。
 \end{example}
 
-\textbf{\textcolor{brown}{TODO: 为什么无套利机会可以推出 $\mathrm dP(t)=rP(t)\mathrm dt$？}}
-
-\textbf{\textcolor{brown}{TODO: 历史注记}}
+历史注记（对随机微分方程的发展作出贡献的几位数学家）：
+\begin{enumerate}
+    \item Bachelier (1900)
+    \item Samuelson (1930)
+    \item Black-Scholes \& Merton (1973)
+\end{enumerate}
 
 \end{document}

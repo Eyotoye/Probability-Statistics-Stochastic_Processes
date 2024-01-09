@@ -109,7 +109,32 @@
 \end{enumerate}
 
 \begin{example}
-    \textbf{\textcolor{brown}{TODO: Google PageRank}}
+    PageRank 是 Page 和 Brin 在 1998 年的论文中提出的对搜索引擎搜索结果中的网页进行排名的一种算法，曾是 Google 搜索引擎的核心算法。设有 $4$ 个网页间的链接关系如下图。
+    \begin{center}
+        \begin{tikzpicture}[>=stealth,thick, node distance=.5cm,baseline=(current bounding box.north)]
+            \tikzstyle{state} = [circle, draw, minimum size=1cm]
+            \node[state] (1) at (0,0) {1};
+            \node[state] (2) [right=of 1] {2};
+            \node[state] (3) [below=of 1] {3};
+            \node[state] (4) [below=of 2] {4};
+            \draw[->] (1) -- (3);
+            \draw[->] (2) -- (4);
+            \draw[->] (1) -- (4);
+            \draw[->] (3) -- (4);
+            \draw[->] ([yshift=2pt]1.east) -- ([yshift=2pt]2.west);
+            \draw[->] ([yshift=-2pt]2.west) -- ([yshift=-2pt]1.east);
+        \end{tikzpicture}
+    \end{center}
+    \bigskip
+    则构造转移概率矩阵 $P=
+        \left[\begin{matrix}
+                0   & \frac13 & \frac13 & \frac13       \\
+                \frac12   & 0       & 0       & \frac12       \\
+                0   & 0       & 0       & 1       \\
+                \frac14 & \frac14 & \frac14       & \frac14
+            \end{matrix}\right]$，其中第四行为均匀分布，是因为从网页 $4$ 出发没有任何链接，故等概率地跳转到任一网页。一般地，令 $M$ 为页面总数，则 $P$ 为 $M\times M$ 矩阵，若 $\boldsymbol\pi$ 为其平稳分布（假设存在且唯一），则访问概率 $\pi_j$ 可用于衡量页面 $j$ 的重要程度。\\
+            但是，$P$ 本身可能可约，这种情况下不清楚平稳分布唯一性。为此，取 $\tilde P=\alpha P+(1-\alpha)\frac JM$，其中 $\alpha\in(0,1)$，而 $J$ 为 $M\times M$ 矩阵且所有元素均为 $1$，即将 $P$ 与平凡的均匀概率转移进行加权平均。则 $\tilde P$ 不可约且为有限链，故所有状态正常返，再加之非周期性（因 $\tilde p_{ii}>0,\forall i\in S$），于是根据定理~\ref{thm:7.4.5}，存在唯一平稳分布且为其极限分布，也记作 $\boldsymbol\pi$。\\
+            原始论文中建议 $\alpha=0.85$。由于 $M$ 极大，直接求解 $\boldsymbol\pi$ 困难，故可以利用 Markov 链求解，即随机选取一个初始概率分布 $\boldsymbol\beta$，利用 $\boldsymbol\beta\tilde P=\alpha\boldsymbol\beta P+(1-\alpha)\boldsymbol\beta\frac JM$，其中 $\boldsymbol\beta\frac JM=(\frac1M,\cdots,\frac1M)$，迭代计算 $\boldsymbol\beta\tilde P^n$，当 $n$ 足够大时，即近似为 $\boldsymbol\pi$，据此给出网页的排名。
 \end{example}
 
 \end{document}
