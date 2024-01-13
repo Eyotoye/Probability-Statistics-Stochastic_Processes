@@ -82,7 +82,7 @@
 
 \begin{example}
     若 $\{X_i\}_{i=1}^n$ 相互独立且服从正态分布，则 $X_1+\cdots+X_n$ 也服从正态分布。\\
-    以 $n=2$ 为例说明。设 $X_i\sim N(\mu_i,\sigma_i^2)\ (i=1,2)$，则 $M_{X_1+X_2}(t)=M_{X_1}(t)M_{X_2}(t)=e^{\frac{\sigma_1^2t^2}2+\mu_1t}e^{\frac{\sigma_2^2t^2}2+\mu_2t}=e^{\frac12(\sigma_1^2+\sigma_2^2)+(\mu_1+\mu_2)t}$，对应 $N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$ 的 MGF，再由 MGF 确定分布可得结论。
+    以 $n=2$ 为例说明。设 $X_i\sim N(\mu_i,\sigma_i^2)\ (i=1,2)$，则 $M_{X_1+X_2}(t)=M_{X_1}(t)M_{X_2}(t)=e^{\frac{\sigma_1^2t^2}2+\mu_1t}e^{\frac{\sigma_2^2t^2}2+\mu_2t}=e^{\frac12(\sigma_1^2+\sigma_2^2)t^2+(\mu_1+\mu_2)t}$，对应 $N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$ 的 MGF，再由 MGF 确定分布可得结论。
 \end{example}
 
 定义随机向量 $(X_1,\cdots,X_n)$ 的 MGF 为 $M_{X_1,\cdots,X_n}(t_1,\cdots,t_n)=\mathrm E(e^{t_1X_1+\cdots+t_nX_n})$。
